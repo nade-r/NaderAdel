@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
 <head>
@@ -413,6 +413,583 @@
   <button class="back-to-top" id="back-to-top">⬆️</button>
 
   <script>
+    const canvas = document.getElementById("network-bg");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let nodes = [];
+    const numNodes = 70;
+    for (let i = 0; i < numNodes; i++) {
+      nodes.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < numNodes; i++) {
+        for (let j = i + 1; j < numNodes; j++) {
+          let dx = nodes[i].x - nodes[j].x;
+          let dy = nodes[i].y - nodes[j].y;
+          let dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120) {
+            ctx.strokeStyle = "rgba(0, 255, 255, 0.2)";
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+      nodes.forEach((node, i) => {
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, 3, 0, Math.PI * 2);
+        let hue = (Date.now() / 20 + i * 10) % 360;
+        ctx.fillStyle = `hsl(${hue}, 100%, 50%)`;
+        ctx.fill();
+        node.x += node.vx;
+        node.y += node.vy;
+        if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
+        if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
+      });
+      requestAnimationFrame(draw);
+    }
+    draw();
+
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = { threshold: 0.2 };
+    const appearOnScroll = new IntersectionObserver(function (entries, observer) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, appearOptions);
+    faders.forEach(fader => { appearOnScroll.observe(fader); });
+
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav ul li a');
+    const observerOptions = { threshold: 0.6 };
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => link.classList.remove('active'));
+          const activeLink = document.querySelector(`nav ul li a[href="#${entry.target.id}"]`);
+          if (activeLink) { activeLink.classList.add('active'); }
+        }
+      });
+    }, observerOptions);
+    sections.forEach(section => { sectionObserver.observe(section); });
+
+    const translations = {
+      en: {
+        nav: ["Home", "About", "Skills", "Projects", "Courses", "Certificates", "Contact"],
+        homeTitle: "Nader Adel",
+        homeSubtitle: "Network",
+        homeSubwo: "jjohnuibiypviy",
+        aboutTitle: "About Me",
+        aboutText: "I am a passionate front-end developer creating modern websites.",
+        skillsTitle: "Skills",
+        projectsTitle: "Projects",
+        coursesTitle: "Courses",
+        certificatesTitle: "Certificates",
+        contactTitle: "Contact",
+        footer: "© 2025 My Portfolio. All rights reserved."
+      },
+      ar: {
+        nav: ["الرئيسية", "من أنا", "المهارات", "المشاريع", "الدورات", "الشهادات", "تواصل"],
+        homeTitle: "نادر عادل",
+        homeSubtitle: "شبكات",
+        homeSubwo: "مهتم بالبنية التحتية والتقنية",
+        aboutTitle: "من أنا",
+        aboutText: "أنا مطور واجهات أمامية شغوف بإنشاء مواقع عصرية.",
+        skillsTitle: "المهارات",
+        projectsTitle: "المشاريع",
+        coursesTitle: "الدورات",
+        certificatesTitle: "الشهادات",
+        contactTitle: "تواصل",
+        footer: "© 2025 بورتفوليو. جميع الحقوق محفوظة."
+      }
+    };
+
+    let currentLang = localStorage.getItem("lang") || "en";
+    const langBtn = document.getElementById("lang-switch");
+
+    function updateLanguage(lang) {
+      const t = translations[lang];
+      const navLinks = document.querySelectorAll("nav ul li a");
+
+      navLinks.forEach((link, i) => {
+        const icon = link.querySelector("i");
+        link.innerHTML = "";
+        link.appendChild(icon);
+        link.append(" " + t.nav[i]);
+      });
+
+      document.getElementById("home-title").textContent = t.homeTitle;
+      document.getElementById("home-subtitle").textContent = t.homeSubtitle;
+      document.getElementById("home-subwo").textContent = t.homeSubwo;
+      document.getElementById("about-title").textContent = t.aboutTitle;
+      document.getElementById("about-text").textContent = t.aboutText;
+      document.getElementById("skills-title").textContent = t.skillsTitle;
+      document.getElementById("projects-title").textContent = t.projectsTitle;
+      document.getElementById("courses-title").textContent = t.coursesTitle;
+      document.getElementById("certificates-title").textContent = t.certificatesTitle;
+      document.getElementById("contact-title").textContent = t.contactTitle;
+      document.getElementById("footer-text").textContent = t.footer;
+      document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+      langBtn.textContent = lang === "en" ? "AR" : "EN";
+      localStorage.setItem("lang", lang);
+    }
+
+    langBtn.addEventListener("click", () => {
+      currentLang = currentLang === "en" ? "ar" : "en";
+      updateLanguage(currentLang);
+    });
+
+    updateLanguage(currentLang);
+  </script>
+</body>
+
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio</title>
+
+  <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/25/25231.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0d0d0d;
+      color: #fff;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    #network-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      background: #0d0d0d;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #111;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      color: #0ff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .animated-box {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background: #0ff;
+      border-radius: 3px;
+      animation: rotateColor 5s linear infinite;
+    }
+
+    @keyframes rotateColor {
+      0% {
+        transform: rotate(0deg);
+        background: #0ff;
+      }
+
+      25% {
+        transform: rotate(90deg);
+        background: #00f;
+      }
+
+      50% {
+        transform: rotate(180deg);
+        background: #8000ff;
+      }
+
+      75% {
+        transform: rotate(270deg);
+        background: #00f;
+      }
+
+      100% {
+        transform: rotate(360deg);
+        background: #0ff;
+      }
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    nav ul li a:hover {
+      color: #0ff;
+    }
+
+    nav ul li a.active {
+      background: #0ff;
+      color: #000;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      color: #0ff;
+      cursor: pointer;
+    }
+
+    .lang-switch {
+      cursor: pointer;
+      background: #0ff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      color: #000;
+      font-weight: bold;
+      transition: transform 0.3s ease;
+    }
+
+    .lang-switch:hover {
+      transform: scale(1.1);
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 80px 20px 20px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #0ff;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 10px;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      background: #222;
+    }
+
+    footer {
+      background: #111;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    footer a {
+      margin: 0 10px;
+      font-size: 1.8rem;
+      color: #fff;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover.whatsapp {
+      color: #25D366;
+    }
+
+    footer a:hover.linkedin {
+      color: #0077B5;
+    }
+
+    footer a:hover.github {
+      color: #ccc;
+    }
+
+    footer a:hover.discord {
+      color: #5865F2;
+    }
+
+    footer a:hover.email {
+      color: #f83939;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #0ff;
+      color: #000;
+      padding: 10px 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      z-index: 1000;
+    }
+
+    .profile-pic {
+      max-width: 200px;
+      border-radius: 50%;
+      margin-top: 20px;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* 🔹 ميديا كويري للتابلت */
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        background: #111;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        padding: 10px;
+        border-radius: 10px;
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .profile-pic {
+        max-width: 150px;
+      }
+
+      section {
+        padding: 60px 10px 20px;
+      }
+    }
+
+    /* 🔹 ميديا كويري للموبايل */
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1rem;
+      }
+
+      .card {
+        padding: 15px;
+        font-size: 0.9rem;
+      }
+
+      .profile-pic {
+        max-width: 120px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <canvas id="network-bg"></canvas>
+
+  <header>
+    <h1 id="logo">
+      <span class="animated-box"></span> Nader Adel
+    </h1>
+
+    <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+
+    <nav>
+      <ul>
+        <li><a href="#home" id="nav-home" class="active"><i class="fas fa-house"></i> Home</a></li>
+        <li><a href="#about" id="nav-about"><i class="fas fa-user"></i> About</a></li>
+        <li><a href="#skills" id="nav-skills"><i class="fas fa-code"></i> Skills</a></li>
+        <li><a href="#projects" id="nav-projects"><i class="fas fa-diagram-project"></i> Projects</a></li>
+        <li><a href="#courses" id="nav-courses"><i class="fas fa-book-open"></i> Courses</a></li>
+        <li><a href="#certificates" id="nav-certificates"><i class="fas fa-certificate"></i> Certificates</a></li>
+        <li><a href="#contact" id="nav-contact"><i class="fas fa-envelope"></i> Contact</a></li>
+      </ul>
+    </nav>
+
+    <button class="lang-switch" id="lang-switch">AR</button>
+  </header>
+
+  <section id="home" class="fade-in">
+    <img src="WhatsApp Image 2025-07-24 at 02.45.51_7eef4f37.jpg" alt="Profile Picture" class="profile-pic"
+      id="home-image" />
+    <h2 id="home-title">Nader Adel</h2>
+    <p id="home-subtitle">Network</p>
+    <p id="home-subwo">jjohnuibiypviy</p>
+  </section>
+
+  <section id="about" class="fade-in">
+    <h2 id="about-title">About Me</h2>
+    <p id="about-text">I am a passionate front-end developer creating modern websites.</p>
+  </section>
+
+  <section id="skills" class="fade-in">
+    <h2 id="skills-title">Skills</h2>
+    <div class="grid" id="skills-list">
+      <div class="card">HTML</div>
+      <div class="card">CSS</div>
+      <div class="card">JavaScript</div>
+    </div>
+  </section>
+
+  <section id="projects" class="fade-in">
+    <h2 id="projects-title">Projects</h2>
+    <div class="grid" id="projects-list">
+      <div class="card">Project 1</div>
+      <div class="card">Project 2</div>
+      <div class="card">Project 3</div>
+    </div>
+  </section>
+
+  <section id="courses" class="fade-in">
+    <h2 id="courses-title">Courses</h2>
+    <div class="grid" id="courses-list">
+      <div class="card">Course 1</div>
+      <div class="card">Course 2</div>
+      <div class="card">Course 3</div>
+    </div>
+  </section>
+
+  <section id="certificates" class="fade-in">
+    <h2 id="certificates-title">Certificates</h2>
+    <div class="grid" id="certificates-list">
+      <div class="card">Certificate 1</div>
+      <div class="card">Certificate 2</div>
+      <div class="card">Certificate 3</div>
+    </div>
+  </section>
+
+  <section id="contact" class="fade-in">
+    <h2 id="contact-title">Contact</h2>
+    <div class="grid">
+      <div class="card">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=naderadel102@gmail.com" class="email"><i
+            class="fas fa-envelope"></i> Email</a>
+      </div>
+      <div class="card">
+        <a href="tel:01556223003" class="phone"> <i class="fas fa-phone"></i>phone</a>
+      </div>
+      <div class="card">
+        <a href="https://www.linkedin.com/in/nader-adel-01556223003%D9%90/" class="linkedin"><i
+            class="fab fa-linkedin"></i> LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p id="footer-text">© 2025 My Portfolio. All rights reserved.</p>
+    <a href="https://wa.me/01556223003" class="whatsapp" target="blank">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="https://www.linkedin.com/in/nader-adel-01556223003%D9%90/" class="linkedin" target="blank">
+      <i class="fab fa-linkedin"></i>
+    </a>
+    <a href="https://github.com/nade-r" class="github" target="blank">
+      <i class="fab fa-github"></i>
+    </a>
+    <a href="https://discord.com" class="discord" target="blank">
+      <i class="fab fa-discord"></i>
+    </a>
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=naderadel102@gmail.com" class="email" target="blank"><i
+        class="fas fa-envelope"></i>
+    </a>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top">⬆️</button>
+
+  <script>
+    // 🔹 القائمة على الموبايل
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navMenu = document.querySelector("nav ul");
+    menuToggle.addEventListener("click", () => {
+      navMenu.classList.toggle("show");
+    });
+
+    // 🔹 باقي الكود زي ما هو (الأنيميشن + اللغة + الباكجراوند)
     const canvas = document.getElementById("network-bg");
     const ctx = canvas.getContext("2d");
     canvas.width = window.innerWidth;
