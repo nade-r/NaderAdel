@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 
 <head>
@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio</title>
 
-  <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/25/25231.png" />
+  <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/9494/9494807.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
@@ -56,35 +56,6 @@
       gap: 10px;
     }
 
-    footer a {
-      margin: 0 10px;
-      font-size: 1.8rem;
-      /* حجم الأيقونة */
-      color: #fff;
-      transition: color 0.3s ease;
-    }
-
-    footer a:hover.whatsapp {
-      color: #25D366;
-    }
-
-    footer a:hover.linkedin {
-      color: #0077B5;
-    }
-
-    footer a:hover.github {
-      color: #ccc;
-    }
-
-    footer a:hover.discord {
-      color: #5865F2;
-    }
-
-    footer a:hover.email {
-      color: #f83939;
-    }
-
-
     .animated-box {
       display: inline-block;
       width: 40px;
@@ -100,31 +71,25 @@
         background: #0ff;
       }
 
-      /* سماوي */
       25% {
         transform: rotate(90deg);
         background: #00f;
       }
 
-      /* أزرق */
       50% {
         transform: rotate(180deg);
         background: #8000ff;
       }
 
-      /* بنفسجي */
       75% {
         transform: rotate(270deg);
         background: #00f;
       }
 
-      /* أزرق */
       100% {
         transform: rotate(360deg);
         background: #0ff;
       }
-
-      /* سماوي */
     }
 
     nav ul {
@@ -147,13 +112,30 @@
       position: relative;
     }
 
+    .link-label {
+      color: inherit;
+      background: linear-gradient(to right, #0ff 50%, #fff 50%);
+      background-size: 200% 100%;
+      background-position: right bottom;
+      transition: background-position 0.6s ease;
+    }
+
+    @supports ((background-clip: text) or (-webkit-background-clip: text)) {
+      .link-label {
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+
+    nav ul li a:hover .link-label {
+      background-position: left bottom;
+    }
+
     nav ul li a i {
       font-size: 1.1rem;
       transition: color 0.3s ease;
-    }
-
-    nav ul li a:hover {
-      color: #0ff;
     }
 
     nav ul li a:hover i {
@@ -169,6 +151,13 @@
       color: #000;
     }
 
+    nav ul li a.active .link-label {
+      background: none !important;
+      color: #000 !important;
+      -webkit-text-fill-color: initial !important;
+      background-clip: initial !important;
+      -webkit-background-clip: initial !important;
+    }
 
     nav ul li a::after {
       content: "";
@@ -239,524 +228,6 @@
       z-index: 1;
     }
 
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 1s ease, transform 1s ease;
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .back-to-top {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #0ff;
-      color: #000;
-      padding: 10px 15px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      z-index: 1000;
-    }
-
-    .profile-pic {
-      max-width: 200px;
-      border-radius: 50%;
-      margin-top: 20px;
-    }
-
-    .card a {
-      text-decoration: none;
-      font-size: 1.1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      font-weight: bold;
-    }
-
-    .card a i {
-      font-size: 1.5rem;
-    }
-
-    .card a.email {
-      color: #e74c3c;
-    }
-
-    .card a.whatsapp {
-      color: #25D366;
-    }
-
-    .card a.linkedin {
-      color: #0077B5;
-    }
-
-    .card a.github {
-      color: #f5f5f5;
-    }
-  </style>
-</head>
-
-<body>
-
-  <canvas id="network-bg"></canvas>
-
-  <header>
-    <h1 id="logo">
-      <span class="animated-box"></span> Nader Adel
-    </h1>
-    <nav>
-      <ul>
-        <li><a href="#home" id="nav-home" class="active"><i class="fas fa-house"></i> Home</a></li>
-        <li><a href="#about" id="nav-about"><i class="fas fa-user"></i> About</a></li>
-        <li><a href="#skills" id="nav-skills"><i class="fas fa-code"></i> Skills</a></li>
-        <li><a href="#projects" id="nav-projects"><i class="fas fa-diagram-project"></i> Projects</a></li>
-        <li><a href="#courses" id="nav-courses"><i class="fas fa-book-open"></i> Courses</a></li>
-        <li><a href="#certificates" id="nav-certificates"><i class="fas fa-certificate"></i> Certificates</a></li>
-        <li><a href="#contact" id="nav-contact"><i class="fas fa-envelope"></i> Contact</a></li>
-      </ul>
-    </nav>
-
-    <button class="lang-switch" id="lang-switch">AR</button>
-  </header>
-
-  <section id="home" class="fade-in">
-    <img src="WhatsApp Image 2025-07-24 at 02.45.51_7eef4f37.jpg" alt="Profile Picture" class="profile-pic"
-      id="home-image" />
-    <h2 id="home-title">Nader Adel</h2>
-    <p id="home-subtitle">Network</p>
-    <p id="home-subwo">jjohnuibiypviy</p>
-  </section>
-
-  <section id="about" class="fade-in">
-    <h2 id="about-title">About Me</h2>
-    <p id="about-text">I am a passionate front-end developer creating modern websites.</p>
-  </section>
-
-  <section id="skills" class="fade-in">
-    <h2 id="skills-title">Skills</h2>
-    <div class="grid" id="skills-list">
-      <div class="card">HTML</div>
-      <div class="card">CSS</div>
-      <div class="card">JavaScript</div>
-    </div>
-  </section>
-
-  <section id="projects" class="fade-in">
-    <h2 id="projects-title">Projects</h2>
-    <div class="grid" id="projects-list">
-      <div class="card">Project 1</div>
-      <div class="card">Project 2</div>
-      <div class="card">Project 3</div>
-    </div>
-  </section>
-
-  <section id="courses" class="fade-in">
-    <h2 id="courses-title">Courses</h2>
-    <div class="grid" id="courses-list">
-      <div class="card">Course 1</div>
-      <div class="card">Course 2</div>
-      <div class="card">Course 3</div>
-    </div>
-  </section>
-
-  <section id="certificates" class="fade-in">
-    <h2 id="certificates-title">Certificates</h2>
-    <div class="grid" id="certificates-list">
-      <div class="card">Certificate 1</div>
-      <div class="card">Certificate 2</div>
-      <div class="card">Certificate 3</div>
-    </div>
-  </section>
-
-  <section id="contact" class="fade-in">
-    <h2 id="contact-title">Contact</h2>
-    <div class="grid">
-      <div class="card">
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=naderadel102@gmail.com" class="email"><i
-            class="fas fa-envelope"></i> Email</a>
-      </div>
-      <div class="card">
-        <a href="tel:01556223003" class="phone"> <i class="fas fa-phone"></i>phone</a>
-      </div>
-      <div class="card">
-        <a href="https://www.linkedin.com/in/nader-adel-01556223003%D9%90/" class="linkedin"><i
-            class="fab fa-linkedin"></i> LinkedIn</a>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <p id="footer-text">© 2025 My Portfolio. All rights reserved.</p>
-    <a href="https://wa.me/01556223003" class="whatsapp" target="blank">
-      <i class="fab fa-whatsapp"></i>
-    </a>
-    <a href="https://www.linkedin.com/in/nader-adel-01556223003%D9%90/" class="linkedin" target="blank">
-      <i class="fab fa-linkedin"></i>
-    </a>
-    <a href="https://github.com/nade-r" class="github" target="blank">
-      <i class="fab fa-github"></i>
-    </a>
-    <a href="https://discord.com" class="discord" target="blank">
-      <i class="fab fa-discord"></i>
-    </a>
-    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=naderadel102@gmail.com" class="email" target="blank"><i
-        class="fas fa-envelope"></i>
-    </a>
-  </footer>
-
-
-  <button class="back-to-top" id="back-to-top">⬆️</button>
-
-  <script>
-    const canvas = document.getElementById("network-bg");
-    const ctx = canvas.getContext("2d");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    let nodes = [];
-    const numNodes = 70;
-    for (let i = 0; i < numNodes; i++) {
-      nodes.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
-      });
-    }
-
-    function draw() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let i = 0; i < numNodes; i++) {
-        for (let j = i + 1; j < numNodes; j++) {
-          let dx = nodes[i].x - nodes[j].x;
-          let dy = nodes[i].y - nodes[j].y;
-          let dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
-            ctx.strokeStyle = "rgba(0, 255, 255, 0.2)";
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(nodes[i].x, nodes[i].y);
-            ctx.lineTo(nodes[j].x, nodes[j].y);
-            ctx.stroke();
-          }
-        }
-      }
-      nodes.forEach((node, i) => {
-        ctx.beginPath();
-        ctx.arc(node.x, node.y, 3, 0, Math.PI * 2);
-        let hue = (Date.now() / 20 + i * 10) % 360;
-        ctx.fillStyle = `hsl(${hue}, 100%, 50%)`;
-        ctx.fill();
-        node.x += node.vx;
-        node.y += node.vy;
-        if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
-        if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
-      });
-      requestAnimationFrame(draw);
-    }
-    draw();
-
-    window.addEventListener("resize", () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    });
-
-    const faders = document.querySelectorAll('.fade-in');
-    const appearOptions = { threshold: 0.2 };
-    const appearOnScroll = new IntersectionObserver(function (entries, observer) {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, appearOptions);
-    faders.forEach(fader => { appearOnScroll.observe(fader); });
-
-    const backToTop = document.getElementById('back-to-top');
-    window.addEventListener('scroll', () => {
-      backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
-    });
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('nav ul li a');
-    const observerOptions = { threshold: 0.6 };
-    const sectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          navLinks.forEach(link => link.classList.remove('active'));
-          const activeLink = document.querySelector(`nav ul li a[href="#${entry.target.id}"]`);
-          if (activeLink) { activeLink.classList.add('active'); }
-        }
-      });
-    }, observerOptions);
-    sections.forEach(section => { sectionObserver.observe(section); });
-
-    const translations = {
-      en: {
-        nav: ["Home", "About", "Skills", "Projects", "Courses", "Certificates", "Contact"],
-        homeTitle: "Nader Adel",
-        homeSubtitle: "Network",
-        homeSubwo: "jjohnuibiypviy",
-        aboutTitle: "About Me",
-        aboutText: "I am a passionate front-end developer creating modern websites.",
-        skillsTitle: "Skills",
-        projectsTitle: "Projects",
-        coursesTitle: "Courses",
-        certificatesTitle: "Certificates",
-        contactTitle: "Contact",
-        footer: "© 2025 My Portfolio. All rights reserved."
-      },
-      ar: {
-        nav: ["الرئيسية", "من أنا", "المهارات", "المشاريع", "الدورات", "الشهادات", "تواصل"],
-        homeTitle: "نادر عادل",
-        homeSubtitle: "شبكات",
-        homeSubwo: "مهتم بالبنية التحتية والتقنية",
-        aboutTitle: "من أنا",
-        aboutText: "أنا مطور واجهات أمامية شغوف بإنشاء مواقع عصرية.",
-        skillsTitle: "المهارات",
-        projectsTitle: "المشاريع",
-        coursesTitle: "الدورات",
-        certificatesTitle: "الشهادات",
-        contactTitle: "تواصل",
-        footer: "© 2025 بورتفوليو. جميع الحقوق محفوظة."
-      }
-    };
-
-    let currentLang = localStorage.getItem("lang") || "en";
-    const langBtn = document.getElementById("lang-switch");
-
-    function updateLanguage(lang) {
-      const t = translations[lang];
-      const navLinks = document.querySelectorAll("nav ul li a");
-
-      navLinks.forEach((link, i) => {
-        const icon = link.querySelector("i");
-        link.innerHTML = "";
-        link.appendChild(icon);
-        link.append(" " + t.nav[i]);
-      });
-
-      document.getElementById("home-title").textContent = t.homeTitle;
-      document.getElementById("home-subtitle").textContent = t.homeSubtitle;
-      document.getElementById("home-subwo").textContent = t.homeSubwo;
-      document.getElementById("about-title").textContent = t.aboutTitle;
-      document.getElementById("about-text").textContent = t.aboutText;
-      document.getElementById("skills-title").textContent = t.skillsTitle;
-      document.getElementById("projects-title").textContent = t.projectsTitle;
-      document.getElementById("courses-title").textContent = t.coursesTitle;
-      document.getElementById("certificates-title").textContent = t.certificatesTitle;
-      document.getElementById("contact-title").textContent = t.contactTitle;
-      document.getElementById("footer-text").textContent = t.footer;
-      document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
-      langBtn.textContent = lang === "en" ? "AR" : "EN";
-      localStorage.setItem("lang", lang);
-    }
-
-    langBtn.addEventListener("click", () => {
-      currentLang = currentLang === "en" ? "ar" : "en";
-      updateLanguage(currentLang);
-    });
-
-    updateLanguage(currentLang);
-  </script>
-</body>
-
-</html> -->
-
-
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio</title>
-
-  <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/25/25231.png" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background: #0d0d0d;
-      color: #fff;
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    #network-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      background: #0d0d0d;
-    }
-
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: #111;
-      padding: 15px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
-    }
-
-    header h1 {
-      font-size: 1.5rem;
-      color: #0ff;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .animated-box {
-      display: inline-block;
-      width: 40px;
-      height: 40px;
-      background: #0ff;
-      border-radius: 3px;
-      animation: rotateColor 5s linear infinite;
-    }
-
-    @keyframes rotateColor {
-      0% {
-        transform: rotate(0deg);
-        background: #0ff;
-      }
-
-      25% {
-        transform: rotate(90deg);
-        background: #00f;
-      }
-
-      50% {
-        transform: rotate(180deg);
-        background: #8000ff;
-      }
-
-      75% {
-        transform: rotate(270deg);
-        background: #00f;
-      }
-
-      100% {
-        transform: rotate(360deg);
-        background: #0ff;
-      }
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-    }
-
-    nav ul li a {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-      padding: 5px 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      position: relative;
-    }
-
-    nav ul li a:hover {
-      color: #0ff;
-    }
-
-    nav ul li a.active {
-      background: #0ff;
-      color: #000;
-    }
-
-    .menu-toggle {
-      display: none;
-      font-size: 1.8rem;
-      color: #0ff;
-      cursor: pointer;
-    }
-
-    .lang-switch {
-      cursor: pointer;
-      background: #0ff;
-      border: none;
-      padding: 5px 10px;
-      border-radius: 5px;
-      color: #000;
-      font-weight: bold;
-      transition: transform 0.3s ease;
-    }
-
-    .lang-switch:hover {
-      transform: scale(1.1);
-    }
-
-    section {
-      min-height: 100vh;
-      padding: 80px 20px 20px;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    h2 {
-      margin-bottom: 20px;
-      color: #0ff;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: #1a1a1a;
-      padding: 20px;
-      border-radius: 10px;
-      transition: transform 0.3s, background 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      background: #222;
-    }
-
-    footer {
-      background: #111;
-      padding: 20px;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-
     footer a {
       margin: 0 10px;
       font-size: 1.8rem;
@@ -814,56 +285,324 @@
       margin-top: 20px;
     }
 
-    img {
-      max-width: 100%;
-      height: auto;
+    /* أنماط جديدة لقسم الاتصال */
+    .contact-card {
+      position: relative;
+      padding: 30px;
+      border-radius: 15px;
+      overflow: hidden;
+      transition: all 0.5s ease;
+      border: 2px solid transparent;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .contact-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 255, 255, 0.3);
+      border-color: #0ff;
+    }
+    
+    .contact-icon {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+      transition: all 0.5s ease;
+      color: #0ff;
+    }
+    
+    .contact-card:hover .contact-icon {
+      animation: bounce 1s infinite alternate;
+    }
+    
+    @keyframes bounce {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
+    
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0, 255, 255, 0.1) 0%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    
+    .contact-card:hover::before {
+      opacity: 1;
+    }
+    
+    .contact-card::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 3px;
+      background: #0ff;
+      border-radius: 3px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .contact-card:hover::after {
+      opacity: 1;
+      animation: pulseLine 2s infinite;
+    }
+    
+    @keyframes pulseLine {
+      0% { width: 80%; opacity: 0.7; }
+      50% { width: 90%; opacity: 1; }
+      100% { width: 80%; opacity: 0.7; }
+    }
+    
+    .contact-info {
+      margin-top: 15px;
+      font-size: 1rem;
+      opacity: 0.9;
+      transition: all 0.3s ease;
+    }
+    
+    .contact-card:hover .contact-info {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    
+    .contact-link {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: color 0.3s ease;
+    }
+    
+    .contact-link:hover {
+      color: #0ff;
+    }
+    
+    .contact-link i {
+      transition: transform 0.3s ease;
+    }
+    
+    .contact-link:hover i {
+      transform: rotate(15deg);
     }
 
-    /* 🔹 ميديا كويري للتابلت */
-    @media (max-width: 768px) {
-      nav ul {
-        display: none;
-        flex-direction: column;
-        gap: 10px;
-        background: #111;
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        padding: 10px;
-        border-radius: 10px;
-      }
-
-      nav ul.show {
-        display: flex;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-
-      .profile-pic {
-        max-width: 150px;
-      }
-
-      section {
-        padding: 60px 10px 20px;
-      }
+    /* باقي الأنماط تبقى كما هي */
+    /* أنماط جديدة لقسم الشهادات */
+    .certificate-card {
+      position: relative;
+      overflow: hidden;
+      border: 2px solid #1a1a1a;
     }
 
-    /* 🔹 ميديا كويري للموبايل */
-    @media (max-width: 480px) {
-      header h1 {
-        font-size: 1rem;
-      }
+    .certificate-card.completed {
+      border-color: #0ff;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    }
 
-      .card {
-        padding: 15px;
-        font-size: 0.9rem;
-      }
+    .certificate-card .progress-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 5px;
+      background: #0ff;
+      width: 100%;
+      transform-origin: left;
+      transform: scaleX(0);
+      transition: transform 1.5s ease-out;
+    }
 
-      .profile-pic {
-        max-width: 120px;
-      }
+    .certificate-card.completed .progress-bar {
+      transform: scaleX(1);
+      background: #0ff;
+    }
+
+    .certificate-card.in-progress .progress-bar {
+      transform: scaleX(0.3);
+      background: orange;
+    }
+
+    .certificate-card .status-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 3px 8px;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    .certificate-card.completed .status-badge {
+      background: #0ff;
+      color: #000;
+    }
+
+    .certificate-card.in-progress .status-badge {
+      background: orange;
+      color: #000;
+    }
+
+    .certificate-card .certificate-logo {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 255, 255, 0.1);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .certificate-card.completed .certificate-logo {
+      background: rgba(0, 255, 255, 0.2);
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    }
+
+    .certificate-card.in-progress .certificate-logo {
+      background: rgba(255, 165, 0, 0.1);
+    }
+
+    .certificate-card:hover .certificate-logo {
+      transform: scale(1.1);
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .certificate-card.completed {
+      animation: pulse 3s infinite;
+    }
+
+    /* أنماط لعلامة التحميل الصفراء */
+    .loading-spinner {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 3px solid transparent;
+      border-top-color: orange;
+      animation: spin 1s linear infinite;
+    }
+
+    .loading-spinner::before,
+    .loading-spinner::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      border: 3px solid transparent;
+    }
+
+    .loading-spinner::before {
+      top: 5px;
+      left: 5px;
+      right: 5px;
+      bottom: 5px;
+      border-top-color: orange;
+      animation: spin 2s linear infinite;
+      opacity: 0.7;
+    }
+
+    .loading-spinner::after {
+      top: 15px;
+      left: 15px;
+      right: 15px;
+      bottom: 15px;
+      border-top-color: orange;
+      animation: spin 3s linear infinite;
+      opacity: 0.5;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .certificate-card.in-progress .certificate-logo i {
+      position: relative;
+      z-index: 2;
+      font-size: 2rem;
+      color: orange;
+    }
+
+    /* أنماط جديدة لروابط الشهادات */
+    .certificate-link {
+      display: block;
+      margin-top: 15px;
+      color: #0ff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .certificate-link:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    .certificate-link i {
+      margin-left: 5px;
+      font-size: 0.9em;
+    }
+
+    /* أنماط جديدة لدورات الكورسات */
+    .course-card {
+      position: relative;
+      padding-bottom: 60px;
+    }
+    
+    .course-icon {
+      font-size: 2.5rem;
+      color: #0ff;
+      margin: 15px 0;
+    }
+    
+    .course-card h3 {
+      color: #0ff;
+      margin-bottom: 10px;
+    }
+    
+    .course-card p {
+      margin-bottom: 15px;
+      text-align: left;
+      line-height: 1.5;
+    }
+    
+    .course-link {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      color: #0ff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    
+    .course-link:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+    
+    .course-link i {
+      margin-left: 5px;
+      font-size: 0.9em;
     }
   </style>
 </head>
@@ -876,18 +615,21 @@
     <h1 id="logo">
       <span class="animated-box"></span> Nader Adel
     </h1>
-
-    <div class="menu-toggle"><i class="fas fa-bars"></i></div>
-
     <nav>
       <ul>
-        <li><a href="#home" id="nav-home" class="active"><i class="fas fa-house"></i> Home</a></li>
-        <li><a href="#about" id="nav-about"><i class="fas fa-user"></i> About</a></li>
-        <li><a href="#skills" id="nav-skills"><i class="fas fa-code"></i> Skills</a></li>
-        <li><a href="#projects" id="nav-projects"><i class="fas fa-diagram-project"></i> Projects</a></li>
-        <li><a href="#courses" id="nav-courses"><i class="fas fa-book-open"></i> Courses</a></li>
-        <li><a href="#certificates" id="nav-certificates"><i class="fas fa-certificate"></i> Certificates</a></li>
-        <li><a href="#contact" id="nav-contact"><i class="fas fa-envelope"></i> Contact</a></li>
+        <li><a href="#home" id="nav-home" class="active"><i class="fas fa-house"></i> <span
+              class="link-label">Home</span></a></li>
+        <li><a href="#about" id="nav-about"><i class="fas fa-user"></i> <span class="link-label">About</span></a></li>
+        <li><a href="#skills" id="nav-skills"><i class="fas fa-code"></i> <span class="link-label">Skills</span></a>
+        </li>
+        <li><a href="#projects" id="nav-projects"><i class="fas fa-diagram-project"></i> <span
+              class="link-label">Projects</span></a></li>
+        <li><a href="#courses" id="nav-courses"><i class="fas fa-book-open"></i> <span
+              class="link-label">Courses</span></a></li>
+        <li><a href="#certificates" id="nav-certificates"><i class="fas fa-certificate"></i> <span
+              class="link-label">Certificates</span></a></li>
+        <li><a href="#contact" id="nav-contact"><i class="fas fa-envelope"></i> <span
+              class="link-label">Contact</span></a></li>
       </ul>
     </nav>
 
@@ -925,71 +667,219 @@
     </div>
   </section>
 
+  
   <section id="courses" class="fade-in">
     <h2 id="courses-title">Courses</h2>
     <div class="grid" id="courses-list">
-      <div class="card">Course 1</div>
-      <div class="card">Course 2</div>
-      <div class="card">Course 3</div>
+      
+      <div class="card course-card">
+        <div class="course-icon">
+          <i class="fas fa-network-wired"></i>
+        </div>
+        <h3>CCNA</h3>
+        <p>Cisco Certified Network Associate covering networking fundamentals, IP services, security fundamentals, and automation.</p>
+        <a href="https://www.cisco.com/c/en/us/training-events/training-certifications/certifications/associate/ccna.html" 
+           class="course-link" target="_blank">
+          View Course <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
+      
+     
+      <div class="card course-card">
+        <div class="course-icon">
+          <i class="fas fa-server"></i>
+        </div>
+        <h3>CCNP</h3>
+        <p>Advanced networking course covering enterprise infrastructure, security, and automation at professional level.</p>
+        <a href="https://www.cisco.com/c/en/us/training-events/training-certifications/certifications/professional/ccnp-enterprise.html" 
+           class="course-link" target="_blank">
+          View Course <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
+      
+    
+      <div class="card course-card">
+        <div class="course-icon">
+          <i class="fas fa-certificate"></i>
+        </div>
+        <h3>CCIE</h3>
+        <p>Expert-level certification focusing on complex network solutions and troubleshooting enterprise infrastructure.</p>
+        <a href="https://www.cisco.com/c/en/us/training-events/training-certifications/certifications/expert/ccie-enterprise-infrastructure.html" 
+           class="course-link" target="_blank">
+          View Course <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
+      
+    
+      <div class="card course-card">
+        <div class="course-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h3>Network Security</h3>
+        <p>Comprehensive security training covering firewalls, VPNs, intrusion prevention, and endpoint protection.</p>
+        <a href="https://www.cisco.com/c/en/us/training-events/training-certifications/training/training-services/security-training.html" 
+           class="course-link" target="_blank">
+          View Course <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
+      
+    
+      <div class="card course-card">
+        <div class="course-icon">
+          <i class="fab fa-linux"></i>
+        </div>
+        <h3>Linux Administration</h3>
+        <p>Master Linux system administration including installation, configuration, maintenance and troubleshooting.</p>
+        <a href="https://www.linuxfoundation.org/training/" 
+           class="course-link" target="_blank">
+          View Course <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
+      
+
+      <div class="card course-card">
+        <div class="course-icon">
+          <i class="fab fa-windows"></i>
+        </div>
+        <h3>Windows Server</h3>
+        <p>Complete training on Windows Server administration including Active Directory, DNS, DHCP and Group Policy.</p>
+        <a href="https://learn.microsoft.com/en-us/training/" 
+           class="course-link" target="_blank">
+          View Course <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
     </div>
   </section>
 
   <section id="certificates" class="fade-in">
     <h2 id="certificates-title">Certificates</h2>
     <div class="grid" id="certificates-list">
-      <div class="card">Certificate 1</div>
-      <div class="card">Certificate 2</div>
-      <div class="card">Certificate 3</div>
+     
+      <div class="card certificate-card completed">
+        <div class="certificate-logo">
+          <i class="fas fa-certificate"></i>
+        </div>
+        <h3>HCCDA-Tech Essentials</h3>
+        <p>Certified in Hyper-Converged Infrastructure</p>
+        <div class="status-badge">Completed</div>
+        <div class="progress-bar"></div>
+        <a href="https://example.com/certificate1" class="certificate-link" target="_blank">
+          View Certificate <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
+      
+      
+      <div class="card certificate-card in-progress">
+        <div class="certificate-logo">
+          <div class="loading-spinner"></div>
+          <i class="fas fa-spinner"></i>
+        </div>
+        <h3>HCCDA</h3>
+        <p>Cloud Native</p>
+        <div class="status-badge">In Progress</div>
+        <div class="progress-bar"></div>
+        <a href="https://example.com/certificate2" class="certificate-link" target="_blank">
+          Course Details <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
+      
+      <div class="card certificate-card in-progress">
+        <div class="certificate-logo">
+          <div class="loading-spinner"></div>
+          <i class="fas fa-spinner"></i>
+        </div>
+        <h3>HCCDP</h3>
+        <p>Solution Architectures</p>
+        <div class="status-badge">In Progress</div>
+        <div class="progress-bar"></div>
+        <a href="https://example.com/certificate3" class="certificate-link" target="_blank">
+          Course Details <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
+
+      <div class="card certificate-card in-progress">
+        <div class="certificate-logo">
+          <div class="loading-spinner"></div>
+          <i class="fas fa-spinner"></i>
+        </div>
+        <h3>HCIA</h3>
+        <p>Datacom</p>
+        <div class="status-badge">In Progress</div>
+        <div class="progress-bar"></div>
+        <a href="https://example.com/certificate4" class="certificate-link" target="_blank">
+          Course Details <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
+
+      <div class="card certificate-card in-progress">
+        <div class="certificate-logo">
+          <div class="loading-spinner"></div>
+          <i class="fas fa-spinner"></i>
+        </div>
+        <h3>HCIA</h3>
+        <p>Security</p>
+        <div class="status-badge">In Progress</div>
+        <div class="progress-bar"></div>
+        <a href="https://example.com/certificate5" class="certificate-link" target="_blank">
+          Course Details <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
     </div>
   </section>
 
   <section id="contact" class="fade-in">
     <h2 id="contact-title">Contact</h2>
     <div class="grid">
-      <div class="card">
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=naderadel102@gmail.com" class="email"><i
-            class="fas fa-envelope"></i> Email</a>
+      <div class="card contact-card">
+        <i class="fas fa-envelope contact-icon"></i>
+        <div class="contact-info">
+          <a href="mailto:naderadel102@gmail.com" class="contact-link">
+            <span>naderadel102@gmail.com</span>
+            <i class="fas fa-paper-plane"></i>
+          </a>
+          <p>Email me for business inquiries</p>
+        </div>
       </div>
-      <div class="card">
-        <a href="tel:01556223003" class="phone"> <i class="fas fa-phone"></i>phone</a>
+      
+      <div class="card contact-card">
+        <i class="fas fa-phone contact-icon"></i>
+        <div class="contact-info">
+          <a href="tel:01556223003" class="contact-link">
+            <span>+20 155 622 3003</span>
+            <i class="fas fa-phone-alt"></i>
+          </a>
+          <p>Call or WhatsApp available</p>
+        </div>
       </div>
-      <div class="card">
-        <a href="https://www.linkedin.com/in/nader-adel-01556223003%D9%90/" class="linkedin"><i
-            class="fab fa-linkedin"></i> LinkedIn</a>
+      
+      <div class="card contact-card">
+        <i class="fab fa-linkedin contact-icon"></i>
+        <div class="contact-info">
+          <a href="https://www.linkedin.com/in/nader-adel-01556223003%D9%90/" class="contact-link" target="_blank">
+            <span>LinkedIn Profile</span>
+            <i class="fas fa-external-link-alt"></i>
+          </a>
+          <p>Connect for professional networking</p>
+        </div>
       </div>
     </div>
   </section>
 
   <footer>
     <p id="footer-text">© 2025 My Portfolio. All rights reserved.</p>
-    <a href="https://wa.me/01556223003" class="whatsapp" target="blank">
-      <i class="fab fa-whatsapp"></i>
-    </a>
-    <a href="https://www.linkedin.com/in/nader-adel-01556223003%D9%90/" class="linkedin" target="blank">
-      <i class="fab fa-linkedin"></i>
-    </a>
-    <a href="https://github.com/nade-r" class="github" target="blank">
-      <i class="fab fa-github"></i>
-    </a>
-    <a href="https://discord.com" class="discord" target="blank">
-      <i class="fab fa-discord"></i>
-    </a>
+    <a href="https://wa.me/01556223003" class="whatsapp" target="blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.linkedin.com/in/nader-adel-01556223003%D9%90/" class="linkedin" target="blank"><i
+        class="fab fa-linkedin"></i></a>
+    <a href="https://github.com/nade-r" class="github" target="blank"><i class="fab fa-github"></i></a>
+    <a href="https://discord.com" class="discord" target="blank"><i class="fab fa-discord"></i></a>
     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=naderadel102@gmail.com" class="email" target="blank"><i
-        class="fas fa-envelope"></i>
-    </a>
+        class="fas fa-envelope"></i></a>
   </footer>
 
   <button class="back-to-top" id="back-to-top">⬆️</button>
 
   <script>
-    // 🔹 القائمة على الموبايل
-    const menuToggle = document.querySelector(".menu-toggle");
-    const navMenu = document.querySelector("nav ul");
-    menuToggle.addEventListener("click", () => {
-      navMenu.classList.toggle("show");
-    });
-
-    // 🔹 باقي الكود زي ما هو (الأنيميشن + اللغة + الباكجراوند)
+    /* خلفية الشبكة */
     const canvas = document.getElementById("network-bg");
     const ctx = canvas.getContext("2d");
     canvas.width = window.innerWidth;
@@ -1043,6 +933,7 @@
       canvas.height = window.innerHeight;
     });
 
+    /* ظهور العناصر بسلاسة */
     const faders = document.querySelectorAll('.fade-in');
     const appearOptions = { threshold: 0.2 };
     const appearOnScroll = new IntersectionObserver(function (entries, observer) {
@@ -1055,6 +946,7 @@
     }, appearOptions);
     faders.forEach(fader => { appearOnScroll.observe(fader); });
 
+    /* زر الرجوع للأعلى */
     const backToTop = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => {
       backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
@@ -1063,6 +955,7 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
+    /* إبراز اللينك النشط حسب القسم */
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('nav ul li a');
     const observerOptions = { threshold: 0.6 };
@@ -1077,6 +970,26 @@
     }, observerOptions);
     sections.forEach(section => { sectionObserver.observe(section); });
 
+    /* كود جديد لتفعيل الأنيميشن عند ظهور الشهادات */
+    const certificateObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const progressBars = entry.target.querySelectorAll('.progress-bar');
+          progressBars.forEach(bar => {
+            // إعادة تشغيل الأنيميشن
+            bar.style.transition = 'none';
+            bar.getBoundingClientRect(); // Force reflow
+            bar.style.transition = 'transform 1.5s ease-out';
+            bar.style.transform = bar.style.transform; // Reapply the transform
+          });
+        }
+      });
+    }, { threshold: 0.1 });
+
+    const certificatesSection = document.getElementById('certificates');
+    certificateObserver.observe(certificatesSection);
+
+    /* ترجمات */
     const translations = {
       en: {
         nav: ["Home", "About", "Skills", "Projects", "Courses", "Certificates", "Contact"],
@@ -1113,13 +1026,21 @@
 
     function updateLanguage(lang) {
       const t = translations[lang];
-      const navLinks = document.querySelectorAll("nav ul li a");
+      const links = document.querySelectorAll("nav ul li a");
 
-      navLinks.forEach((link, i) => {
+      links.forEach((link, i) => {
         const icon = link.querySelector("i");
+        let label = link.querySelector(".link-label");
+        if (!label) {
+          label = document.createElement("span");
+          label.className = "link-label";
+        }
+        label.textContent = t.nav[i];
+
         link.innerHTML = "";
         link.appendChild(icon);
-        link.append(" " + t.nav[i]);
+        link.appendChild(document.createTextNode(" "));
+        link.appendChild(label);
       });
 
       document.getElementById("home-title").textContent = t.homeTitle;
@@ -1133,6 +1054,7 @@
       document.getElementById("certificates-title").textContent = t.certificatesTitle;
       document.getElementById("contact-title").textContent = t.contactTitle;
       document.getElementById("footer-text").textContent = t.footer;
+
       document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
       langBtn.textContent = lang === "en" ? "AR" : "EN";
       localStorage.setItem("lang", lang);
