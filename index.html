@@ -7,8 +7,6 @@
   <title>Nader Adel - Network Specialist</title>
   <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/9494/9494807.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
-
   <!-- /////////////////////////////////////////////////////////////////////////  -->
   <style>
     * {
@@ -1839,11 +1837,12 @@
       transform: translateY(-2px);
     }
 
-  </style>
-  
+      </style>
+  <!-- /*///////////////////////////////////////////////////////////////////////// */ -->
 </head>
 
 <body>
+
   <canvas id="network-bg"></canvas>
 
   <header>
@@ -2386,7 +2385,7 @@
 
   <button class="back-to-top" id="back-to-top">⬆️</button>
   <!-- ///////////////////////////////////////////////////////////////////////////////// -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js">
+  <script>
     /* خلفية الشبكة */
     const canvas = document.getElementById("network-bg");
     const ctx = canvas.getContext("2d");
@@ -2496,14 +2495,6 @@
 
     const certificatesSection = document.getElementById('certificates');
     certificateObserver.observe(certificatesSection);
-
-    
-
-    langBtn.addEventListener("click", () => {
-      currentLang = currentLang === "en" ? "ar" : "en";
-      updateLanguage(currentLang);
-    });
-
     // إضافة وظيفة تحميل السيرة الذاتية
     document.getElementById('download-cv').addEventListener('click', function (e) {
       e.preventDefault();
@@ -2515,16 +2506,13 @@
     if (typingElement) {
       const text = typingElement.textContent;
       typingElement.textContent = '';
-
       setTimeout(() => {
         typingElement.classList.add('typing-effect');
         typingElement.textContent = text;
       }, 1000);
     }
-
     updateLanguage(currentLang);
   </script>
-  <!-- /////////////////////////////////////////////////////////////////////////// -->
 </body>
 
 </html>
