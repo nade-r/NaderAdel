@@ -1578,6 +1578,37 @@
       background: linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(255, 107, 107, 0.05) 100%);
     }
 
+   .projects-wrapper {
+  max-width: 1200px;   /* نفس max-width بتاع grid */
+  margin: 0 auto;
+}
+
+.show-projects-btn {
+  width: 100%;                /* يخليه بطول الصف */
+  margin-top: 25px;
+  padding: 14px 0;
+  border-radius: 30px;
+  border: none;
+  font-weight: bold;
+  font-size: 1rem;
+
+  display: flex;              /* عشان النص يبقى في النص */
+  justify-content: center;
+  align-items: center;
+
+  background: #00ffff;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.show-projects-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 255, 255, 0.5);
+}
+
+
+
     .project-card:nth-child(2) {
       border-color: #4ECDC4;
       background: linear-gradient(135deg, rgba(78, 205, 196, 0.1) 0%, rgba(78, 205, 196, 0.05) 100%);
@@ -1660,6 +1691,11 @@
       height: auto;
       min-height: 280px;
     }
+
+    .project-item {
+      transition: all 0.4s ease;
+    }
+
 
     .project-card:nth-child(1):hover {
       box-shadow: 0 15px 30px rgba(255, 107, 107, 0.3);
@@ -1837,63 +1873,174 @@
       transform: translateY(-2px);
     }
 
-      
-/* ===== Mobile tweaks injected ===== */
-@media (max-width: 900px){
-  header{ padding:12px 14px; }
-  nav ul{ gap:12px; }
-  h2{ font-size:2rem; }
-}
 
-@media (max-width: 768px){
-  /* Turn nav into a slide-down panel */
-  .hamburger{ 
-    display:flex; flex-direction:column; gap:5px; background:#111; border:1px solid rgba(0,255,255,.3);
-    padding:8px; border-radius:8px; cursor:pointer;
-  }
-  .hamburger span{ display:block; width:24px; height:2px; background:#0ff; transition:transform .3s, opacity .3s; }
-  .hamburger.active span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
-  .hamburger.active span:nth-child(2){ opacity:0; }
-  .hamburger.active span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+    /* ===== Mobile tweaks injected ===== */
+    @media (max-width: 900px) {
+      header {
+        padding: 12px 14px;
+      }
 
-  header{ position:fixed; }
-  #mobile-nav{ position:absolute; top:100%; left:0; width:100%; background:#111; border-bottom:1px solid rgba(0,255,255,.2); display:none; }
-  #mobile-nav.open{ display:block; }
-  #mobile-nav ul{ flex-direction:column; padding:10px 14px; gap:6px; }
-  #mobile-nav ul li a{ padding:10px 12px; border-radius:8px; }
+      nav ul {
+        gap: 12px;
+      }
 
-  section{ padding:90px 14px 30px; }
-  .hero-content{ padding:10px; }
-  .profile-pic{ width:140px; height:140px; }
+      h2 {
+        font-size: 2rem;
+      }
+    }
 
-  .grid{ grid-template-columns: 1fr; gap:16px; }
+    @media (max-width: 768px) {
 
-  /* Cards: avoid fixed height on phones */
-  .card, .about-card, .skill-card, .project-card, .course-card, .certificate-card{ height:auto !important; }
-  .card:hover, .about-card:hover, .skill-card:hover, .project-card:hover, .course-card:hover, .certificate-card:hover{
-    transform:none; box-shadow:none;
-  }
+      /* Turn nav into a slide-down panel */
+      .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        background: #111;
+        border: 1px solid rgba(0, 255, 255, .3);
+        padding: 8px;
+        border-radius: 8px;
+        cursor: pointer;
+      }
 
-  /* Trim heavy animations on touch for performance */
-  .card{ animation:none; }
+      .hamburger span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: #0ff;
+        transition: transform .3s, opacity .3s;
+      }
 
-  /* Typing effect: prevent overflow */
-  .typing-effect{ font-size:1.1rem; white-space:normal; border-right:0; width:auto; animation: none; }
+      .hamburger.active span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
 
-  /* Footer icons smaller */
-  footer a{ width:44px; height:44px; }
-  footer a i{ font-size:1.2rem; }
-}
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
 
-@media (max-width: 380px){
-  header h1{ font-size:1.2rem; }
-  .animated-box{ width:28px; height:28px; }
-  h2{ font-size:1.6rem; }
-  .profile-pic{ width:120px; height:120px; }
-  .grid{ gap:12px; }
-}
-/* ===== End mobile tweaks ===== */
-</style>
+      .hamburger.active span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      header {
+        position: fixed;
+      }
+
+      #mobile-nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #111;
+        border-bottom: 1px solid rgba(0, 255, 255, .2);
+        display: none;
+      }
+
+      #mobile-nav.open {
+        display: block;
+      }
+
+      #mobile-nav ul {
+        flex-direction: column;
+        padding: 10px 14px;
+        gap: 6px;
+      }
+
+      #mobile-nav ul li a {
+        padding: 10px 12px;
+        border-radius: 8px;
+      }
+
+      section {
+        padding: 90px 14px 30px;
+      }
+
+      .hero-content {
+        padding: 10px;
+      }
+
+      .profile-pic {
+        width: 140px;
+        height: 140px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      /* Cards: avoid fixed height on phones */
+      .card,
+      .about-card,
+      .skill-card,
+      .project-card,
+      .course-card,
+      .certificate-card {
+        height: auto !important;
+      }
+
+      .card:hover,
+      .about-card:hover,
+      .skill-card:hover,
+      .project-card:hover,
+      .course-card:hover,
+      .certificate-card:hover {
+        transform: none;
+        box-shadow: none;
+      }
+
+      /* Trim heavy animations on touch for performance */
+      .card {
+        animation: none;
+      }
+
+      /* Typing effect: prevent overflow */
+      .typing-effect {
+        font-size: 1.1rem;
+        white-space: normal;
+        border-right: 0;
+        width: auto;
+        animation: none;
+      }
+
+      /* Footer icons smaller */
+      footer a {
+        width: 44px;
+        height: 44px;
+      }
+
+      footer a i {
+        font-size: 1.2rem;
+      }
+    }
+
+    @media (max-width: 380px) {
+      header h1 {
+        font-size: 1.2rem;
+      }
+
+      .animated-box {
+        width: 28px;
+        height: 28px;
+      }
+
+      h2 {
+        font-size: 1.6rem;
+      }
+
+      .profile-pic {
+        width: 120px;
+        height: 120px;
+      }
+
+      .grid {
+        gap: 12px;
+      }
+    }
+
+    /* ===== End mobile tweaks ===== */
+  </style>
   <!-- /*///////////////////////////////////////////////////////////////////////// */ -->
 </head>
 
@@ -1903,9 +2050,9 @@
 
   <header>
     <h1 id="logo">
-      <span class="animated-box"></span> Nader Adel
+      <span class="animated-box"></span> Nader Adel AbdRabbo
     </h1>
-    
+
     <button class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-nav">
       <span></span><span></span><span></span>
     </button>
@@ -1932,7 +2079,7 @@
     <div class="hero-content">
       <img src="WhatsApp Image 2025-07-24 at 02.45.51_7eef4f37.jpg" alt="Profile Picture" class="profile-pic"
         id="home-image" />
-      <h2 id="home-title">Nader Adel</h2>
+      <h2 id="home-title">Nader Adel AbdRabbo</h2>
       <p id="home-subtitle" class="typing-effect">Network & Security Specialist</p>
       <p id="home-subwo">Designing secure and efficient network infrastructures</p>
 
@@ -1942,6 +2089,7 @@
         <span class="tag">Cisco Technologies</span>
         <span class="tag">Cloud Networking</span>
         <span class="tag">VPN Solutions</span>
+        <span class="tag">Fortinet</span>
       </div>
 
       <div class="hero-buttons">
@@ -1951,13 +2099,25 @@
         <a href="#projects" class="hero-btn secondary-btn">
           <i class="fas fa-briefcase"></i> View Projects
         </a>
-        <a href="cv.pdf" class="hero-btn secondary-btn" id="download-cv">
+
+
+        <!-- <a href="https://drive.google.com/file/d/1bYjlZ3bvcbY0h_gOm0-yOg69vV9Zhw3-/view?usp=sharing"
+   target="_blank"
+   rel="noopener noreferrer"
+   class="hero-btn secondary-btn">
+  <i class="fas fa-file-pdf"></i> View CV
+</a> -->
+
+        <a href="cv.pdf" download="Nader-Adel-CV.pdf" class="hero-btn primary-btn">
           <i class="fas fa-download"></i> Download CV
+        </a>
+
         </a>
       </div>
     </div>
   </section>
 
+  <!-- //about -->
   <section id="about" class="fade-in">
     <h2 id="about-title">About Me</h2>
     <div class="hero-content">
@@ -1988,7 +2148,7 @@
     </div>
   </section>
 
-
+  <!-- =============================================================================== -->
   <section id="skills" class="fade-in">
     <h2 id="skills-title">Skills</h2>
     <div class="grid" id="skills-list">
@@ -2074,13 +2234,17 @@
 
     </div>
   </section>
+  <!-- ===================================================================================================== -->
 
   <section id="projects" class="fade-in">
     <h2 id="projects-title">Projects</h2>
     <div class="grid" id="projects-list">
 
+
+      <!-- <div class="card project-card project-item"> -->
+
       <!-- Project 1 -->
-      <div class="card project-card">
+      <div class="card project-card project-item">
         <div class="project-icon">
           <i class="fas fa-building"></i>
         </div>
@@ -2093,7 +2257,7 @@
       </div>
 
       <!-- Project 2 -->
-      <div class="card project-card">
+      <div class="card project-card project-item">
         <div class="project-icon">
           <i class="fas fa-server"></i>
         </div>
@@ -2106,7 +2270,7 @@
       </div>
 
       <!-- Project 3 -->
-      <div class="card project-card">
+      <div class="card project-card project-item">
         <div class="project-icon">
           <i class="fas fa-shield-virus"></i>
         </div>
@@ -2119,7 +2283,20 @@
       </div>
 
       <!-- Project 4 -->
-      <div class="card project-card">
+      <div class="card project-card project-item">
+        <div class="project-icon">
+          <i class="fas fa-broadcast-tower"></i>
+        </div>
+        <h3>Wireless Network Deployment</h3>
+        <ul>
+          <li>Deployed Wi-Fi access points across office</li>
+          <li>Configured WPA3 security</li>
+          <li>Optimized channels to reduce interference</li>
+        </ul>
+      </div>
+      <!-- ==================================================== -->
+      <!-- Project 4 -->
+      <div class="card project-card project-item">
         <div class="project-icon">
           <i class="fas fa-broadcast-tower"></i>
         </div>
@@ -2131,11 +2308,55 @@
         </ul>
       </div>
 
+      <!-- Project 4 -->
+      <div class="card project-card project-item">
+        <div class="project-icon">
+          <i class="fas fa-broadcast-tower"></i>
+        </div>
+        <h3>Wireless Network Deployment</h3>
+        <ul>
+          <li>Deployed Wi-Fi access points across office</li>
+          <li>Configured WPA3 security</li>
+          <li>Optimized channels to reduce interference</li>
+        </ul>
+      </div>
+      <!-- Project 4 -->
+      <div class="card project-card project-item">
+        <div class="project-icon">
+          <i class="fas fa-broadcast-tower"></i>
+        </div>
+        <h3>Wireless Network Deployment</h3>
+        <ul>
+          <li>Deployed Wi-Fi access points across office</li>
+          <li>Configured WPA3 security</li>
+          <li>Optimized channels to reduce interference</li>
+        </ul>
+      </div>
+      <!-- Project 4 -->
+      <div class="card project-card project-item">
+        <div class="project-icon">
+          <i class="fas fa-broadcast-tower"></i>
+        </div>
+        <h3>Wireless Network Deployment</h3>
+        <ul>
+          <li>Deployed Wi-Fi access points across office</li>
+          <li>Configured WPA3 security</li>
+          <li>Optimized channels to reduce interference</li>
+        </ul>
+      </div>
+
+      <div class="projects-btn-wrapper">
+  <button id="showProjectsBtn" class="hero-btn primary-btn">
+    Show All Projects
+  </button>
+</div>
+
+
     </div>
   </section>
 
 
-  <!-- =========================== -->
+  <!-- ================================================================================================== -->
   <section id="courses" class="fade-in">
     <h2 id="courses-title">Courses</h2>
     <div class="grid" id="courses-list">
@@ -2166,7 +2387,7 @@
         <div class="course-icon">
           <i class="fas fa-server"></i>
         </div>
-        <h3>CCNP</h3>
+        <h3>cloud (oci & huawe)</h3>
         <p>Advanced networking course covering enterprise infrastructure, security, and automation at professional
           level.</p>
         <div class="course-details">
@@ -2183,27 +2404,7 @@
         </a>
       </div>
 
-      <!-- CCIE Course -->
-      <div class="card course-card">
-        <div class="course-icon">
-          <i class="fas fa-certificate"></i>
-        </div>
-        <h3>CCIE</h3>
-        <p>Expert-level certification focusing on complex network solutions and troubleshooting enterprise
-          infrastructure.</p>
-        <div class="course-details">
-          <ul>
-            <li>Expert-level network design</li>
-            <li>Complex troubleshooting scenarios</li>
-            <li>Advanced security solutions</li>
-            <li>Network optimization techniques</li>
-          </ul>
-        </div>
-        <a href="https://www.cisco.com/c/en/us/training-events/training-certifications/certifications/expert/ccie-enterprise-infrastructure.html"
-          class="course-link" target="_blank">
-          View Course <i class="fas fa-external-link-alt"></i>
-        </a>
-      </div>
+
 
       <!-- Network Security Course -->
       <div class="card course-card">
@@ -2269,10 +2470,11 @@
       </div>
     </div>
   </section>
-
+  <!-- ================================================================================================================= -->
   <section id="certificates" class="fade-in">
     <h2 id="certificates-title">Certificates</h2>
     <div class="grid" id="certificates-list">
+
       <!-- شهادة مكتملة -->
       <div class="card certificate-card completed">
         <div class="certificate-logo">
@@ -2287,13 +2489,52 @@
         </a>
       </div>
 
+      <div class="card certificate-card completed">
+        <div class="certificate-logo">
+          <i class="fas fa-certificate"></i>
+        </div>
+        <h3>oci 1</h3>
+        <p>Certified in Hyper-Converged Infrastructure</p>
+        <div class="status-badge">Completed</div>
+        <div class="progress-bar"></div>
+        <a href="https://example.com/certificate1" class="certificate-link" target="_blank">
+          View Certificate <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
+
+      <div class="card certificate-card completed">
+        <div class="certificate-logo">
+          <i class="fas fa-certificate"></i>
+        </div>
+        <h3>oci 2</h3>
+        <p>Certified in Hyper-Converged Infrastructure</p>
+        <div class="status-badge">Completed</div>
+        <div class="progress-bar"></div>
+        <a href="https://example.com/certificate1" class="certificate-link" target="_blank">
+          View Certificate <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
+
+      <div class="card certificate-card completed">
+        <div class="certificate-logo">
+          <i class="fas fa-certificate"></i>
+        </div>
+        <h3>oci 3</h3>
+        <p>Certified in Hyper-Converged Infrastructure</p>
+        <div class="status-badge">Completed</div>
+        <div class="progress-bar"></div>
+        <a href="https://example.com/certificate1" class="certificate-link" target="_blank">
+          View Certificate <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
+
       <!-- شهادات قيد الإنجاز -->
       <div class="card certificate-card in-progress">
         <div class="certificate-logo">
           <div class="loading-spinner"></div>
           <i class="fas fa-spinner"></i>
         </div>
-        <h3>HCCDA</h3>
+        <h3>Fortinet</h3>
         <p>Cloud Native</p>
         <div class="status-badge">In Progress</div>
         <div class="progress-bar"></div>
@@ -2302,19 +2543,7 @@
         </a>
       </div>
 
-      <div class="card certificate-card in-progress">
-        <div class="certificate-logo">
-          <div class="loading-spinner"></div>
-          <i class="fas fa-spinner"></i>
-        </div>
-        <h3>HCCDP</h3>
-        <p>Solution Architectures</p>
-        <div class="status-badge">In Progress</div>
-        <div class="progress-bar"></div>
-        <a href="https://example.com/certificate3" class="certificate-link" target="_blank">
-          Course Details <i class="fas fa-external-link-alt"></i>
-        </a>
-      </div>
+
 
       <div class="card certificate-card in-progress">
         <div class="certificate-logo">
@@ -2345,6 +2574,7 @@
       </div>
     </div>
   </section>
+  <!-- =========================================================== -->
 
   <section id="contact" class="fade-in">
     <h2 id="contact-title">Contact</h2>
@@ -2574,28 +2804,59 @@
     updateLanguage(currentLang);
   </script>
 
-<!-- Mobile nav script injected -->
-<script>
-  (function(){
-    const btn = document.querySelector('.hamburger');
-    const nav = document.getElementById('mobile-nav');
-    if(btn && nav){
-      btn.addEventListener('click', function(){
-        const open = nav.classList.toggle('open');
-        btn.classList.toggle('active', open);
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-      // Close menu when a link is clicked
-      nav.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => {
-          nav.classList.remove('open');
-          btn.classList.remove('active');
-          btn.setAttribute('aria-expanded', 'false');
+  <!-- Mobile nav script injected -->
+  <script>
+    (function () {
+      const btn = document.querySelector('.hamburger');
+      const nav = document.getElementById('mobile-nav');
+      if (btn && nav) {
+        btn.addEventListener('click', function () {
+          const open = nav.classList.toggle('open');
+          btn.classList.toggle('active', open);
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
         });
-      });
+        // Close menu when a link is clicked
+        nav.querySelectorAll('a').forEach(a => {
+          a.addEventListener('click', () => {
+            nav.classList.remove('open');
+            btn.classList.remove('active');
+            btn.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+    })();
+  </script>
+<script>
+  const projects = document.querySelectorAll(".project-item");
+  const btn = document.getElementById("showProjectsBtn");
+
+  const visibleCount = 3;
+  let expanded = false;
+
+  // إخفاء المشاريع من رقم 4 وطالع
+  projects.forEach((project, index) => {
+    if (index >= visibleCount) {
+      project.style.display = "none";
     }
-  })();
+  });
+
+  btn.addEventListener("click", () => {
+    expanded = !expanded;
+
+    projects.forEach((project, index) => {
+      if (index >= visibleCount) {
+        project.style.display = expanded ? "flex" : "none";
+      }
+    });
+
+    btn.textContent = expanded
+      ? "Show Less Projects"
+      : "Show All Projects";
+  });
 </script>
+
+
+
 </body>
 
 </html>
