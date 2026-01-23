@@ -950,6 +950,7 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    
 /* ========== Mobile Responsive ========== */
 @media (max-width: 900px) {
   header { padding: 12px 14px; }
@@ -1136,75 +1137,244 @@
   }
 }
 
-/* ========== تأثير التحميل للشهادات ========== */
-.cert-loading-animation {
+/* ========== تنسيق كروت الشهادات الجديد ========== */
+.certificate-card {
+  height: 420px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.certificate-image-container {
+  width: 100%;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.certificate-main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.4s ease;
+}
+
+.certificate-card:hover .certificate-main-image {
+  transform: scale(1.05);
+}
+
+.certificate-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 15px;
-  margin-top: 20px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
-.cert-spinner {
-  width: 40px;
-  height: 40px;
-  border: 3px solid rgba(255, 153, 0, 0.2);
-  border-top: 3px solid #ff9900;
-  border-right: 3px solid #ff9900;
-  border-radius: 50%;
-  animation: certSpin 1.5s linear infinite;
-}
-
-@keyframes certSpin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.cert-progress-bar {
-  width: 100%;
-  height: 8px;
-  background: rgba(255, 153, 0, 0.1);
-  border-radius: 4px;
-  overflow: hidden;
-  position: relative;
-}
-
-.cert-progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #ff9900, #ffcc00);
-  border-radius: 4px;
-  position: relative;
-  animation: progressShine 2s infinite;
-}
-
-@keyframes progressShine {
-  0% { background-position: -100px 0; }
-  100% { background-position: 100px 0; }
-}
-
-.cert-progress-text {
-  color: #ff9900;
+.certificate-overlay span {
+  background: #0ff;
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 25px;
   font-weight: bold;
   font-size: 0.9rem;
-  animation: pulse 2s infinite;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.cert-expected-date {
-  color: #aaa;
+.progress-badge {
+  background: linear-gradient(45deg, #ff9900, #ffcc00) !important;
+  color: #000 !important;
+}
+
+.certificate-image-container:hover .certificate-overlay {
+  opacity: 1;
+}
+
+/* شارة الحالة */
+.certificate-status-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 6px 15px;
+  border-radius: 20px;
   font-size: 0.8rem;
-  margin-top: 5px;
+  font-weight: bold;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-/* أيقونة الشهادة المتحركة */
-.fa-certificate.fa-spin {
-  animation: certRotate 3s linear infinite;
+.certificate-status-badge.completed {
+  background: rgba(0, 255, 255, 0.9);
+  color: #000;
 }
 
-@keyframes certRotate {
+.certificate-status-badge.in-progress {
+  background: rgba(255, 153, 0, 0.9);
+  color: #000;
+}
+
+/* محتوى الشهادة */
+.certificate-content {
+  padding: 20px;
+  text-align: right;
+  direction: rtl;
+}
+
+.certificate-content h3 {
+  color: #fff;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  text-align: right;
+}
+
+.certificate-provider,
+.certificate-year,
+.certificate-id {
+  color: #aaa;
+  font-size: 0.9rem;
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.certificate-provider i {
+  color: #0ff;
+}
+
+.certificate-year i {
+  color: #00ff66;
+}
+
+.certificate-id i {
+  color: #cc00ff;
+}
+
+/* تفاصيل الشهادة */
+.certificate-details {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* التقدم للشهادات قيد التقدم */
+.progress-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.progress-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.progress-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ff9900;
+  font-size: 0.9rem;
+}
+
+.progress-text i {
+  color: #ff9900;
+}
+
+.progress-bar-small {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 153, 0, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill-small {
+  height: 100%;
+  background: linear-gradient(90deg, #ff9900, #ffcc00);
+  border-radius: 3px;
+  animation: progressWave 2s infinite;
+}
+
+.expected-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #aaa;
+  font-size: 0.85rem;
+}
+
+.expected-info i {
+  color: #ff9900;
+}
+
+/* تاج للشهادات المكتملة */
+.certificate-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.cert-tag {
+  background: rgba(0, 255, 255, 0.1);
+  color: #0ff;
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* تحسين شارة الحالة */
+.fa-spin {
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
   0% { transform: rotate(0deg); }
-  25% { transform: rotate(90deg); }
-  50% { transform: rotate(180deg); }
-  75% { transform: rotate(270deg); }
   100% { transform: rotate(360deg); }
 }
+
+/* تعديل لون شارة التقدم */
+.in-progress .fa-clock {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* تحسين استجابة الجوال */
+@media (max-width: 768px) {
+  .certificate-card {
+    height: auto;
+    min-height: 380px;
+  }
+  
+  .certificate-image-container {
+    height: 160px;
+  }
+  
+  .certificate-content {
+    padding: 15px;
+  }
+  
+  .certificate-content h3 {
+    font-size: 1.1rem;
+  }
+}
+
