@@ -108,41 +108,91 @@ fetch("data.json")
             allProjectsCards.push(card);
         });
 
-        /* ========== CERTIFICATES ========== */
-        const certGrid = document.getElementById("certificatesGrid");
-        const allCertificatesCards = [];
-        const certificateColors = ['color-1', 'color-2', 'color-3', 'color-4'];
+/* ========== CERTIFICATES ========== */
+const certGrid = document.getElementById("certificatesGrid");
+const allCertificatesCards = [];
+const certificateColors = ['color-1', 'color-2', 'color-3', 'color-4'];
 
-        data.certificates.forEach((cert, index) => {
-            const card = document.createElement("div");
-            const colorClass = certificateColors[index % certificateColors.length] || 'color-1';
-            card.className = `uniform-card ${colorClass} ${index < visibleItems.certificates ? 'visible' : 'hidden'}`;
-
-            const statusClass = cert.status === "Completed" ? "status-completed" : "status-inprogress";
-
-            card.innerHTML = `
-    <span class="certificate-status ${statusClass}">${cert.status}</span>
+data.certificates.forEach((cert, index) => {
+  const card = document.createElement("div");
+  const colorClass = certificateColors[index % certificateColors.length] || 'color-1';
+  card.className = `uniform-card ${colorClass} ${index < visibleItems.certificates ? 'visible' : 'hidden'}`;
+  
+  const isInProgress = cert.status === "In Progress";
+  const statusClass = isInProgress ? "status-inprogress" : "status-completed";
+  const statusText = isInProgress ? "In Progress" : "Completed";
+  
+  // نسبة التقدم (افتراضية أو من البيانات)
+  const progress = cert.progress || "65";
+  const expectedDate = cert.expectedDate || "Q4 2024";
+  
+  card.innerHTML = `
+    <span class="certificate-status ${statusClass}">${statusText}</span>
     <div class="card-icon">
-      <i class="fas fa-certificate"></i>
+      <i class="fas fa-certificate ${isInProgress ? 'fa-spin' : ''}"></i>
     </div>
     <h3>${cert.title}</h3>
     <p><strong>Provider:</strong> ${cert.provider}</p>
     <p><strong>Year:</strong> ${cert.year}</p>
-    <div style="margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
-      ${cert.link ? `<a href="${cert.link}" target="_blank" style="background: #0ff; color: #000; padding: 6px 12px; border-radius: 4px; text-decoration: none; font-size: 0.85rem;">
-        <i class="fas fa-external-link-alt"></i> View
-      </a>` : ''}
-      ${cert.viewLink ? `<a href="${cert.viewLink}" target="_blank" style="background: #ff9900; color: #000; padding: 6px 12px; border-radius: 4px; text-decoration: none; font-size: 0.85rem;">
-        <i class="fas fa-eye"></i> Details
-      </a>` : ''}
-      ${cert.downloadLink ? `<a href="${cert.downloadLink}" target="_blank" style="background: #00ff66; color: #000; padding: 6px 12px; border-radius: 4px; text-decoration: none; font-size: 0.85rem;">
-        <i class="fas fa-download"></i> Download
-      </a>` : ''}
-    </div>
+    
+    ${isInProgress ? `
+      <div class="cert-loading-animation">
+        <div class="cert-spinner"></div>
+        
+        <div class="cert-progress-bar">
+          <div class="cert-progress-fill" style="width: ${progress}%"></div>
+        </div>
+        
+        <div class="cert-progress-text">${progress}% Complete</div>
+        <div class="cert-expected-date">Expected: ${expectedDate}</div>
+      </div>
+    ` : `
+      <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
+        ${cert.link ? `
+          <a href="${cert.link}" target="_blank" 
+             style="display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+                    background: linear-gradient(45deg, rgba(0, 255, 255, 0.1), rgba(0, 255, 255, 0.05));
+                    color: #0ff; padding: 10px 20px; border-radius: 30px; text-decoration: none;
+                    font-weight: bold; font-size: 0.9rem; border: 2px solid rgba(0, 255, 255, 0.3);
+                    transition: all 0.3s ease;">
+            <i class="fas fa-external-link-alt"></i>
+            <span>View Certificate</span>
+          </a>
+        ` : ''}
+        
+        ${cert.downloadLink ? `
+          <a href="${cert.downloadLink}" target="_blank" 
+             style="display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+                    background: linear-gradient(45deg, rgba(0, 255, 102, 0.1), rgba(0, 255, 102, 0.05));
+                    color: #00ff66; padding: 10px 20px; border-radius: 30px; text-decoration: none;
+                    font-weight: bold; font-size: 0.9rem; border: 2px solid rgba(0, 255, 102, 0.3);
+                    transition: all 0.3s ease;">
+            <i class="fas fa-download"></i>
+            <span>Download PDF</span>
+          </a>
+        ` : ''}
+      </div>
+    `}
   `;
-            certGrid.appendChild(card);
-            allCertificatesCards.push(card);
-        });
+  
+  // إضافة تأثيرات التحويم للروابط
+  if (!isInProgress) {
+    const links = card.querySelectorAll('a');
+    links.forEach(link => {
+      link.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-3px)';
+        this.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.3)';
+      });
+      link.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+        this.style.boxShadow = 'none';
+      });
+    });
+  }
+  
+  certGrid.appendChild(card);
+  allCertificatesCards.push(card);
+});
         /* ========== COURSES ========== */
         const coursesGrid = document.getElementById("coursesGrid");
         const allCoursesCards = [];
