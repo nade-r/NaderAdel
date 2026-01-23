@@ -1,39 +1,39 @@
 // عدد العناصر المراد إظهارها أولاً في كل قسم
 const visibleItems = {
-    skills: 4,
-    projects: 4,
-    courses: 4,
-    certificates: 4
+  skills: 4,
+  projects: 4,
+  courses: 4,
+  certificates: 4
 };
 
 // جلب البيانات من ملف JSON
 fetch("data.json")
-    .then(res => res.json())
-    .then(data => {
-        /* ========== ABOUT ========== */
-        if (data.aboutDescription) {
-            // تحديث النص الوصفي
-            const aboutDesc = document.getElementById("aboutDescription");
-            if (aboutDesc) {
-                aboutDesc.textContent = data.aboutDescription;
-            }
-        }
+  .then(res => res.json())
+  .then(data => {
+    /* ========== ABOUT ========== */
+    if (data.aboutDescription) {
+      // تحديث النص الوصفي
+      const aboutDesc = document.getElementById("aboutDescription");
+      if (aboutDesc) {
+        aboutDesc.textContent = data.aboutDescription;
+      }
+    }
 
-        if (data.aboutCards && data.aboutCards.length > 0) {
-            const aboutContainer = document.getElementById("aboutCardsContainer");
-            if (aboutContainer) {
-                // إزالة أي محتوى ثابت موجود
-                aboutContainer.innerHTML = '';
+    if (data.aboutCards && data.aboutCards.length > 0) {
+      const aboutContainer = document.getElementById("aboutCardsContainer");
+      if (aboutContainer) {
+        // إزالة أي محتوى ثابت موجود
+        aboutContainer.innerHTML = '';
 
-                // إنشاء الكروت ديناميكياً
-                data.aboutCards.forEach((aboutCard, index) => {
-                    const card = document.createElement("div");
+        // إنشاء الكروت ديناميكياً
+        data.aboutCards.forEach((aboutCard, index) => {
+          const card = document.createElement("div");
 
-                    // استخدام colorClass من البيانات أو إنشاء واحد تلقائي
-                    const colorClass = aboutCard.colorClass || `color-${(index % 8) + 1}`;
-                    card.className = `uniform-card ${colorClass}`;
+          // استخدام colorClass من البيانات أو إنشاء واحد تلقائي
+          const colorClass = aboutCard.colorClass || `color-${(index % 8) + 1}`;
+          card.className = `uniform-card ${colorClass}`;
 
-                    card.innerHTML = `
+          card.innerHTML = `
         <div class="card-icon">
           <i class="fas ${aboutCard.icon || 'fa-info-circle'}"></i>
         </div>
@@ -46,23 +46,23 @@ fetch("data.json")
         ` : ''}
       `;
 
-                    aboutContainer.appendChild(card);
-                });
-            }
-        }
-        /* ========== SKILLS ========== */
-        const skillsGrid = document.getElementById("skillsGrid");
-        const allSkillsCards = [];
-        const skillColors = ['color-1', 'color-2', 'color-3', 'color-4', 'color-5', 'color-6'];
+          aboutContainer.appendChild(card);
+        });
+      }
+    }
+    /* ========== SKILLS ========== */
+    const skillsGrid = document.getElementById("skillsGrid");
+    const allSkillsCards = [];
+    const skillColors = ['color-1', 'color-2', 'color-3', 'color-4', 'color-5', 'color-6'];
 
-        data.skills.forEach((skill, index) => {
-            if (!skill.title) return;
+    data.skills.forEach((skill, index) => {
+      if (!skill.title) return;
 
-            const card = document.createElement("div");
-            const colorClass = skillColors[index % skillColors.length] || 'color-1';
-            card.className = `uniform-card ${colorClass} ${index < visibleItems.skills ? 'visible' : 'hidden'}`;
+      const card = document.createElement("div");
+      const colorClass = skillColors[index % skillColors.length] || 'color-1';
+      card.className = `uniform-card ${colorClass} ${index < visibleItems.skills ? 'visible' : 'hidden'}`;
 
-            card.innerHTML = `
+      card.innerHTML = `
             <div class="card-icon">
               <i class="fas ${skill.icon || 'fa-code'}"></i>
             </div>
@@ -71,24 +71,24 @@ fetch("data.json")
               ${skill.items.map(item => `<li>${item}</li>`).join("")}
             </ul>
           `;
-            skillsGrid.appendChild(card);
-            allSkillsCards.push(card);
-        });
+      skillsGrid.appendChild(card);
+      allSkillsCards.push(card);
+    });
 
-        /* ========== PROJECTS ========== */
-        const projectsGrid = document.getElementById("projectsGrid");
-        const allProjectsCards = [];
-        const projectColors = ['color-1', 'color-2', 'color-3', 'color-4', 'color-5', 'color-6'];
+    /* ========== PROJECTS ========== */
+    const projectsGrid = document.getElementById("projectsGrid");
+    const allProjectsCards = [];
+    const projectColors = ['color-1', 'color-2', 'color-3', 'color-4', 'color-5', 'color-6'];
 
-        data.projects.forEach((project, index) => {
-            const card = document.createElement("div");
-            const colorClass = projectColors[index % projectColors.length] || 'color-1';
-            card.className = `uniform-card project-card ${colorClass} ${index < visibleItems.projects ? 'visible' : 'hidden'}`;
+    data.projects.forEach((project, index) => {
+      const card = document.createElement("div");
+      const colorClass = projectColors[index % projectColors.length] || 'color-1';
+      card.className = `uniform-card project-card ${colorClass} ${index < visibleItems.projects ? 'visible' : 'hidden'}`;
 
-            // صورة افتراضية إذا لم توجد صورة
-            const projectImage = project.image || 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80';
+      // صورة افتراضية إذا لم توجد صورة
+      const projectImage = project.image || 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80';
 
-            card.innerHTML = `
+      card.innerHTML = `
             <div class="project-image-container">
               <img src="${projectImage}" alt="${project.title}" class="project-image">
               <div class="project-overlay">
@@ -104,110 +104,145 @@ fetch("data.json")
               View Project <i class="fas fa-external-link-alt"></i>
             </a>
           `;
-            projectsGrid.appendChild(card);
-            allProjectsCards.push(card);
-        });
+      projectsGrid.appendChild(card);
+      allProjectsCards.push(card);
+    });
 
 /* ========== CERTIFICATES ========== */
 const certGrid = document.getElementById("certificatesGrid");
 const allCertificatesCards = [];
 const certificateColors = ['color-1', 'color-2', 'color-3', 'color-4'];
 
+// صور افتراضية للشهادات
+const certificateDefaultImages = [
+  "https://images.unsplash.com/photo-1550592704-6c76defa9985?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+  "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+  "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+  "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+];
+
 data.certificates.forEach((cert, index) => {
   const card = document.createElement("div");
   const colorClass = certificateColors[index % certificateColors.length] || 'color-1';
-  card.className = `uniform-card ${colorClass} ${index < visibleItems.certificates ? 'visible' : 'hidden'}`;
+  card.className = `uniform-card certificate-card ${colorClass} ${index < visibleItems.certificates ? 'visible' : 'hidden'}`;
   
   const isInProgress = cert.status === "In Progress";
-  const statusClass = isInProgress ? "status-inprogress" : "status-completed";
-  const statusText = isInProgress ? "In Progress" : "Completed";
+  const progress = cert.progress || "50";
+  const expectedDate = cert.expectedDate || "قيد الإنجاز";
   
-  // نسبة التقدم (افتراضية أو من البيانات)
-  const progress = cert.progress || "65";
-  const expectedDate = cert.expectedDate || "Q4 2024";
+  // استخدام صورة الشهادة أو صورة افتراضية
+  let certImage = cert.image;
+  if (!certImage) {
+    // صور افتراضية مختلفة للشهادات المكتملة والقيد التقدم
+    if (isInProgress) {
+      certImage = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
+    } else {
+      certImage = certificateDefaultImages[index % certificateDefaultImages.length];
+    }
+  }
   
+  // HTML مشابه لكروت المشاريع
   card.innerHTML = `
-    <span class="certificate-status ${statusClass}">${statusText}</span>
-    <div class="card-icon">
-      <i class="fas fa-certificate ${isInProgress ? 'fa-spin' : ''}"></i>
+    <!-- صورة الشهادة -->
+    <div class="certificate-image-container">
+      <img src="${certImage}" alt="${cert.title}" class="certificate-main-image">
+      <div class="certificate-overlay">
+        ${isInProgress ? `
+          <span class="progress-badge">
+            <i class="fas fa-sync-alt fa-spin"></i>
+            جاري العمل: ${progress}%
+          </span>
+        ` : `
+          <span><i class="fas fa-search-plus"></i> عرض الشهادة</span>
+        `}
+      </div>
+      
+      <!-- حالة الشهادة -->
+      <div class="certificate-status-badge ${isInProgress ? 'in-progress' : 'completed'}">
+        <i class="fas ${isInProgress ? 'fa-clock' : 'fa-check-circle'}"></i>
+        ${isInProgress ? 'قيد التقدم' : 'مكتملة'}
+      </div>
     </div>
-    <h3>${cert.title}</h3>
-    <p><strong>Provider:</strong> ${cert.provider}</p>
-    <p><strong>Year:</strong> ${cert.year}</p>
     
-    ${isInProgress ? `
-      <div class="cert-loading-animation">
-        <div class="cert-spinner"></div>
-        
-        <div class="cert-progress-bar">
-          <div class="cert-progress-fill" style="width: ${progress}%"></div>
-        </div>
-        
-        <div class="cert-progress-text">${progress}% Complete</div>
-        <div class="cert-expected-date">Expected: ${expectedDate}</div>
+    <!-- معلومات الشهادة -->
+    <div class="certificate-content">
+      <h3>${cert.title}</h3>
+      <p class="certificate-provider">
+        <i class="fas fa-building"></i> ${cert.provider}
+      </p>
+      <p class="certificate-year">
+        <i class="fas fa-calendar-alt"></i> ${cert.year}
+      </p>
+      
+      ${cert.credentialId ? `
+        <p class="certificate-id">
+          <i class="fas fa-id-card"></i> رقم المعرف: ${cert.credentialId}
+        </p>
+      ` : ''}
+      
+      <!-- تفاصيل إضافية -->
+      <div class="certificate-details">
+        ${isInProgress ? `
+          <div class="progress-details">
+            <div class="progress-info">
+              <div class="progress-text">
+                <i class="fas fa-chart-line"></i>
+                <span>التقدم: <strong>${progress}%</strong></span>
+              </div>
+              <div class="progress-bar-small">
+                <div class="progress-fill-small" style="width: ${progress}%"></div>
+              </div>
+            </div>
+            <div class="expected-info">
+              <i class="fas fa-hourglass-half"></i>
+              <span>متوقع: ${expectedDate}</span>
+            </div>
+          </div>
+        ` : `
+          <div class="certificate-tags">
+            <span class="cert-tag">
+              <i class="fas fa-award"></i> شهادة معتمدة
+            </span>
+            <span class="cert-tag">
+              <i class="fas fa-check"></i> ${cert.year}
+            </span>
+          </div>
+        `}
       </div>
-    ` : `
-      <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
-        ${cert.link ? `
-          <a href="${cert.link}" target="_blank" 
-             style="display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-                    background: linear-gradient(45deg, rgba(0, 255, 255, 0.1), rgba(0, 255, 255, 0.05));
-                    color: #0ff; padding: 10px 20px; border-radius: 30px; text-decoration: none;
-                    font-weight: bold; font-size: 0.9rem; border: 2px solid rgba(0, 255, 255, 0.3);
-                    transition: all 0.3s ease;">
-            <i class="fas fa-external-link-alt"></i>
-            <span>View Certificate</span>
-          </a>
-        ` : ''}
-        
-        ${cert.downloadLink ? `
-          <a href="${cert.downloadLink}" target="_blank" 
-             style="display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-                    background: linear-gradient(45deg, rgba(0, 255, 102, 0.1), rgba(0, 255, 102, 0.05));
-                    color: #00ff66; padding: 10px 20px; border-radius: 30px; text-decoration: none;
-                    font-weight: bold; font-size: 0.9rem; border: 2px solid rgba(0, 255, 102, 0.3);
-                    transition: all 0.3s ease;">
-            <i class="fas fa-download"></i>
-            <span>Download PDF</span>
-          </a>
-        ` : ''}
-      </div>
-    `}
+    </div>
   `;
   
-  // إضافة تأثيرات التحويم للروابط
-  if (!isInProgress) {
-    const links = card.querySelectorAll('a');
-    links.forEach(link => {
-      link.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-3px)';
-        this.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.3)';
-      });
-      link.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0)';
-        this.style.boxShadow = 'none';
-      });
+  // إضافة حدث النقر على صورة الشهادة
+  const certImageContainer = card.querySelector('.certificate-image-container');
+  if (certImageContainer) {
+    certImageContainer.addEventListener('click', function() {
+      if (cert.image) {
+        window.open(cert.image, '_blank');
+      } else if (cert.link) {
+        window.open(cert.link, '_blank');
+      }
     });
   }
   
   certGrid.appendChild(card);
   allCertificatesCards.push(card);
 });
-        /* ========== COURSES ========== */
-        const coursesGrid = document.getElementById("coursesGrid");
-        const allCoursesCards = [];
-        const courseColors = ['color-1', 'color-2', 'color-3'];
 
-        data.courses.forEach((course, index) => {
-            const card = document.createElement("div");
-            const colorClass = courseColors[index % courseColors.length] || 'color-1';
-            card.className = `uniform-card ${colorClass} ${index < visibleItems.courses ? 'visible' : 'hidden'}`;
+    /* ========== COURSES ========== */
+    const coursesGrid = document.getElementById("coursesGrid");
+    const allCoursesCards = [];
+    const courseColors = ['color-1', 'color-2', 'color-3'];
 
-            const isInProgress = course.status === "In Progress";
-            const statusClass = isInProgress ? "status-inprogress" : "status-completed";
-            const statusText = isInProgress ? "In Progress" : "Completed";
+    data.courses.forEach((course, index) => {
+      const card = document.createElement("div");
+      const colorClass = courseColors[index % courseColors.length] || 'color-1';
+      card.className = `uniform-card ${colorClass} ${index < visibleItems.courses ? 'visible' : 'hidden'}`;
 
-            card.innerHTML = `
+      const isInProgress = course.status === "In Progress";
+      const statusClass = isInProgress ? "status-inprogress" : "status-completed";
+      const statusText = isInProgress ? "In Progress" : "Completed";
+
+      card.innerHTML = `
     <span class="certificate-status ${statusClass}">${statusText}</span>
     <div class="card-icon">
       <i class="fas ${isInProgress ? 'fa-sync-alt' : 'fa-book-open'}"></i>
@@ -226,16 +261,17 @@ data.certificates.forEach((cert, index) => {
     ` : ''}
   `;
 
-            coursesGrid.appendChild(card);
-            allCoursesCards.push(card);
-        });
-        /* ========== CONTACT ========== */
-        const contact = data.contact;
-        const contactDiv = document.getElementById("contactInfo");
-        const contactColors = ['color-1', 'color-2', 'color-3', 'color-4'];
+      coursesGrid.appendChild(card);
+      allCoursesCards.push(card);
+    });
 
-        // إنشاء كروت الاتصال بنفس الشكل
-        contactDiv.innerHTML = `
+    /* ========== CONTACT ========== */
+    const contact = data.contact;
+    const contactDiv = document.getElementById("contactInfo");
+    const contactColors = ['color-1', 'color-2', 'color-3', 'color-4'];
+
+    // إنشاء كروت الاتصال بنفس الشكل
+    contactDiv.innerHTML = `
           <div class="uniform-card ${contactColors[0]}">
             <div class="card-icon">
               <i class="fas fa-envelope"></i>
@@ -273,189 +309,189 @@ data.certificates.forEach((cert, index) => {
           </div>
         `;
 
-        /* ========== إدارة أزرار Show/Hide ========== */
-        const showSkillsBtn = document.getElementById("showSkillsBtn");
-        const showProjectsBtn = document.getElementById("showProjectsBtn");
-        const showCoursesBtn = document.getElementById("showCoursesBtn");
-        const showCertificatesBtn = document.getElementById("showCertificatesBtn");
+    /* ========== إدارة أزرار Show/Hide ========== */
+    const showSkillsBtn = document.getElementById("showSkillsBtn");
+    const showProjectsBtn = document.getElementById("showProjectsBtn");
+    const showCoursesBtn = document.getElementById("showCoursesBtn");
+    const showCertificatesBtn = document.getElementById("showCertificatesBtn");
 
-        // حالة التوسيع لكل قسم
-        const expandedState = {
-            skills: false,
-            projects: false,
-            courses: false,
-            certificates: false
-        };
+    // حالة التوسيع لكل قسم
+    const expandedState = {
+      skills: false,
+      projects: false,
+      courses: false,
+      certificates: false
+    };
 
-        // دالة عامة لتغيير حالة القسم
-        function toggleSection(section, cards, button) {
-            expandedState[section] = !expandedState[section];
+    // دالة عامة لتغيير حالة القسم
+    function toggleSection(section, cards, button) {
+      expandedState[section] = !expandedState[section];
 
-            // إظهار/إخفاء الكروت المخفية
-            cards.forEach((card, index) => {
-                if (index >= visibleItems[section]) {
-                    if (expandedState[section]) {
-                        card.classList.remove("hidden");
-                        card.classList.add("visible");
-                    } else {
-                        card.classList.remove("visible");
-                        card.classList.add("hidden");
-                    }
-                }
-            });
-
-            // تغيير نص الزر والأيقونة
-            const icon = button.querySelector("i");
-            if (expandedState[section]) {
-                icon.className = "fas fa-chevron-up";
-                button.innerHTML = `<i class="fas fa-chevron-up"></i> Show Less`;
-            } else {
-                icon.className = "fas fa-chevron-down";
-                button.innerHTML = `<i class="fas fa-chevron-down"></i> Show More ${section.charAt(0).toUpperCase() + section.slice(1)}`;
-            }
+      // إظهار/إخفاء الكروت المخفية
+      cards.forEach((card, index) => {
+        if (index >= visibleItems[section]) {
+          if (expandedState[section]) {
+            card.classList.remove("hidden");
+            card.classList.add("visible");
+          } else {
+            card.classList.remove("visible");
+            card.classList.add("hidden");
+          }
         }
+      });
 
-        // إضافة أحداث النقر للأزرار
-        showSkillsBtn.addEventListener("click", () =>
-            toggleSection("skills", allSkillsCards, showSkillsBtn));
+      // تغيير نص الزر والأيقونة
+      const icon = button.querySelector("i");
+      if (expandedState[section]) {
+        icon.className = "fas fa-chevron-up";
+        button.innerHTML = `<i class="fas fa-chevron-up"></i> Show Less`;
+      } else {
+        icon.className = "fas fa-chevron-down";
+        button.innerHTML = `<i class="fas fa-chevron-down"></i> Show More ${section.charAt(0).toUpperCase() + section.slice(1)}`;
+      }
+    }
 
-        showProjectsBtn.addEventListener("click", () =>
-            toggleSection("projects", allProjectsCards, showProjectsBtn));
+    // إضافة أحداث النقر للأزرار
+    showSkillsBtn.addEventListener("click", () =>
+      toggleSection("skills", allSkillsCards, showSkillsBtn));
 
-        showCoursesBtn.addEventListener("click", () =>
-            toggleSection("courses", allCoursesCards, showCoursesBtn));
+    showProjectsBtn.addEventListener("click", () =>
+      toggleSection("projects", allProjectsCards, showProjectsBtn));
 
-        showCertificatesBtn.addEventListener("click", () =>
-            toggleSection("certificates", allCertificatesCards, showCertificatesBtn));
+    showCoursesBtn.addEventListener("click", () =>
+      toggleSection("courses", allCoursesCards, showCoursesBtn));
 
-        // إخفاء الزر إذا لم يكن هناك عناصر مخفية
-        if (allSkillsCards.length <= visibleItems.skills) showSkillsBtn.style.display = "none";
-        if (allProjectsCards.length <= visibleItems.projects) showProjectsBtn.style.display = "none";
-        if (allCoursesCards.length <= visibleItems.courses) showCoursesBtn.style.display = "none";
-        if (allCertificatesCards.length <= visibleItems.certificates) showCertificatesBtn.style.display = "none";
+    showCertificatesBtn.addEventListener("click", () =>
+      toggleSection("certificates", allCertificatesCards, showCertificatesBtn));
 
-    })
-    .catch(error => {
-        console.error('Error loading data:', error);
-        document.getElementById("skillsGrid").innerHTML = "<p>Error loading data. Please check the data.json file.</p>";
-    });
+    // إخفاء الزر إذا لم يكن هناك عناصر مخفية
+    if (allSkillsCards.length <= visibleItems.skills) showSkillsBtn.style.display = "none";
+    if (allProjectsCards.length <= visibleItems.projects) showProjectsBtn.style.display = "none";
+    if (allCoursesCards.length <= visibleItems.courses) showCoursesBtn.style.display = "none";
+    if (allCertificatesCards.length <= visibleItems.certificates) showCertificatesBtn.style.display = "none";
+
+  })
+  .catch(error => {
+    console.error('Error loading data:', error);
+    document.getElementById("skillsGrid").innerHTML = "<p>Error loading data. Please check the data.json file.</p>";
+  });
 
 /* ========== باقي كود JavaScript ========== */
 const canvas = document.getElementById("network-bg");
 if (canvas) {
-    const ctx = canvas.getContext("2d");
+  const ctx = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  let nodes = [];
+  const numNodes = 70;
+  for (let i = 0; i < numNodes; i++) {
+    nodes.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: (Math.random() - 0.5) * 0.5,
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let i = 0; i < numNodes; i++) {
+      for (let j = i + 1; j < numNodes; j++) {
+        let dx = nodes[i].x - nodes[j].x;
+        let dy = nodes[i].y - nodes[j].y;
+        let dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 120) {
+          ctx.strokeStyle = "rgba(0, 255, 255, 0.2)";
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(nodes[i].x, nodes[i].y);
+          ctx.lineTo(nodes[j].x, nodes[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+    nodes.forEach((node, i) => {
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, 3, 0, Math.PI * 2);
+      let hue = (Date.now() / 20 + i * 10) % 360;
+      ctx.fillStyle = `hsl(${hue}, 100%, 50%)`;
+      ctx.fill();
+      node.x += node.vx;
+      node.y += node.vy;
+      if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
+      if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+
+  window.addEventListener("resize", () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-
-    let nodes = [];
-    const numNodes = 70;
-    for (let i = 0; i < numNodes; i++) {
-        nodes.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            vx: (Math.random() - 0.5) * 0.5,
-            vy: (Math.random() - 0.5) * 0.5,
-        });
-    }
-
-    function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        for (let i = 0; i < numNodes; i++) {
-            for (let j = i + 1; j < numNodes; j++) {
-                let dx = nodes[i].x - nodes[j].x;
-                let dy = nodes[i].y - nodes[j].y;
-                let dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 120) {
-                    ctx.strokeStyle = "rgba(0, 255, 255, 0.2)";
-                    ctx.lineWidth = 1;
-                    ctx.beginPath();
-                    ctx.moveTo(nodes[i].x, nodes[i].y);
-                    ctx.lineTo(nodes[j].x, nodes[j].y);
-                    ctx.stroke();
-                }
-            }
-        }
-        nodes.forEach((node, i) => {
-            ctx.beginPath();
-            ctx.arc(node.x, node.y, 3, 0, Math.PI * 2);
-            let hue = (Date.now() / 20 + i * 10) % 360;
-            ctx.fillStyle = `hsl(${hue}, 100%, 50%)`;
-            ctx.fill();
-            node.x += node.vx;
-            node.y += node.vy;
-            if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
-            if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
-        });
-        requestAnimationFrame(draw);
-    }
-    draw();
-
-    window.addEventListener("resize", () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    });
+  });
 }
 
 const faders = document.querySelectorAll('.fade-in');
 const appearOptions = { threshold: 0.2 };
 const appearOnScroll = new IntersectionObserver(function (entries, observer) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-        }
-    });
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
 }, appearOptions);
 faders.forEach(fader => { appearOnScroll.observe(fader); });
 
 const backToTop = document.getElementById('back-to-top');
 if (backToTop) {
-    window.addEventListener('scroll', () => {
-        backToTop.style.display = window.scrollY > 300 ? 'flex' : 'none';
-    });
-    backToTop.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+  window.addEventListener('scroll', () => {
+    backToTop.style.display = window.scrollY > 300 ? 'flex' : 'none';
+  });
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 }
 
 const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('nav ul li a');
 const observerOptions = { threshold: 0.6 };
 const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            navLinks.forEach(link => link.classList.remove('active'));
-            const activeLink = document.querySelector(`nav ul li a[href="#${entry.target.id}"]`);
-            if (activeLink) { activeLink.classList.add('active'); }
-        }
-    });
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => link.classList.remove('active'));
+      const activeLink = document.querySelector(`nav ul li a[href="#${entry.target.id}"]`);
+      if (activeLink) { activeLink.classList.add('active'); }
+    }
+  });
 }, observerOptions);
 sections.forEach(section => { sectionObserver.observe(section); });
 
 const hamburger = document.querySelector('.hamburger');
 const mobileNav = document.getElementById('mobile-nav');
 if (hamburger && mobileNav) {
-    hamburger.addEventListener('click', () => {
-        const isOpen = mobileNav.classList.toggle('open');
-        hamburger.classList.toggle('active');
-        hamburger.setAttribute('aria-expanded', isOpen);
-    });
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileNav.classList.toggle('open');
+    hamburger.classList.toggle('active');
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });
 
-    mobileNav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileNav.classList.remove('open');
-            hamburger.classList.remove('active');
-            hamburger.setAttribute('aria-expanded', false);
-        });
+  mobileNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      hamburger.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', false);
     });
+  });
 }
 
 const typingElement = document.getElementById('home-subtitle');
 if (typingElement) {
-    const text = typingElement.textContent;
-    typingElement.textContent = '';
-    setTimeout(() => {
-        typingElement.classList.add('typing-effect');
-        typingElement.textContent = text;
-    }, 1000);
+  const text = typingElement.textContent;
+  typingElement.textContent = '';
+  setTimeout(() => {
+    typingElement.classList.add('typing-effect');
+    typingElement.textContent = text;
+  }, 1000);
 }
