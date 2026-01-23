@@ -1,0 +1,159 @@
+{
+  "skills": [
+    {
+      "title": "Networking Fundamentals",
+      "icon": "fa-network-wired",
+      "items": ["TCP/IP & OSI Models", "IP Addressing & Subnetting", "Basic Network Troubleshooting"]
+    },
+    {
+      "title": "Routing & Switching",
+      "icon": "fa-route",
+      "items": ["Static & Dynamic Routing", "VLANs & Trunking", "STP & Inter-VLAN Routing"]
+    },
+    {
+      "title": "Network Security",
+      "icon": "fa-shield-alt",
+      "items": ["Firewall configuration", "Access Control Lists (ACLs)", "Intrusion detection & prevention"]
+    },
+    {
+      "title": "VPN Technologies",
+      "icon": "fa-user-shield",
+      "items": ["Site-to-Site VPNs", "Remote Access VPNs", "IPSec & SSL VPNs"]
+    },
+    {
+      "title": "Firewall Configuration",
+      "icon": "fa-fire",
+      "items": ["Packet filtering", "Stateful inspection", "Security policies"]
+    },
+    {
+      "title": "Wireless Networking",
+      "icon": "fa-wifi",
+      "items": ["WLAN configuration", "Security protocols", "Access point management"]
+    }
+  ],
+  "certificates": [
+    {
+      "title": "HCCDA - Tech Essentials",
+      "provider": "Huawei",
+      "status": "Completed",
+      "link": "#",
+      "year": "2023"
+    },
+    {
+      "title": "Fortinet NSE 1",
+      "provider": "Fortinet",
+      "status": "In Progress",
+      "link": "#",
+      "year": "2024"
+    },
+    {
+      "title": "CompTIA Network+",
+      "provider": "CompTIA",
+      "status": "Completed",
+        "link": "#",
+      "year": "2022"
+    }
+  ],
+  "courses": [
+    {
+      "title": "CCNA",
+      "platform": "Cisco Networking Academy",
+      "status": "Completed",
+    "link": "#",
+      "topics": ["Network Access", "IP Connectivity", "Security Fundamentals"]
+    },
+    {
+      "title": "JavaScript Course",
+      "platform": "YouTube",
+      "status": "In Progress",
+      "link": "#",
+      "topics": ["DOM Manipulation", "Events", "Fetch API"]
+    },
+    {
+      "title": "Python for Networking",
+      "platform": "Udemy",
+      "status": "Completed",
+        "link": "#",
+      "topics": ["Network automation", "API integration", "Scripting"]
+    }
+  ],
+  "projects": [
+    {
+      "title": "Office Network Design",
+      "description": "Design and implementation of a small office LAN with VLAN segmentation and routing.",
+      "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      "link": "#",
+      "technologies": ["Networking", "VLAN", "Routing"]
+    },
+    {
+      "title": "Secure VPN Setup",
+      "description": "Site-to-site and remote access VPN configuration with firewall policies.",
+      "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      "link": "#",
+      "technologies": ["VPN", "Firewall", "Security"]
+    },
+    {
+      "title": "Personal Portfolio Website",
+      "description": "Responsive personal portfolio using HTML, CSS, and JavaScript.",
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      "link": "#",
+      "technologies": ["HTML", "CSS", "JavaScript"]
+    },
+    {
+      "title": "Network Monitoring Tool",
+      "description": "Basic network monitoring dashboard for tracking connectivity.",
+      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      "link": "#",
+      "technologies": ["Networking", "Monitoring", "Dashboard"]
+    },
+    {
+      "title": "Security Audit Report",
+      "description": "Comprehensive security audit report with recommendations.",
+      "image": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      "link": "#",
+      "technologies": ["Security", "Audit", "Reporting"]
+    },
+    {
+      "title": "Wireless Network Setup",
+      "description": "Enterprise wireless network deployment with security features.",
+      "image": "https://images.unsplash.com/photo-1508385082359-f38ae991e8f2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      "link": "#",
+      "technologies": ["Wireless", "Security", "Deployment"]
+    }
+  ],
+  "aboutDescription": "I am a passionate network specialist with expertise in designing, implementing, and maintaining robust network infrastructures. With a strong foundation in networking fundamentals and security, I strive to create efficient and secure solutions for modern challenges.",
+
+"aboutCards": [
+  {
+    "title": "My Mission",
+    "icon": "fa-bullseye",
+    "description": "Designing and implementing secure, scalable network solutions that drive business growth while ensuring maximum security and reliability.",
+    "colorClass": "color-1",
+    "link": "#" 
+  },
+  {
+    "title": "Education",
+    "icon": "fa-graduation-cap",
+    "description": "Currently pursuing network security certifications with hands-on experience in enterprise networking and cybersecurity solutions.",
+    "colorClass": "color-2"
+  },
+  {
+    "title": "Approach",
+    "icon": "fa-cogs",
+    "description": "Combining theoretical knowledge with practical experience to create optimal network architectures and security protocols.",
+    "colorClass": "color-3"
+  },
+  {
+    "title": "Vision",
+    "icon": "fa-rocket",
+    "description": "To become a leading expert in network security and contribute to developing safer digital environments for organizations.",
+    "colorClass": "color-4"
+  }
+],
+  "contact": {
+    "email": "naderadel102@gmail.com",
+    "phone": "+20 155 622 3003",
+    "linkedin": "https://linkedin.com/in/naderadel",
+    "github": "https://github.com/nade-r"
+  }
+}

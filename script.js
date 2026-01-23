@@ -1,0 +1,411 @@
+// عدد العناصر المراد إظهارها أولاً في كل قسم
+const visibleItems = {
+    skills: 4,
+    projects: 4,
+    courses: 4,
+    certificates: 4
+};
+
+// جلب البيانات من ملف JSON
+fetch("data.json")
+    .then(res => res.json())
+    .then(data => {
+        /* ========== ABOUT ========== */
+        if (data.aboutDescription) {
+            // تحديث النص الوصفي
+            const aboutDesc = document.getElementById("aboutDescription");
+            if (aboutDesc) {
+                aboutDesc.textContent = data.aboutDescription;
+            }
+        }
+
+        if (data.aboutCards && data.aboutCards.length > 0) {
+            const aboutContainer = document.getElementById("aboutCardsContainer");
+            if (aboutContainer) {
+                // إزالة أي محتوى ثابت موجود
+                aboutContainer.innerHTML = '';
+
+                // إنشاء الكروت ديناميكياً
+                data.aboutCards.forEach((aboutCard, index) => {
+                    const card = document.createElement("div");
+
+                    // استخدام colorClass من البيانات أو إنشاء واحد تلقائي
+                    const colorClass = aboutCard.colorClass || `color-${(index % 8) + 1}`;
+                    card.className = `uniform-card ${colorClass}`;
+
+                    card.innerHTML = `
+        <div class="card-icon">
+          <i class="fas ${aboutCard.icon || 'fa-info-circle'}"></i>
+        </div>
+        <h3>${aboutCard.title || 'Title'}</h3>
+        <p>${aboutCard.description || 'Description here'}</p>
+        ${aboutCard.link ? `
+          <a href="${aboutCard.link}" target="_blank" class="contact-link" style="margin-top: 10px;">
+            Learn More <i class="fas fa-external-link-alt"></i>
+          </a>
+        ` : ''}
+      `;
+
+                    aboutContainer.appendChild(card);
+                });
+            }
+        }
+        /* ========== SKILLS ========== */
+        const skillsGrid = document.getElementById("skillsGrid");
+        const allSkillsCards = [];
+        const skillColors = ['color-1', 'color-2', 'color-3', 'color-4', 'color-5', 'color-6'];
+
+        data.skills.forEach((skill, index) => {
+            if (!skill.title) return;
+
+            const card = document.createElement("div");
+            const colorClass = skillColors[index % skillColors.length] || 'color-1';
+            card.className = `uniform-card ${colorClass} ${index < visibleItems.skills ? 'visible' : 'hidden'}`;
+
+            card.innerHTML = `
+            <div class="card-icon">
+              <i class="fas ${skill.icon || 'fa-code'}"></i>
+            </div>
+            <h3>${skill.title}</h3>
+            <ul>
+              ${skill.items.map(item => `<li>${item}</li>`).join("")}
+            </ul>
+          `;
+            skillsGrid.appendChild(card);
+            allSkillsCards.push(card);
+        });
+
+        /* ========== PROJECTS ========== */
+        const projectsGrid = document.getElementById("projectsGrid");
+        const allProjectsCards = [];
+        const projectColors = ['color-1', 'color-2', 'color-3', 'color-4', 'color-5', 'color-6'];
+
+        data.projects.forEach((project, index) => {
+            const card = document.createElement("div");
+            const colorClass = projectColors[index % projectColors.length] || 'color-1';
+            card.className = `uniform-card project-card ${colorClass} ${index < visibleItems.projects ? 'visible' : 'hidden'}`;
+
+            // صورة افتراضية إذا لم توجد صورة
+            const projectImage = project.image || 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80';
+
+            card.innerHTML = `
+            <div class="project-image-container">
+              <img src="${projectImage}" alt="${project.title}" class="project-image">
+              <div class="project-overlay">
+                <span>View Details</span>
+              </div>
+            </div>
+            <h3>${project.title}</h3>
+            <p>${project.description}</p>
+            <div class="project-tech">
+              ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join("")}
+            </div>
+            <a href="${project.link || '#'}" target="_blank" class="contact-link">
+              View Project <i class="fas fa-external-link-alt"></i>
+            </a>
+          `;
+            projectsGrid.appendChild(card);
+            allProjectsCards.push(card);
+        });
+
+        /* ========== CERTIFICATES ========== */
+        const certGrid = document.getElementById("certificatesGrid");
+        const allCertificatesCards = [];
+        const certificateColors = ['color-1', 'color-2', 'color-3', 'color-4'];
+
+        data.certificates.forEach((cert, index) => {
+            const card = document.createElement("div");
+            const colorClass = certificateColors[index % certificateColors.length] || 'color-1';
+            card.className = `uniform-card ${colorClass} ${index < visibleItems.certificates ? 'visible' : 'hidden'}`;
+
+            const statusClass = cert.status === "Completed" ? "status-completed" : "status-inprogress";
+
+            card.innerHTML = `
+    <span class="certificate-status ${statusClass}">${cert.status}</span>
+    <div class="card-icon">
+      <i class="fas fa-certificate"></i>
+    </div>
+    <h3>${cert.title}</h3>
+    <p><strong>Provider:</strong> ${cert.provider}</p>
+    <p><strong>Year:</strong> ${cert.year}</p>
+    <div style="margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
+      ${cert.link ? `<a href="${cert.link}" target="_blank" style="background: #0ff; color: #000; padding: 6px 12px; border-radius: 4px; text-decoration: none; font-size: 0.85rem;">
+        <i class="fas fa-external-link-alt"></i> View
+      </a>` : ''}
+      ${cert.viewLink ? `<a href="${cert.viewLink}" target="_blank" style="background: #ff9900; color: #000; padding: 6px 12px; border-radius: 4px; text-decoration: none; font-size: 0.85rem;">
+        <i class="fas fa-eye"></i> Details
+      </a>` : ''}
+      ${cert.downloadLink ? `<a href="${cert.downloadLink}" target="_blank" style="background: #00ff66; color: #000; padding: 6px 12px; border-radius: 4px; text-decoration: none; font-size: 0.85rem;">
+        <i class="fas fa-download"></i> Download
+      </a>` : ''}
+    </div>
+  `;
+            certGrid.appendChild(card);
+            allCertificatesCards.push(card);
+        });
+        /* ========== COURSES ========== */
+        const coursesGrid = document.getElementById("coursesGrid");
+        const allCoursesCards = [];
+        const courseColors = ['color-1', 'color-2', 'color-3'];
+
+        data.courses.forEach((course, index) => {
+            const card = document.createElement("div");
+            const colorClass = courseColors[index % courseColors.length] || 'color-1';
+            card.className = `uniform-card ${colorClass} ${index < visibleItems.courses ? 'visible' : 'hidden'}`;
+
+            const isInProgress = course.status === "In Progress";
+            const statusClass = isInProgress ? "status-inprogress" : "status-completed";
+            const statusText = isInProgress ? "In Progress" : "Completed";
+
+            card.innerHTML = `
+    <span class="certificate-status ${statusClass}">${statusText}</span>
+    <div class="card-icon">
+      <i class="fas ${isInProgress ? 'fa-sync-alt' : 'fa-book-open'}"></i>
+    </div>
+    <h3>${course.title}</h3>
+    <p><strong>Platform:</strong> ${course.platform}</p>
+    <ul>
+      ${course.topics.map(topic => `<li>${topic}</li>`).join("")}
+    </ul>
+    
+    ${isInProgress ? `
+      <div class="loading-animation">
+        <div class="spinner pulse"></div>
+        <span class="loading-text">Currently Learning...</span>
+      </div>
+    ` : ''}
+  `;
+
+            coursesGrid.appendChild(card);
+            allCoursesCards.push(card);
+        });
+        /* ========== CONTACT ========== */
+        const contact = data.contact;
+        const contactDiv = document.getElementById("contactInfo");
+        const contactColors = ['color-1', 'color-2', 'color-3', 'color-4'];
+
+        // إنشاء كروت الاتصال بنفس الشكل
+        contactDiv.innerHTML = `
+          <div class="uniform-card ${contactColors[0]}">
+            <div class="card-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <h3>Email</h3>
+            <p>${contact.email}</p>
+            <a href="mailto:${contact.email}" class="contact-link">Send Email</a>
+          </div>
+          
+          <div class="uniform-card ${contactColors[1]}">
+            <div class="card-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <h3>Phone</h3>
+            <p>${contact.phone}</p>
+            <a href="tel:${contact.phone.replace(/\s/g, '')}" class="contact-link">Call Now</a>
+          </div>
+          
+          <div class="uniform-card ${contactColors[2]}">
+            <div class="card-icon">
+              <i class="fab fa-linkedin"></i>
+            </div>
+            <h3>LinkedIn</h3>
+            <p>Professional Profile</p>
+            <a href="${contact.linkedin}" target="_blank" class="contact-link">Visit Profile</a>
+          </div>
+          
+          <div class="uniform-card ${contactColors[3]}">
+            <div class="card-icon">
+              <i class="fab fa-github"></i>
+            </div>
+            <h3>GitHub</h3>
+            <p>Code Repository</p>
+            <a href="${contact.github}" target="_blank" class="contact-link">Visit Profile</a>
+          </div>
+        `;
+
+        /* ========== إدارة أزرار Show/Hide ========== */
+        const showSkillsBtn = document.getElementById("showSkillsBtn");
+        const showProjectsBtn = document.getElementById("showProjectsBtn");
+        const showCoursesBtn = document.getElementById("showCoursesBtn");
+        const showCertificatesBtn = document.getElementById("showCertificatesBtn");
+
+        // حالة التوسيع لكل قسم
+        const expandedState = {
+            skills: false,
+            projects: false,
+            courses: false,
+            certificates: false
+        };
+
+        // دالة عامة لتغيير حالة القسم
+        function toggleSection(section, cards, button) {
+            expandedState[section] = !expandedState[section];
+
+            // إظهار/إخفاء الكروت المخفية
+            cards.forEach((card, index) => {
+                if (index >= visibleItems[section]) {
+                    if (expandedState[section]) {
+                        card.classList.remove("hidden");
+                        card.classList.add("visible");
+                    } else {
+                        card.classList.remove("visible");
+                        card.classList.add("hidden");
+                    }
+                }
+            });
+
+            // تغيير نص الزر والأيقونة
+            const icon = button.querySelector("i");
+            if (expandedState[section]) {
+                icon.className = "fas fa-chevron-up";
+                button.innerHTML = `<i class="fas fa-chevron-up"></i> Show Less`;
+            } else {
+                icon.className = "fas fa-chevron-down";
+                button.innerHTML = `<i class="fas fa-chevron-down"></i> Show More ${section.charAt(0).toUpperCase() + section.slice(1)}`;
+            }
+        }
+
+        // إضافة أحداث النقر للأزرار
+        showSkillsBtn.addEventListener("click", () =>
+            toggleSection("skills", allSkillsCards, showSkillsBtn));
+
+        showProjectsBtn.addEventListener("click", () =>
+            toggleSection("projects", allProjectsCards, showProjectsBtn));
+
+        showCoursesBtn.addEventListener("click", () =>
+            toggleSection("courses", allCoursesCards, showCoursesBtn));
+
+        showCertificatesBtn.addEventListener("click", () =>
+            toggleSection("certificates", allCertificatesCards, showCertificatesBtn));
+
+        // إخفاء الزر إذا لم يكن هناك عناصر مخفية
+        if (allSkillsCards.length <= visibleItems.skills) showSkillsBtn.style.display = "none";
+        if (allProjectsCards.length <= visibleItems.projects) showProjectsBtn.style.display = "none";
+        if (allCoursesCards.length <= visibleItems.courses) showCoursesBtn.style.display = "none";
+        if (allCertificatesCards.length <= visibleItems.certificates) showCertificatesBtn.style.display = "none";
+
+    })
+    .catch(error => {
+        console.error('Error loading data:', error);
+        document.getElementById("skillsGrid").innerHTML = "<p>Error loading data. Please check the data.json file.</p>";
+    });
+
+/* ========== باقي كود JavaScript ========== */
+const canvas = document.getElementById("network-bg");
+if (canvas) {
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let nodes = [];
+    const numNodes = 70;
+    for (let i = 0; i < numNodes; i++) {
+        nodes.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 0.5,
+            vy: (Math.random() - 0.5) * 0.5,
+        });
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < numNodes; i++) {
+            for (let j = i + 1; j < numNodes; j++) {
+                let dx = nodes[i].x - nodes[j].x;
+                let dy = nodes[i].y - nodes[j].y;
+                let dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 120) {
+                    ctx.strokeStyle = "rgba(0, 255, 255, 0.2)";
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(nodes[i].x, nodes[i].y);
+                    ctx.lineTo(nodes[j].x, nodes[j].y);
+                    ctx.stroke();
+                }
+            }
+        }
+        nodes.forEach((node, i) => {
+            ctx.beginPath();
+            ctx.arc(node.x, node.y, 3, 0, Math.PI * 2);
+            let hue = (Date.now() / 20 + i * 10) % 360;
+            ctx.fillStyle = `hsl(${hue}, 100%, 50%)`;
+            ctx.fill();
+            node.x += node.vx;
+            node.y += node.vy;
+            if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
+            if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
+        });
+        requestAnimationFrame(draw);
+    }
+    draw();
+
+    window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+}
+
+const faders = document.querySelectorAll('.fade-in');
+const appearOptions = { threshold: 0.2 };
+const appearOnScroll = new IntersectionObserver(function (entries, observer) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, appearOptions);
+faders.forEach(fader => { appearOnScroll.observe(fader); });
+
+const backToTop = document.getElementById('back-to-top');
+if (backToTop) {
+    window.addEventListener('scroll', () => {
+        backToTop.style.display = window.scrollY > 300 ? 'flex' : 'none';
+    });
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('nav ul li a');
+const observerOptions = { threshold: 0.6 };
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            navLinks.forEach(link => link.classList.remove('active'));
+            const activeLink = document.querySelector(`nav ul li a[href="#${entry.target.id}"]`);
+            if (activeLink) { activeLink.classList.add('active'); }
+        }
+    });
+}, observerOptions);
+sections.forEach(section => { sectionObserver.observe(section); });
+
+const hamburger = document.querySelector('.hamburger');
+const mobileNav = document.getElementById('mobile-nav');
+if (hamburger && mobileNav) {
+    hamburger.addEventListener('click', () => {
+        const isOpen = mobileNav.classList.toggle('open');
+        hamburger.classList.toggle('active');
+        hamburger.setAttribute('aria-expanded', isOpen);
+    });
+
+    mobileNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileNav.classList.remove('open');
+            hamburger.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', false);
+        });
+    });
+}
+
+const typingElement = document.getElementById('home-subtitle');
+if (typingElement) {
+    const text = typingElement.textContent;
+    typingElement.textContent = '';
+    setTimeout(() => {
+        typingElement.classList.add('typing-effect');
+        typingElement.textContent = text;
+    }, 1000);
+}
