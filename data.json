@@ -31,29 +31,40 @@
       "items": ["WLAN configuration", "Security protocols", "Access point management"]
     }
   ],
-  "certificates": [
-    {
-      "title": "HCCDA - Tech Essentials",
-      "provider": "Huawei",
-      "status": "Completed",
-      "link": "#",
-      "year": "2023"
-    },
-    {
-      "title": "Fortinet NSE 1",
-      "provider": "Fortinet",
-      "status": "In Progress",
-      "link": "#",
-      "year": "2024"
-    },
-    {
-      "title": "CompTIA Network+",
-      "provider": "CompTIA",
-      "status": "Completed",
-        "link": "#",
-      "year": "2022"
-    }
-  ],
+ "certificates": [
+  {
+    "title": "HCCDA - Tech Essentials",
+    "provider": "Huawei",
+    "status": "Completed",
+    "link": "https://example.com/huawei-certificate",
+    "downloadLink": "https://example.com/download/huawei-certificate.pdf",
+    "year": "2023"
+  },
+  {
+    "title": "Fortinet NSE 1",
+    "provider": "Fortinet",
+    "status": "In Progress",
+    "progress": "75",
+    "expectedDate": "March 2024",
+    "year": "2024"
+  },
+  {
+    "title": "CompTIA Network+",
+    "provider": "CompTIA",
+    "status": "Completed",
+    "link": "https://example.com/comptia-certificate",
+    "downloadLink": "https://example.com/download/comptia-certificate.pdf",
+    "year": "2022"
+  },
+  {
+    "title": "Cisco CCNA",
+    "provider": "Cisco",
+    "status": "In Progress",
+    "progress": "50",
+    "expectedDate": "June 2024",
+    "year": "2024"
+  }
+]
   "courses": [
     {
       "title": "CCNA",
@@ -156,4 +167,5 @@
     "linkedin": "https://linkedin.com/in/naderadel",
     "github": "https://github.com/nade-r"
   }
+
 }
