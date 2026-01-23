@@ -950,173 +950,188 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+/* ========== Mobile Responsive ========== */
+@media (max-width: 900px) {
+  header { padding: 12px 14px; }
+  nav ul { gap: 12px; }
+  h2 { font-size: 2rem; }
+}
 
-    /* ========== Mobile Responsive ========== */
-    @media (max-width: 900px) {
-      header { padding: 12px 14px; }
-      nav ul { gap: 12px; }
-      h2 { font-size: 2rem; }
-    }
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: #111;
+    border: 1px solid rgba(0, 255, 255, .3);
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
 
-    @media (max-width: 768px) {
-      .hamburger {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        background: #111;
-        border: 1px solid rgba(0, 255, 255, .3);
-        padding: 8px;
-        border-radius: 8px;
-        cursor: pointer;
-      }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #0ff;
+    transition: transform .3s, opacity .3s;
+  }
 
-      .hamburger span {
-        display: block;
-        width: 24px;
-        height: 2px;
-        background: #0ff;
-        transition: transform .3s, opacity .3s;
-      }
+  .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-      .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-      .hamburger.active span:nth-child(2) { opacity: 0; }
-      .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  #mobile-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #111;
+    border-bottom: 1px solid rgba(0, 255, 255, .2);
+    display: none;
+  }
 
-      #mobile-nav {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: #111;
-        border-bottom: 1px solid rgba(0, 255, 255, .2);
-        display: none;
-      }
+  #mobile-nav.open { display: block; }
 
-      #mobile-nav.open { display: block; }
+  #mobile-nav ul {
+    flex-direction: column;
+    padding: 10px 14px;
+    gap: 6px;
+  }
 
-      #mobile-nav ul {
-        flex-direction: column;
-        padding: 10px 14px;
-        gap: 6px;
-      }
+  #mobile-nav ul li a { padding: 10px 12px; border-radius: 8px; }
 
-      #mobile-nav ul li a { padding: 10px 12px; border-radius: 8px; }
+  section { padding: 90px 14px 30px; }
+  .hero-content { padding: 10px; }
+  .profile-pic { width: 140px; height: 140px; }
+  
+  /* هنا التعديل الهام - 2 كارت في الصف */
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 15px;
+  }
+  
+  .uniform-card {
+    height: auto;
+    min-height: 280px;
+    padding: 15px;
+  }
 
-      section { padding: 90px 14px 30px; }
-      .hero-content { padding: 10px; }
-      .profile-pic { width: 140px; height: 140px; }
-      
-      .cards-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-      }
-      
-      .uniform-card {
-        height: auto;
-        min-height: 300px;
-        padding: 20px 15px;
-      }
+  .project-card {
+    height: auto;
+    min-height: 350px;
+  }
 
-      .project-card {
-        height: auto;
-        min-height: 350px;
-      }
+  .typing-effect {
+    font-size: 1.1rem;
+    white-space: normal;
+    border-right: 0;
+    width: auto;
+    animation: none;
+  }
 
-      .typing-effect {
-        font-size: 1.1rem;
-        white-space: normal;
-        border-right: 0;
-        width: auto;
-        animation: none;
-      }
+  /* تعديل حجم أيقونات Footer للجوال */
+  .footer a {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .footer a i {
+    font-size: 1.8rem;
+  }
+  
+  .footer-social {
+    gap: 20px;
+  }
 
-      /* تعديل حجم أيقونات Footer للجوال */
-      .footer a {
-        width: 60px;
-        height: 60px;
-      }
-      
-      .footer a i {
-        font-size: 1.8rem;
-      }
-      
-      .footer-social {
-        gap: 20px;
-      }
+  .show-more-btn { min-width: 180px; padding: 10px 20px; }
 
-      .show-more-btn { min-width: 180px; padding: 10px 20px; }
+  .project-image-container {
+    height: 120px;
+  }
 
-      .project-image-container {
-        height: 120px;
-      }
+  .back-to-top {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+}
 
-      .back-to-top {
-        width: 50px;
-        height: 50px;
-        font-size: 1.5rem;
-      }
-    }
+@media (max-width: 480px) {
+  /* 2 كارت حتى في الشاشات الصغيرة */
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px;
+  }
+  
+  .uniform-card {
+    min-height: 260px;
+    padding: 12px 8px;
+  }
 
-    @media (max-width: 480px) {
-      .cards-container {
-        grid-template-columns: 1fr;
-        gap: 15px;
-        max-width: 400px;
-      }
-      
-      .uniform-card {
-        min-height: 280px;
-        padding: 20px 15px;
-      }
+  .project-card {
+    min-height: 320px;
+  }
 
-      .project-card {
-        min-height: 320px;
-      }
+  .footer a {
+    width: 55px;
+    height: 55px;
+  }
+  
+  .footer a i {
+    font-size: 1.6rem;
+  }
+  
+  .footer-social {
+    gap: 15px;
+  }
+  
+  .project-image-container {
+    height: 100px;
+  }
+}
 
-      .footer a {
-        width: 55px;
-        height: 55px;
-      }
-      
-      .footer a i {
-        font-size: 1.6rem;
-      }
-      
-      .footer-social {
-        gap: 15px;
-      }
-    }
+@media (min-width: 769px) and (max-width: 1024px) {
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
-    @media (min-width: 769px) and (max-width: 1024px) {
-      .cards-container {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
+@media (min-width: 1025px) {
+  .cards-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
 
-    @media (min-width: 1025px) {
-      .cards-container {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
-
-    @media (max-width: 380px) {
-      header h1 { font-size: 1.2rem; }
-      .animated-box { width: 28px; height: 28px; }
-      h2 { font-size: 1.6rem; }
-      .profile-pic { width: 120px; height: 120px; }
-      .hero-buttons { flex-direction: column; align-items: center; }
-      .hero-btn { width: 100%; max-width: 250px; justify-content: center; }
-      
-      .footer a {
-        width: 50px;
-        height: 50px;
-      }
-      
-      .footer a i {
-        font-size: 1.5rem;
-      }
-      
-      .footer-social {
-        gap: 12px;
-      }
-    }
+@media (max-width: 380px) {
+  header h1 { font-size: 1.2rem; }
+  .animated-box { width: 28px; height: 28px; }
+  h2 { font-size: 1.6rem; }
+  .profile-pic { width: 120px; height: 120px; }
+  .hero-buttons { flex-direction: column; align-items: center; }
+  .hero-btn { width: 100%; max-width: 250px; justify-content: center; }
+  
+  /* 2 كارت حتى في الشاشات الصغيرة جداً */
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px;
+  }
+  
+  .uniform-card {
+    min-height: 250px;
+    padding: 10px 6px;
+  }
+  
+  .footer a {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .footer a i {
+    font-size: 1.5rem;
+  }
+  
+  .footer-social {
+    gap: 12px;
+  }
+}
