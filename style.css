@@ -1135,3 +1135,76 @@
     gap: 12px;
   }
 }
+
+/* ========== تأثير التحميل للشهادات ========== */
+.cert-loading-animation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.cert-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 153, 0, 0.2);
+  border-top: 3px solid #ff9900;
+  border-right: 3px solid #ff9900;
+  border-radius: 50%;
+  animation: certSpin 1.5s linear infinite;
+}
+
+@keyframes certSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.cert-progress-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 153, 0, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.cert-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff9900, #ffcc00);
+  border-radius: 4px;
+  position: relative;
+  animation: progressShine 2s infinite;
+}
+
+@keyframes progressShine {
+  0% { background-position: -100px 0; }
+  100% { background-position: 100px 0; }
+}
+
+.cert-progress-text {
+  color: #ff9900;
+  font-weight: bold;
+  font-size: 0.9rem;
+  animation: pulse 2s infinite;
+}
+
+.cert-expected-date {
+  color: #aaa;
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
+/* أيقونة الشهادة المتحركة */
+.fa-certificate.fa-spin {
+  animation: certRotate 3s linear infinite;
+}
+
+@keyframes certRotate {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(90deg); }
+  50% { transform: rotate(180deg); }
+  75% { transform: rotate(270deg); }
+  100% { transform: rotate(360deg); }
+}
