@@ -31,49 +31,61 @@
       "items": ["WLAN configuration", "Security protocols", "Access point management"]
     }
   ],
-  "certificates": [
-    {
-      "title": "HCCDA - Tech Essentials",
-      "provider": "Huawei",
-      "status": "Completed",
-      "link": "#",
-      "year": "2023"
-    },
-    {
-      "title": "Fortinet NSE 1",
-      "provider": "Fortinet",
-      "status": "In Progress",
-      "link": "#",
-      "year": "2024"
-    },
-    {
-      "title": "CompTIA Network+",
-      "provider": "CompTIA",
-      "status": "Completed",
-        "link": "#",
-      "year": "2022"
-    }
-  ],
+"certificates": [
+  {
+    "title": "HCCDA - Tech Essentials",
+    "provider": "Huawei",
+    "status": "Completed",
+    "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+    "credentialId": "HUA-2023-12345",
+    "year": "2023"
+  },
+  {
+    "title": "Fortinet NSE 1",
+    "provider": "Fortinet",
+    "status": "In Progress",
+    "progress": "75",
+    "image":"",
+    "expectedDate": "March 2024",
+    "year": "2024"
+  },
+  {
+    "title": "CompTIA Network+",
+    "provider": "CompTIA",
+    "status": "Completed",
+    "image":  "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+    "credentialId": "COMPTIA-N10-007-2022",
+    "year": "2022"
+  },
+  {
+    "title": "Cisco CCNA",
+    "provider": "Cisco",
+    "status": "In Progress",
+    "progress": "50",
+     "image":"",
+    "expectedDate": "June 2024",
+    "year": "2024"
+  }
+],
   "courses": [
     {
       "title": "CCNA",
       "platform": "Cisco Networking Academy",
       "status": "Completed",
-    "link": "#",
       "topics": ["Network Access", "IP Connectivity", "Security Fundamentals"]
     },
     {
       "title": "JavaScript Course",
       "platform": "YouTube",
       "status": "In Progress",
-      "link": "#",
+      
       "topics": ["DOM Manipulation", "Events", "Fetch API"]
     },
     {
       "title": "Python for Networking",
       "platform": "Udemy",
       "status": "Completed",
-        "link": "#",
+       
       "topics": ["Network automation", "API integration", "Scripting"]
     }
   ],
@@ -119,10 +131,17 @@
       "image": "https://images.unsplash.com/photo-1508385082359-f38ae991e8f2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
       "link": "#",
       "technologies": ["Wireless", "Security", "Deployment"]
+    },
+    {
+      "title": "Security Audit Report",
+      "description": "Comprehensive security audit report with recommendations.",
+      "image": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      "link": "#",
+      "technologies": ["Security", "Audit", "Reporting"]
     }
   ],
-  "aboutDescription": "I am a passionate network specialist with expertise in designing, implementing, and maintaining robust network infrastructures. With a strong foundation in networking fundamentals and security, I strive to create efficient and secure solutions for modern challenges.",
 
+  "aboutDescription": "I am a passionate network specialist with expertise in designing, implementing, and maintaining robust network infrastructures. With a strong foundation in networking fundamentals and security, I strive to create efficient and secure solutions for modern challenges.",
 "aboutCards": [
   {
     "title": "My Mission",
@@ -154,6 +173,6 @@
     "email": "naderadel102@gmail.com",
     "phone": "+20 155 622 3003",
     "linkedin": "https://linkedin.com/in/naderadel",
-    "github": "https://github.com/nade-r"
+    "github": "https://github.com/nade-r",
   }
 }
