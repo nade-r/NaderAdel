@@ -1,4 +1,32 @@
 {
+  "aboutDescription": "I am a passionate network specialist with expertise in designing, implementing, and maintaining robust network infrastructures. With a strong foundation in networking fundamentals and security, I strive to create efficient and secure solutions for modern challenges.",
+  "aboutCards": [
+    {
+      "title": "My Mission",
+      "icon": "fa-bullseye",
+      "description": "Designing and implementing secure, scalable network solutions that drive business growth while ensuring maximum security and reliability.",
+      "colorClass": "color-1",
+      "link": "#"
+    },
+    {
+      "title": "Education",
+      "icon": "fa-graduation-cap",
+      "description": "Currently pursuing network security certifications with hands-on experience in enterprise networking and cybersecurity solutions.",
+      "colorClass": "color-2"
+    },
+    {
+      "title": "Approach",
+      "icon": "fa-cogs",
+      "description": "Combining theoretical knowledge with practical experience to create optimal network architectures and security protocols.",
+      "colorClass": "color-3"
+    },
+    {
+      "title": "Vision",
+      "icon": "fa-rocket",
+      "description": "To become a leading expert in network security and contribute to developing safer digital environments for organizations.",
+      "colorClass": "color-4"
+    }
+  ],
   "skills": [
     {
       "title": "Networking Fundamentals",
@@ -55,6 +83,306 @@
       ]
     }
   ],
+  "projects": [
+     {
+      "title": "Personal Portfolio Website",
+      "description": "Responsive personal portfolio using HTML, CSS, and JavaScript.",
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      "link": "#",
+      "status": "Completed",
+      "technologies": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ]
+    },
+    {
+      "title": "Office Network Design",
+      "description": "Design and implementation of a small office LAN with VLAN segmentation and routing.",
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      "link": "#",
+      "technologies": [
+        "Networking",
+        "VLAN", 
+        "Routing"
+      ]
+    },
+    {
+      "title": "Secure VPN Setup",
+      "description": "Site-to-site and remote access VPN configuration with firewall policies.",
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      "link": "#",
+      "status": "In Progress",
+      "technologies": [
+        "VPN",
+        "Firewall",
+        "Security"
+      ]
+    },
+    {
+      "title": "Network Monitoring Tool",
+      "description": "Basic network monitoring dashboard for tracking connectivity.",
+      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      "link": "#",
+      "status": "Completed",
+      "technologies": [
+        "Networking",
+        "Monitoring",
+        "Dashboard"
+      ]
+    },
+    {
+      "title": "Security Audit Report",
+      "description": "Comprehensive security audit report with recommendations.",
+      "image": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      "link": "#",
+      "technologies": [
+        "Security",
+        "Audit",
+        "Reporting"
+      ]
+    },
+    {
+      "title": "Wireless Network Setup",
+      "description": "Enterprise wireless network deployment with security features.",
+      "image": "https://images.unsplash.com/photo-1508385082359-f38ae991e8f2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      "link": "#",
+      "technologies": [
+        "Wireless",
+        "Security",
+        "Deployment"
+      ]
+    }
+  ],
+  "courses": [
+    {
+      "id": "huawei-tech-essentials",
+      "title": "Huawei Cloud Tech Essentials",
+      "platform": "Huawei Learning Platform",
+      "status": "Completed",
+      "image": "cr/HWENDCTEDA629033.png",
+      "link": "cr/HWENDCTEDA629033.png",
+      "topics": [
+        "Cloud Fundamentals",
+        "Huawei Cloud Services",
+        "Cloud Architecture"
+      ]
+    },
+    {
+      "id": "Introduction to cybersecurity",
+      "title": "Introduction to cybersecurity",
+      "platform": "Cisco Networking Academy",
+      "status": "Completed",
+      "image": "cr/Introduction to cybersecurity.jpg",
+      "link": "cr/Introduction to cybersecurity.jpg",
+      "topics": [
+        "Security Basics",
+        "Threat Detection",
+        "Network Protection"
+      ]
+    },
+    {
+      "id": "iot-digital-transformation",
+      "title": "IoT and Digital Transformation",
+      "platform": "Cisco Networking Academy",
+      "status": "Completed",
+      "image": "cr/IOT.jpg",
+      "link": "cr/IOT.jpg",
+      "topics": [
+        "IoT Fundamentals",
+        "Smart Devices",
+        "Digital Solutions"
+      ]
+    },
+    {
+      "id": "hcia-security-course",
+      "title": "HCIA Security Professional",
+      "platform": "Huawei Academy",
+      "status": "Completed",
+      "link": "cr/hcia_security.jpg",
+      "image": "cr/hcia_security.jpg",
+      "topics": [
+        "Firewall Configuration",
+        "VPN Setup",
+        "Security Policies"
+      ]
+    },
+    {
+      "id": "linux-redhat-admin",
+      "title": "Red Hat Linux Administration",
+      "platform": "Summer Training Program",
+      "status": "Completed",
+      "image": "cr/red hat_page-0001.jpg",
+      "link": "cr/red hat_page-0001.jpg",
+      "topics": [
+        "Linux Commands",
+        "System Administration",
+        "Server Management"
+      ]
+    },
+    {
+      "id": "oracle-cloud-foundations",
+      "title": "Oracle Cloud Foundations",
+      "platform": "Oracle University",
+      "status": "Completed",
+      "image": "cr/1-eCertificate_page-0001.jpg",
+      "link": "cr/1-eCertificate_page-0001.jpg",
+      "topics": [
+        "OCI Basics",
+        "Cloud Services",
+        "Infrastructure Setup"
+      ]
+    },
+    {
+      "id": "oracle-cloud-architect",
+      "title": "Oracle Cloud Architect",
+      "platform": "Oracle University",
+      "status": "Completed",
+      "image": "cr/2-eCertificate_page-0001.jpg",
+      "link": "cr/2-eCertificate_page-0001.jpg",
+      "topics": [
+        "Cloud Architecture",
+        "Design Patterns",
+        "Best Practices"
+      ]
+    },
+    {
+      "id": "oracle-cloud-migration",
+      "title": "Cloud Migration Specialist",
+      "platform": "Oracle University",
+      "status": "Completed",
+      "image": "cr/3-eCertificate_page-0001.jpg",
+      "link": "cr/3-eCertificate_page-0001.jpg",
+      "topics": [
+        "Migration Strategies",
+        "Data Transfer",
+        "Cloud Integration"
+      ],
+      "certificateId": "oracle-migration",
+      "hours": 50,
+      "year": "2025"
+    },
+    {
+      "id": "hcia-datacom-training",
+      "title": "HCIA Datacom Professional",
+      "platform": "ERI Training Center",
+      "status": "Completed",
+      "image": "cr/hcia datacom.jpg",
+      "link": "cr/hcia datacom.jpg",
+      "topics": [
+        "Network Design",
+        "Routing Protocols",
+        "Data Communication"
+      ]
+    },
+    {
+      "id": "ccna-networks",
+      "title": "CCNA: Introduction to Networks",
+      "platform": "Cisco Networking Academy",
+      "status": "Completed",
+      "link": "cr/CCNA1.jpg",
+      "image": "cr/CCNA1.jpg",
+      "topics": [
+        "Network Basics",
+        "IP Addressing",
+        "Network Devices"
+      ]
+    },
+    {
+      "id": "ccna-switching-routing",
+      "title": "CCNA: Switching and Routing",
+      "platform": "Cisco Networking Academy",
+      "status": "Completed",
+      "link": "cr/CCNA-2.jpg",
+      "image": "cr/CCNA-2.jpg",
+      "topics": [
+        "VLAN Configuration",
+        "Routing Protocols",
+        "Wireless Networks"
+      ]
+    },
+    {
+      "id": "ccna-enterprise",
+      "title": "CCNA: Enterprise Networks",
+      "platform": "Cisco Networking Academy",
+      "status": "Completed",
+      "link": "cr/CCNA-3.jpg",
+      "image": "cr/CCNA-3.jpg",
+      "topics": [
+        "Enterprise Security",
+        "Network Automation",
+        "Advanced Routing"
+      ]
+    },
+    {
+      "id": "fortigate-administrator",
+      "title": "FortiGate Firewall Administration",
+      "platform": "Fortinet Training Institute",
+      "status": "Completed",
+      "link": "cr/Course_Completion_Certificate_forti.jpg",
+      "image": "cr/Course_Completion_Certificate_forti.jpg",
+      "topics": [
+        "Firewall Setup",
+        "Security Policies",
+        "VPN Configuration"
+      ],
+      "certificateId": "fortinet-fortigate",
+      "hours": 40,
+      "year": "2024"
+    },
+    {
+      "id": "ethical-hacking-course",
+      "title": "Ethical Hacking Fundamentals",
+      "platform": "Cisco Networking Academy",
+      "status": "Completed",
+      "link": "cr/Ethcal Hacker.jpg",
+      "image": "cr/Ethcal Hacker.jpg",
+      "topics": [
+        "Penetration Testing",
+        "Vulnerability Assessment",
+        "Security Tools"
+      ]
+    },
+    {
+      "id": "windows-server-network",
+      "title": "Windows Server & Network Infrastructure",
+      "platform": "SMART Technology For Training",
+      "status": "Completed",
+      "link": "cr/smart.jpeg",
+      "image": "cr/smart.jpeg",
+      "topics": [
+        "Windows Server Setup",
+        "Cisco Devices Configuration",
+        "Firewall Management"
+      ]
+    },
+     {
+      "id": "AWS",
+      "title": "AWS Certified Solutions Architect",
+      "platform": "AWS Training Platform",
+      "status": "In Progress",
+      "link": "#",
+      "image": "#",
+      "topics": [
+        "Cloud Architecture",
+        "AWS Services",
+        "Security Best Practices"
+      ]
+    },
+    {
+      "id": "python-network-automation",
+      "title": "Python for Network Automation",
+      "platform": "Summer Training Program",
+      "status": "In Progress",
+      "link": "#",
+      "image": "#",
+      "topics": [
+        "Network Scripting",
+        "API Integration",
+        "Automation Tools"
+      ]
+    }
+  ],
   "certificates": [
     {
       "title": "HCCDA - Tech Essentials",
@@ -105,8 +433,8 @@
       "status": "In Progress",
       "progress": "60",
       "expectedDate": "March 2025",
-      "image": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      "link": "https://aws.amazon.com/certification/certified-solutions-architect-associate/",
+      "image": "#",
+      "link": "#",
       "credentialId": "AWS-SAA-2025-001",
       "year": "2025",
       "category": "Cloud",
@@ -121,345 +449,6 @@
       "credentialId": "FORTINET-FGT7.6-2024",
       "year": "2025",
       "category": "Security"
-    }
-  ],
-  "courses": [
-    {
-      "id": "huawei-tech-essentials",
-      "title": "Huawei Cloud Tech Essentials",
-      "platform": "Huawei Learning Platform",
-      "status": "Completed",
-      "image": "cr/HWENDCTEDA629033.png",
-      "link": "https://e.huawei.com/en/talent/",
-      "topics": [
-        "Cloud Fundamentals",
-        "Huawei Cloud Services",
-        "Cloud Architecture"
-      ],
-      "certificateId": "huawei-hccda",
-      "hours": 40,
-      "year": "2023"
-    },
-    {
-      "id": "cybersecurity-fundamentals",
-      "title": "Cybersecurity Fundamentals",
-      "platform": "Cisco Networking Academy",
-      "status": "Completed",
-      "link": "https://www.netacad.com/courses/cybersecurity",
-      "topics": [
-        "Security Basics",
-        "Threat Detection",
-        "Network Protection"
-      ],
-      "certificateId": "cisco-cybersecurity",
-      "hours": 30,
-      "year": "2023"
-    },
-    {
-      "id": "iot-digital-transformation",
-      "title": "IoT and Digital Transformation",
-      "platform": "Cisco Networking Academy",
-      "status": "Completed",
-      "link": "https://www.netacad.com/courses/iot",
-      "topics": [
-        "IoT Fundamentals",
-        "Smart Devices",
-        "Digital Solutions"
-      ],
-      "certificateId": "cisco-iot",
-      "hours": 25,
-      "year": "2023"
-    },
-    {
-      "id": "hcia-security-course",
-      "title": "HCIA Security Professional",
-      "platform": "Huawei Academy",
-      "status": "Completed",
-      "link": "https://e.huawei.com/en/talent/",
-      "topics": [
-        "Firewall Configuration",
-        "VPN Setup",
-        "Security Policies"
-      ],
-      "certificateId": "huawei-hcia-security",
-      "hours": 40,
-      "year": "2024"
-    },
-    {
-      "id": "linux-redhat-admin",
-      "title": "Red Hat Linux Administration",
-      "platform": "Summer Training Program",
-      "status": "Completed",
-      "link": "#",
-      "topics": [
-        "Linux Commands",
-        "System Administration",
-        "Server Management"
-      ],
-      "certificateId": "redhat-linux",
-      "hours": 120,
-      "year": "2025",
-      "score": "96.5%"
-    },
-    {
-      "id": "oracle-cloud-foundations",
-      "title": "Oracle Cloud Foundations",
-      "platform": "Oracle University",
-      "status": "Completed",
-      "link": "https://www.oracle.com/education/",
-      "topics": [
-        "OCI Basics",
-        "Cloud Services",
-        "Infrastructure Setup"
-      ],
-      "certificateId": "oracle-foundations",
-      "hours": 35,
-      "year": "2025"
-    },
-    {
-      "id": "oracle-cloud-architect",
-      "title": "Oracle Cloud Architect",
-      "platform": "Oracle University",
-      "status": "Completed",
-      "link": "https://www.oracle.com/education/",
-      "topics": [
-        "Cloud Architecture",
-        "Design Patterns",
-        "Best Practices"
-      ],
-      "certificateId": "oracle-architect",
-      "hours": 45,
-      "year": "2025"
-    },
-    {
-      "id": "oracle-cloud-migration",
-      "title": "Cloud Migration Specialist",
-      "platform": "Oracle University",
-      "status": "Completed",
-      "link": "https://www.oracle.com/education/",
-      "topics": [
-        "Migration Strategies",
-        "Data Transfer",
-        "Cloud Integration"
-      ],
-      "certificateId": "oracle-migration",
-      "hours": 50,
-      "year": "2025"
-    },
-    {
-      "id": "hcia-datacom-training",
-      "title": "HCIA Datacom Professional",
-      "platform": "ERI Training Center",
-      "status": "Completed",
-      "link": "#",
-      "topics": [
-        "Network Design",
-        "Routing Protocols",
-        "Data Communication"
-      ],
-      "certificateId": "huawei-hcia-datacom",
-      "hours": 80,
-      "year": "2025"
-    },
-    {
-      "id": "ccna-networks",
-      "title": "CCNA: Introduction to Networks",
-      "platform": "Cisco Networking Academy",
-      "status": "Completed",
-      "link": "https://www.netacad.com/courses/networking",
-      "topics": [
-        "Network Basics",
-        "IP Addressing",
-        "Network Devices"
-      ],
-      "certificateId": "cisco-ccna1",
-      "hours": 70,
-      "year": "2024"
-    },
-    {
-      "id": "ccna-switching-routing",
-      "title": "CCNA: Switching and Routing",
-      "platform": "Cisco Networking Academy",
-      "status": "Completed",
-      "link": "https://www.netacad.com/courses/networking",
-      "topics": [
-        "VLAN Configuration",
-        "Routing Protocols",
-        "Wireless Networks"
-      ],
-      "certificateId": "cisco-ccna2",
-      "hours": 65,
-      "year": "2024"
-    },
-    {
-      "id": "ccna-enterprise",
-      "title": "CCNA: Enterprise Networks",
-      "platform": "Cisco Networking Academy",
-      "status": "Completed",
-      "link": "https://www.netacad.com/courses/networking",
-      "topics": [
-        "Enterprise Security",
-        "Network Automation",
-        "Advanced Routing"
-      ],
-      "certificateId": "cisco-ccna3",
-      "hours": 75,
-      "year": "2024"
-    },
-    {
-      "id": "fortigate-administrator",
-      "title": "FortiGate Firewall Administration",
-      "platform": "Fortinet Training Institute",
-      "status": "Completed",
-      "link": "https://training.fortinet.com/",
-      "topics": [
-        "Firewall Setup",
-        "Security Policies",
-        "VPN Configuration"
-      ],
-      "certificateId": "fortinet-fortigate",
-      "hours": 40,
-      "year": "2024"
-    },
-    {
-      "id": "ethical-hacking-course",
-      "title": "Ethical Hacking Fundamentals",
-      "platform": "Cisco Networking Academy",
-      "status": "Completed",
-      "link": "https://www.netacad.com/courses/cybersecurity",
-      "topics": [
-        "Penetration Testing",
-        "Vulnerability Assessment",
-        "Security Tools"
-      ],
-      "certificateId": "cisco-ethical-hacker",
-      "hours": 35,
-      "year": "2024"
-    },
-    {
-      "id": "windows-server-network",
-      "title": "Windows Server & Network Infrastructure",
-      "platform": "SMART Technology For Training",
-      "status": "in Progress",
-      "link": "#",
-      "topics": [
-        "Windows Server Setup",
-        "Cisco Devices Configuration",
-        "Firewall Management"
-      ],
-      "certificateId": "smart-tech-training",
-      "hours": 90,
-      "year": "2025"
-    },
-    {
-      "id": "python-network-automation",
-      "title": "Python for Network Automation",
-      "platform": "Udemy",
-      "status": "Completed",
-      "link": "#",
-      "topics": [
-        "Network Scripting",
-        "API Integration",
-        "Automation Tools"
-      ],
-      "hours": 25,
-      "year": "2023"
-    }
-  ],
-  "projects": [
-    {
-      "title": "Office Network Design",
-      "description": "Design and implementation of a small office LAN with VLAN segmentation and routing.",
-      "image": "cr/HCIA Datacom.png",
-      "link": "#",
-      "technologies": [
-        "Networking",
-        "VLAN",
-        "Routing"
-      ]
-    },
-    {
-      "title": "Secure VPN Setup",
-      "description": "Site-to-site and remote access VPN configuration with firewall policies.",
-      "image": "cr/red hat_page-0001.jpg",
-      "link": "#",
-      "technologies": [
-        "VPN",
-        "Firewall",
-        "Security"
-      ]
-    },
-    {
-      "title": "Personal Portfolio Website",
-      "description": "Responsive personal portfolio using HTML, CSS, and JavaScript.",
-      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-      "link": "#",
-      "technologies": [
-        "HTML",
-        "CSS",
-        "JavaScript"
-      ]
-    },
-    {
-      "title": "Network Monitoring Tool",
-      "description": "Basic network monitoring dashboard for tracking connectivity.",
-      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-      "link": "#",
-      "technologies": [
-        "Networking",
-        "Monitoring",
-        "Dashboard"
-      ]
-    },
-    {
-      "title": "Security Audit Report",
-      "description": "Comprehensive security audit report with recommendations.",
-      "image": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-      "link": "#",
-      "technologies": [
-        "Security",
-        "Audit",
-        "Reporting"
-      ]
-    },
-    {
-      "title": "Wireless Network Setup",
-      "description": "Enterprise wireless network deployment with security features.",
-      "image": "https://images.unsplash.com/photo-1508385082359-f38ae991e8f2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-      "link": "#",
-      "technologies": [
-        "Wireless",
-        "Security",
-        "Deployment"
-      ]
-    }
-  ],
-  "aboutDescription": "I am a passionate network specialist with expertise in designing, implementing, and maintaining robust network infrastructures. With a strong foundation in networking fundamentals and security, I strive to create efficient and secure solutions for modern challenges.",
-  "aboutCards": [
-    {
-      "title": "My Mission",
-      "icon": "fa-bullseye",
-      "description": "Designing and implementing secure, scalable network solutions that drive business growth while ensuring maximum security and reliability.",
-      "colorClass": "color-1",
-      "link": "#"
-    },
-    {
-      "title": "Education",
-      "icon": "fa-graduation-cap",
-      "description": "Currently pursuing network security certifications with hands-on experience in enterprise networking and cybersecurity solutions.",
-      "colorClass": "color-2"
-    },
-    {
-      "title": "Approach",
-      "icon": "fa-cogs",
-      "description": "Combining theoretical knowledge with practical experience to create optimal network architectures and security protocols.",
-      "colorClass": "color-3"
-    },
-    {
-      "title": "Vision",
-      "icon": "fa-rocket",
-      "description": "To become a leading expert in network security and contribute to developing safer digital environments for organizations.",
-      "colorClass": "color-4"
     }
   ],
   "contact": {

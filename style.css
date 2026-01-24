@@ -113,6 +113,11 @@ body {
   100% { background-position: 0% 50%; }
 }
 
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
 /* ========== HEADER & NAVIGATION ========== */
 header {
   position: fixed;
@@ -585,6 +590,72 @@ h2::after {
   border: 1px solid rgba(0, 255, 255, 0.3);
 }
 
+/* ========== COURSES ========== */
+.course-card {
+  height: 380px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.course-image-container {
+  width: 100%;
+  height: 140px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.course-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.4s ease;
+}
+
+.uniform-card:hover .course-image {
+  transform: scale(1.05);
+}
+
+.course-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.course-overlay span {
+  background: #0ff;
+  color: #000;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.course-image-container:hover .course-overlay {
+  opacity: 1;
+}
+
+.course-card .card-icon {
+  display: none;
+}
+
+.course-card .certificate-status {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+}
+
 /* ========== CERTIFICATES ========== */
 .certificate-card {
   height: 420px;
@@ -824,6 +895,58 @@ h2::after {
   font-weight: bold;
   font-size: 0.9rem;
   animation: pulseText 2s infinite;
+}
+
+/* ========== LOADING BADGES ========== */
+.loading-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 3;
+  background: linear-gradient(45deg, #ff9900, #ffcc00);
+  color: #000;
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  animation: pulse 1.5s infinite;
+}
+
+.loading-badge i {
+  animation: spin 2s linear infinite;
+}
+
+.loading-badge.project {
+  background: linear-gradient(45deg, #ff3366, #ff6699);
+}
+
+.loading-badge.course {
+  background: linear-gradient(45deg, #3366ff, #6699ff);
+}
+
+/* تأثير شيمر للكروت غير المكتملة */
+.loading-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.loading-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  animation: shimmer 2s infinite;
 }
 
 /* ========== SHOW MORE BUTTON ========== */
@@ -1165,7 +1288,7 @@ h2::after {
     padding: 15px;
   }
 
-  .project-card {
+  .project-card, .course-card {
     height: auto;
     min-height: 350px;
   }
@@ -1193,7 +1316,7 @@ h2::after {
 
   .show-more-btn { min-width: 180px; padding: 10px 20px; }
 
-  .project-image-container {
+  .project-image-container, .course-image-container {
     height: 120px;
   }
 
@@ -1233,7 +1356,7 @@ h2::after {
     padding: 12px 8px;
   }
 
-  .project-card {
+  .project-card, .course-card {
     min-height: 320px;
   }
 
@@ -1250,7 +1373,7 @@ h2::after {
     gap: 15px;
   }
   
-  .project-image-container {
+  .project-image-container, .course-image-container {
     height: 100px;
   }
 }
@@ -1293,8 +1416,4 @@ h2::after {
   .cards-container {
     grid-template-columns: repeat(4, 1fr);
   }
-}
-@keyframes typing {
-  from { width: 0; }
-  to { width: 29ch; }
 }

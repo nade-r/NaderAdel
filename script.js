@@ -83,16 +83,29 @@ fetch("data.json")
     data.projects.forEach((project, index) => {
       const card = document.createElement("div");
       const colorClass = projectColors[index % projectColors.length] || 'color-1';
-      card.className = `uniform-card project-card ${colorClass} ${index < visibleItems.projects ? 'visible' : 'hidden'}`;
+
+      // تحديد ما إذا كان المشروع غير مكتمل
+      const isInProgress = project.status === "In Progress" || project.progress < 100;
+      const progress = project.progress || 50;
+
+      card.className = `uniform-card project-card ${colorClass} ${isInProgress ? 'loading-shimmer' : ''} ${index < visibleItems.projects ? 'visible' : 'hidden'}`;
 
       // صورة افتراضية إذا لم توجد صورة
       const projectImage = project.image || 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80';
 
       card.innerHTML = `
+            <!-- علامة التحميل للمشاريع غير المكتملة -->
+            ${isInProgress ? `
+              <div class="loading-badge project">
+                <i class="fas fa-sync-alt"></i>
+                In Progress
+              </div>
+            ` : ''}
+            
             <div class="project-image-container">
               <img src="${projectImage}" alt="${project.title}" class="project-image">
               <div class="project-overlay">
-                <span>View Details</span>
+                <span>${isInProgress ? 'Under Development' : 'View Details'}</span>
               </div>
             </div>
             <h3>${project.title}</h3>
@@ -100,49 +113,173 @@ fetch("data.json")
             <div class="project-tech">
               ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join("")}
             </div>
-            <a href="${project.link || '#'}" target="_blank" class="contact-link">
-              View Project <i class="fas fa-external-link-alt"></i>
-            </a>
+            
+            <!-- تأثير التحميل للمشاريع غير المكتملة -->
+            ${isInProgress ? `
+              <div class="loading-animation" style="margin-top: 15px;">
+                <div class="spinner pulse"></div>
+                <span class="loading-text">Progress: ${progress}%</span>
+              </div>
+              
+              <!-- شريط التقدم -->
+              <div style="width: 100%; margin-top: 10px;">
+                <div class="progress-bar-small">
+                  <div class="progress-fill-small" style="width: ${progress}%"></div>
+                </div>
+                <div class="expected-info" style="margin-top: 5px;">
+                  <i class="fas fa-hourglass-half"></i>
+                  <span>Expected: ${project.expectedDate || 'Under Development'}</span>
+                </div>
+              </div>
+            ` : `
+              <a href="${project.link || '#'}" target="_blank" class="contact-link">
+                View Project <i class="fas fa-external-link-alt"></i>
+              </a>
+            `}
           `;
       projectsGrid.appendChild(card);
       allProjectsCards.push(card);
     });
 
-/* ========== CERTIFICATES ========== */
-const certGrid = document.getElementById("certificatesGrid");
-const allCertificatesCards = [];
-const certificateColors = ['color-1', 'color-2', 'color-3', 'color-4'];
+    /* ========== COURSES ========== */
+    const coursesGrid = document.getElementById("coursesGrid");
+    const allCoursesCards = [];
+    const courseColors = ['color-1', 'color-2', 'color-3', 'color-4'];
 
-// صور افتراضية للشهادات
-const certificateDefaultImages = [
-  "https://images.unsplash.com/photo-1550592704-6c76defa9985?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-];
+    data.courses.forEach((course, index) => {
+      const card = document.createElement("div");
+      const colorClass = courseColors[index % courseColors.length] || 'color-1';
 
-data.certificates.forEach((cert, index) => {
-  const card = document.createElement("div");
-  const colorClass = certificateColors[index % certificateColors.length] || 'color-1';
-  card.className = `uniform-card certificate-card ${colorClass} ${index < visibleItems.certificates ? 'visible' : 'hidden'}`;
-  
-  const isInProgress = cert.status === "In Progress";
-  const progress = cert.progress || "50";
-  const expectedDate = cert.expectedDate || "قيد الإنجاز";
-  
-  // استخدام صورة الشهادة أو صورة افتراضية
-  let certImage = cert.image;
-  if (!certImage) {
-    // صور افتراضية مختلفة للشهادات المكتملة والقيد التقدم
-    if (isInProgress) {
-      certImage = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
-    } else {
-      certImage = certificateDefaultImages[index % certificateDefaultImages.length];
-    }
-  }
-  
-  // HTML مشابه لكروت المشاريع
-  card.innerHTML = `
+      const isInProgress = course.status === "In Progress" || course.progress < 100;
+      const progress = course.progress || (isInProgress ? "50" : "100");
+      const expectedDate = course.expectedDate || "قيد الإنجاز";
+
+      card.className = `uniform-card course-card ${colorClass} ${isInProgress ? 'loading-shimmer' : ''} ${index < visibleItems.courses ? 'visible' : 'hidden'}`;
+
+      // صور افتراضية للكورسات
+      const courseDefaultImages = [
+        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      ];
+
+      // استخدام صورة الكورس من البيانات أو صورة افتراضية
+      const courseImage = course.image || courseDefaultImages[index % courseDefaultImages.length];
+
+      card.innerHTML = `
+    <!-- شارة الحالة -->
+    <span class="certificate-status ${isInProgress ? 'status-inprogress' : 'status-completed'}">
+      ${isInProgress ? 'In Progress' : 'Completed'}
+    </span>
+    
+    <!-- علامة التحميل للكورسات غير المكتملة -->
+    ${isInProgress ? `
+      <div class="loading-badge course">
+        <i class="fas fa-book-open"></i>
+        Currently Learning
+      </div>
+    ` : ''}
+    
+    <!-- صورة الكورس -->
+    <div class="course-image-container">
+      <img src="${courseImage}" alt="${course.title}" class="course-image">
+      <div class="course-overlay">
+        <span><i class="fas ${isInProgress ? 'fa-sync-alt' : 'fa-book-open'}"></i> ${isInProgress ? 'In Progress' : 'View Course'}</span>
+      </div>
+    </div>
+    
+    <!-- معلومات الكورس -->
+    <h3>${course.title}</h3>
+    <p><strong>Platform:</strong> ${course.platform}</p>
+    
+    <!-- مواضيع الكورس -->
+    <ul style="margin-top: 10px; max-height: 80px; overflow-y: auto;">
+      ${course.topics.slice(0, 3).map(topic => `<li>${topic}</li>`).join("")}
+      ${course.topics.length > 3 ? '<li>... and more</li>' : ''}
+    </ul>
+    
+    <!-- تأثير التحميل للكورسات غير المكتملة -->
+    ${isInProgress ? `
+      <div class="loading-animation" style="margin-top: 15px;">
+        <div class="spinner pulse"></div>
+        <span class="loading-text">Progress: ${progress}%</span>
+      </div>
+      
+      <!-- شريط التقدم -->
+      <div style="width: 100%; margin-top: 10px;">
+        <div class="progress-bar-small">
+          <div class="progress-fill-small" style="width: ${progress}%"></div>
+        </div>
+        <div class="expected-info" style="margin-top: 5px;">
+          <i class="fas fa-hourglass-half"></i>
+          <span>Expected: ${expectedDate}</span>
+        </div>
+      </div>
+    ` : `
+      <!-- رابط الكورس المكتمل -->
+      ${course.link ? `
+        <a href="${course.link}" target="_blank" class="contact-link" style="margin-top: 15px;">
+          <i class="fas fa-external-link-alt"></i> View Certificate
+        </a>
+      ` : ''}
+    `}
+  `;
+
+      // إضافة حدث النقر على صورة الكورس
+      const courseImageContainer = card.querySelector('.course-image-container');
+      if (courseImageContainer && course.link) {
+        courseImageContainer.addEventListener('click', function () {
+          window.open(course.link, '_blank');
+        });
+      }
+
+      coursesGrid.appendChild(card);
+      allCoursesCards.push(card);
+    });
+
+    /* ========== CERTIFICATES ========== */
+    const certGrid = document.getElementById("certificatesGrid");
+    const allCertificatesCards = [];
+    const certificateColors = ['color-1', 'color-2', 'color-3', 'color-4'];
+
+    // صور افتراضية للشهادات
+    const certificateDefaultImages = [
+      "https://images.unsplash.com/photo-1550592704-6c76defa9985?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    ];
+
+    data.certificates.forEach((cert, index) => {
+      const card = document.createElement("div");
+      const colorClass = certificateColors[index % certificateColors.length] || 'color-1';
+
+      const isInProgress = cert.status === "In Progress";
+      const progress = cert.progress || "50";
+      const expectedDate = cert.expectedDate || "قيد الإنجاز";
+
+      card.className = `uniform-card certificate-card ${colorClass} ${isInProgress ? 'loading-shimmer' : ''} ${index < visibleItems.certificates ? 'visible' : 'hidden'}`;
+
+      // استخدام صورة الشهادة أو صورة افتراضية
+      let certImage = cert.image;
+      if (!certImage) {
+        if (isInProgress) {
+          certImage = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
+        } else {
+          certImage = certificateDefaultImages[index % certificateDefaultImages.length];
+        }
+      }
+
+      card.innerHTML = `
+    <!-- علامة التحميل للشهادات غير المكتملة -->
+    ${isInProgress ? `
+      <div class="loading-badge course">
+        <i class="fas fa-sync-alt"></i>
+        In Progress
+      </div>
+    ` : ''}
+    
     <!-- صورة الشهادة -->
     <div class="certificate-image-container">
       <img src="${certImage}" alt="${cert.title}" class="certificate-main-image">
@@ -211,58 +348,21 @@ data.certificates.forEach((cert, index) => {
       </div>
     </div>
   `;
-  
-  // إضافة حدث النقر على صورة الشهادة
-  const certImageContainer = card.querySelector('.certificate-image-container');
-  if (certImageContainer) {
-    certImageContainer.addEventListener('click', function() {
-      if (cert.image) {
-        window.open(cert.image, '_blank');
-      } else if (cert.link) {
-        window.open(cert.link, '_blank');
+
+      // إضافة حدث النقر على صورة الشهادة
+      const certImageContainer = card.querySelector('.certificate-image-container');
+      if (certImageContainer) {
+        certImageContainer.addEventListener('click', function () {
+          if (cert.image) {
+            window.open(cert.image, '_blank');
+          } else if (cert.link) {
+            window.open(cert.link, '_blank');
+          }
+        });
       }
-    });
-  }
-  
-  certGrid.appendChild(card);
-  allCertificatesCards.push(card);
-});
 
-    /* ========== COURSES ========== */
-    const coursesGrid = document.getElementById("coursesGrid");
-    const allCoursesCards = [];
-    const courseColors = ['color-1', 'color-2', 'color-3'];
-
-    data.courses.forEach((course, index) => {
-      const card = document.createElement("div");
-      const colorClass = courseColors[index % courseColors.length] || 'color-1';
-      card.className = `uniform-card ${colorClass} ${index < visibleItems.courses ? 'visible' : 'hidden'}`;
-
-      const isInProgress = course.status === "In Progress";
-      const statusClass = isInProgress ? "status-inprogress" : "status-completed";
-      const statusText = isInProgress ? "In Progress" : "Completed";
-
-      card.innerHTML = `
-    <span class="certificate-status ${statusClass}">${statusText}</span>
-    <div class="card-icon">
-      <i class="fas ${isInProgress ? 'fa-sync-alt' : 'fa-book-open'}"></i>
-    </div>
-    <h3>${course.title}</h3>
-    <p><strong>Platform:</strong> ${course.platform}</p>
-    <ul>
-      ${course.topics.map(topic => `<li>${topic}</li>`).join("")}
-    </ul>
-    
-    ${isInProgress ? `
-      <div class="loading-animation">
-        <div class="spinner pulse"></div>
-        <span class="loading-text">Currently Learning...</span>
-      </div>
-    ` : ''}
-  `;
-
-      coursesGrid.appendChild(card);
-      allCoursesCards.push(card);
+      certGrid.appendChild(card);
+      allCertificatesCards.push(card);
     });
 
     /* ========== CONTACT ========== */
