@@ -45,7 +45,7 @@
   <!-- ================= HOME ================= -->
   <section id="home" class="fade-in">
     <div class="hero-content">
-      <img src="cr/nader.jpg" alt="Profile" class="profile-pic" />
+      <img src="CV\nader.jpg" alt="Profile" class="profile-pic" />
 
       <h2 id="home-title">Nader Adel AbdRabbo</h2>
       <p id="home-subtitle" class="typing-effect">Network & Security Specialist</p>
@@ -60,18 +60,17 @@
           <i class="fas fa-briefcase"></i> View Projects
         </a>
 
-        <a href="https://drive.google.com/file/d/XXXX/view" target="_blank" class="hero-btn secondary-btn">
+        <a href="CV/cv.pdf" target="_blank" class="hero-btn secondary-btn">
           <i class="fas fa-file-pdf"></i> View CV
         </a>
 
-        <a href="https://drive.google.com/uc?export=download&id=XXXX" class="hero-btn primary-btn">
+        <a href="CV/cv.pdf" class="hero-btn primary-btn">
           <i class="fas fa-download"></i> Download CV
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ================= ABOUT ================= -->
   <!-- ================= ABOUT ================= -->
   <section id="about" class="fade-in">
     <h2>About Me</h2>
@@ -129,11 +128,51 @@
     </button>
   </section>
 
-  <!-- ================= CONTACT ================= -->
+  <!-- ================= CONTACT SECTION ================= -->
   <section id="contact" class="fade-in">
-    <h2>Contact</h2>
-    <div class="cards-container" id="contactInfo">
-      <!-- سيتم ملؤه من data.json -->
+    <h2>Contact Me</h2>
+
+    <div class="contact-container">
+      <!-- Contact Info Cards -->
+      <div class="contact-info">
+        <div class="cards-container" id="contactCardsContainer">
+          <!-- سيتم ملؤه من JavaScript مع الألوان الصحيحة -->
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form">
+        <h3>Send Me a Message</h3>
+        <p>Feel free to get in touch with me for any inquiries or collaboration opportunities</p>
+
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="name"><i class="fas fa-user"></i> Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email"><i class="fas fa-envelope"></i> Your Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+          </div>
+
+          <!-- <div class="form-group">
+            <label for="subject"><i class="fas fa-tag"></i> Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="What is this regarding?" required>
+          </div> -->
+
+          <div class="form-group">
+            <label for="message"><i class="fas fa-comment"></i> Your Message</label>
+            <textarea id="message" name="message" placeholder="Type your message here..." required></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+
+          <div id="formMessage" class="form-message"></div>
+        </form>
+      </div>
     </div>
   </section>
 
@@ -160,8 +199,6 @@
   <!-- زر الرجوع للأعلى -->
   <button class="back-to-top" id="back-to-top">⬆️</button>
   <script src="script.js"></script>
-
-
 </body>
 
 </html>

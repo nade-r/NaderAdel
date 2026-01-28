@@ -152,7 +152,23 @@
         "Security",
         "Deployment"
       ]
-    }
+    },
+     {
+  "title": "Fortinet Firewall Configuration",
+  "description": "Enterprise network security implementation using FortiGate firewall, including firewall policies, NAT, VPN, and advanced threat protection.",
+  "image": "project/Project Fortinet/project_fortinet.png",
+  "link": "#",
+  "technologies": [
+    "FortiGate",
+    "Firewall Policies",
+    "NAT",
+    "VPN",
+    "IPS",
+    "Web Filtering"
+   
+  ]
+}
+
   ],
   "courses": [
     {
@@ -160,12 +176,15 @@
       "title": "Huawei Cloud Tech Essentials",
       "platform": "Huawei Learning Platform",
       "status": "Completed",
-      "image": "cr/HWENDCTEDA629033.png",
-      "link": "cr/HWENDCTEDA629033.png",
+      "image": "Certificates/HWENDCTEDA629033.png",
+      "link": "Certificates/HWENDCTEDA629033.png",
       "topics": [
-        "Cloud Fundamentals",
+         "Cloud Fundamentals",
         "Huawei Cloud Services",
-        "Cloud Architecture"
+        "Cloud Architecture",
+        "Security Basics",
+        "Deployment Models",
+        "Cloud Security"
       ]
     },
     {
@@ -173,12 +192,15 @@
       "title": "Introduction to cybersecurity",
       "platform": "Cisco Networking Academy",
       "status": "Completed",
-      "image": "cr/Introduction to cybersecurity.jpg",
-      "link": "cr/Introduction to cybersecurity.jpg",
+      "image": "Certificates/Introduction to cybersecurity.jpg",
+      "link": "Certificates/Introduction to cybersecurity.jpg",
       "topics": [
         "Security Basics",
         "Threat Detection",
-        "Network Protection"
+        "Network Protection",
+        "Cybersecurity Principles",
+        "Risk Management",
+        "Incident Response"
       ]
     },
     {
@@ -186,12 +208,15 @@
       "title": "IoT and Digital Transformation",
       "platform": "Cisco Networking Academy",
       "status": "Completed",
-      "image": "cr/IOT.jpg",
-      "link": "cr/IOT.jpg",
+      "image": "Certificates/IOT.jpg",
+      "link": "Certificates/IOT.jpg",
       "topics": [
         "IoT Fundamentals",
         "Smart Devices",
-        "Digital Solutions"
+        "Digital Solutions",
+        "Industry Applications",
+        "Data Analytics",
+        "Security Considerations"
       ]
     },
     {
@@ -199,12 +224,15 @@
       "title": "HCIA Security Professional",
       "platform": "Huawei Academy",
       "status": "Completed",
-      "link": "cr/hcia_security.jpg",
-      "image": "cr/hcia_security.jpg",
+      "link": "Certificates/hcia_security.jpg",
+      "image": "Certificates/hcia_security.jpg",
       "topics": [
         "Firewall Configuration",
         "VPN Setup",
-        "Security Policies"
+        "Security Policies",
+        "Intrusion Detection",
+        "Network Security",
+        "Threat Management"
       ]
     },
     {
@@ -212,12 +240,15 @@
       "title": "Red Hat Linux Administration",
       "platform": "Summer Training Program",
       "status": "Completed",
-      "image": "cr/red hat_page-0001.jpg",
-      "link": "cr/red hat_page-0001.jpg",
+      "image": "Certificates/red hat_page-0001.jpg",
+      "link": "Certificates/red hat_page-0001.jpg",
       "topics": [
         "Linux Commands",
         "System Administration",
-        "Server Management"
+        "Server Management",
+        "User Management",
+        "File Systems",
+        "Networking"
       ]
     },
     {
@@ -225,12 +256,15 @@
       "title": "Oracle Cloud Foundations",
       "platform": "Oracle University",
       "status": "Completed",
-      "image": "cr/1-eCertificate_page-0001.jpg",
-      "link": "cr/1-eCertificate_page-0001.jpg",
+      "image": "Certificates/1-eCertificate_page-0001.jpg",
+      "link": "Certificates/1-eCertificate_page-0001.jpg",
       "topics": [
         "OCI Basics",
         "Cloud Services",
-        "Infrastructure Setup"
+        "Infrastructure Setup",
+        "Security Fundamentals",
+        "Resource Management",
+        "Cost Optimization"
       ]
     },
     {
@@ -238,12 +272,15 @@
       "title": "Oracle Cloud Architect",
       "platform": "Oracle University",
       "status": "Completed",
-      "image": "cr/2-eCertificate_page-0001.jpg",
-      "link": "cr/2-eCertificate_page-0001.jpg",
+      "image": "Certificates/2-eCertificate_page-0001.jpg",
+      "link": "Certificates/2-eCertificate_page-0001.jpg",
       "topics": [
         "Cloud Architecture",
         "Design Patterns",
-        "Best Practices"
+        "Best Practices",
+        "Scalability",
+        "Security Design",
+        "Disaster Recovery"
       ]
     },
     {
@@ -251,8 +288,8 @@
       "title": "Cloud Migration Specialist",
       "platform": "Oracle University",
       "status": "Completed",
-      "image": "cr/3-eCertificate_page-0001.jpg",
-      "link": "cr/3-eCertificate_page-0001.jpg",
+      "image": "Certificates/3-eCertificate_page-0001.jpg",
+      "link": "Certificates/3-eCertificate_page-0001.jpg",
       "topics": [
         "Migration Strategies",
         "Data Transfer",
@@ -267,8 +304,8 @@
       "title": "HCIA Datacom Professional",
       "platform": "ERI Training Center",
       "status": "Completed",
-      "image": "cr/hcia datacom.jpg",
-      "link": "cr/hcia datacom.jpg",
+      "image": "Certificates/hcia datacom.jpg",
+      "link": "Certificates/hcia datacom.jpg",
       "topics": [
         "Network Design",
         "Routing Protocols",
@@ -280,8 +317,8 @@
       "title": "CCNA: Introduction to Networks",
       "platform": "Cisco Networking Academy",
       "status": "Completed",
-      "link": "cr/CCNA1.jpg",
-      "image": "cr/CCNA1.jpg",
+      "link": "Certificates/CCNA1.jpg",
+      "image": "Certificates/CCNA1.jpg",
       "topics": [
         "Network Basics",
         "IP Addressing",
@@ -293,8 +330,8 @@
       "title": "CCNA: Switching and Routing",
       "platform": "Cisco Networking Academy",
       "status": "Completed",
-      "link": "cr/CCNA-2.jpg",
-      "image": "cr/CCNA-2.jpg",
+      "link": "Certificates/CCNA-2.jpg",
+      "image": "Certificates/CCNA-2.jpg",
       "topics": [
         "VLAN Configuration",
         "Routing Protocols",
@@ -306,8 +343,8 @@
       "title": "CCNA: Enterprise Networks",
       "platform": "Cisco Networking Academy",
       "status": "Completed",
-      "link": "cr/CCNA-3.jpg",
-      "image": "cr/CCNA-3.jpg",
+      "link": "Certificates/CCNA-3.jpg",
+      "image": "Certificates/CCNA-3.jpg",
       "topics": [
         "Enterprise Security",
         "Network Automation",
@@ -319,8 +356,8 @@
       "title": "FortiGate Firewall Administration",
       "platform": "Fortinet Training Institute",
       "status": "Completed",
-      "link": "cr/Course_Completion_Certificate_forti.jpg",
-      "image": "cr/Course_Completion_Certificate_forti.jpg",
+      "link": "Certificates/Course_Completion_Certificate_forti.jpg",
+      "image": "Certificates/Course_Completion_Certificate_forti.jpg",
       "topics": [
         "Firewall Setup",
         "Security Policies",
@@ -335,8 +372,8 @@
       "title": "Ethical Hacking Fundamentals",
       "platform": "Cisco Networking Academy",
       "status": "Completed",
-      "link": "cr/Ethcal Hacker.jpg",
-      "image": "cr/Ethcal Hacker.jpg",
+      "link": "Certificates/Ethcal Hacker.jpg",
+      "image": "Certificates/Ethcal Hacker.jpg",
       "topics": [
         "Penetration Testing",
         "Vulnerability Assessment",
@@ -348,8 +385,8 @@
       "title": "Windows Server & Network Infrastructure",
       "platform": "SMART Technology For Training",
       "status": "Completed",
-      "link": "cr/smart.jpeg",
-      "image": "cr/smart.jpeg",
+      "link": "Certificates/smart.jpeg",
+      "image": "Certificates/smart.jpeg",
       "topics": [
         "Windows Server Setup",
         "Cisco Devices Configuration",
@@ -388,7 +425,7 @@
       "title": "HCCDA - Tech Essentials",
       "provider": "Huawei Cloud",
       "status": "Completed",
-      "image": "cr/HWENDCTEDA629033.png",
+      "image": "Certificates/HWENDCTEDA629033.png",
       "link": "https://e.huawei.com/en/talent/",
       "credentialId": "HCCDA-2023-12345",
       "year": "2023",
@@ -398,7 +435,7 @@
       "title": "Oracle Cloud Infrastructure Foundations Associate",
       "provider": "Oracle",
       "status": "Completed",
-      "image": "cr/1-eCertificate_page-0001.jpg",
+      "image": "Certificates/1-eCertificate_page-0001.jpg",
       "link": "https://www.oracle.com/certification/",
       "credentialId": "OCI-FND-2025-001",
       "year": "2025",
@@ -409,7 +446,7 @@
       "title": "Oracle Cloud Infrastructure Architect Associate",
       "provider": "Oracle",
       "status": "Completed",
-      "image": "cr/2-eCertificate_page-0001.jpg",
+      "image": "Certificates/2-eCertificate_page-0001.jpg",
       "link": "https://www.oracle.com/certification/",
       "credentialId": "OCI-ARCH-2025-001",
       "year": "2025",
@@ -420,7 +457,7 @@
       "title": "Oracle Cloud Infrastructure Migration Architect Professional",
       "provider": "Oracle",
       "status": "Completed",
-      "image": "cr/3-eCertificate_page-0001.jpg",
+      "image": "Certificates/3-eCertificate_page-0001.jpg",
       "link": "https://www.oracle.com/certification/",
       "credentialId": "OCI-MIG-2025-001",
       "year": "2025",
