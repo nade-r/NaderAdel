@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Nader Adel | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/9494/9494807.png" />
+
+</head>
+
+<body>
+
+  <!-- خلفية الشبكة -->
+  <canvas id="network-bg"></canvas>
+
+  <!-- ================= HEADER ================= -->
+  <header>
+    <h1 id="logo">
+      <span class="animated-box"></span> Nader Adel AbdRabbo
+    </h1>
+
+    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav id="mobile-nav">
+      <ul>
+        <li><a href="#home" class="active"><i class="fas fa-house"></i> Home</a></li>
+        <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+        <li><a href="#skills"><i class="fas fa-code"></i> Skills</a></li>
+        <li><a href="#projects"><i class="fas fa-diagram-project"></i> Projects</a></li>
+        <li><a href="#courses"><i class="fas fa-book-open"></i> Courses</a></li>
+        <li><a href="#certificates"><i class="fas fa-certificate"></i> Certificates</a></li>
+        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ================= HOME ================= -->
+  <section id="home" class="fade-in">
+    <div class="hero-content">
+      <img src="CV\nader.jpg" alt="Profile" class="profile-pic" />
+
+      <h2 id="home-title">Nader Adel AbdRabbo</h2>
+      <p id="home-subtitle" class="typing-effect">Network & Security Specialist</p>
+      <p>Designing secure and efficient network infrastructures</p>
+
+      <div class="hero-buttons">
+        <a href="#contact" class="hero-btn primary-btn">
+          <i class="fas fa-paper-plane"></i> Hire Me
+        </a>
+
+        <a href="#projects" class="hero-btn secondary-btn">
+          <i class="fas fa-briefcase"></i> View Projects
+        </a>
+
+        <a href="CV/cv.pdf" target="_blank" class="hero-btn secondary-btn">
+          <i class="fas fa-file-pdf"></i> View CV
+        </a>
+
+        <a href="CV/cv.pdf" class="hero-btn primary-btn">
+          <i class="fas fa-download"></i> Download CV
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about" class="fade-in">
+    <h2>About Me</h2>
+    <p style="max-width: 800px; margin: 0 auto 40px; line-height: 1.6;" id="aboutDescription">
+      <!-- سيتم ملؤه من data.json -->
+    </p>
+
+    <!-- الكروت الأربعة -->
+    <div class="cards-container" id="aboutCardsContainer">
+      <!-- سيتم ملؤه من data.json -->
+    </div>
+  </section>
+
+  <!-- ================= SKILLS ================= -->
+  <section id="skills" class="fade-in">
+    <h2>Skills</h2>
+    <div class="cards-container" id="skillsGrid">
+      <!-- سيتم ملؤه من data.json -->
+    </div>
+    <button class="show-more-btn" id="showSkillsBtn">
+      <i class="fas fa-chevron-down"></i> Show More Skills
+    </button>
+  </section>
+
+  <!-- ================= PROJECTS ================= -->
+  <section id="projects" class="fade-in">
+    <h2>Projects</h2>
+    <div class="cards-container" id="projectsGrid">
+      <!-- سيتم ملؤه من data.json -->
+    </div>
+    <button class="show-more-btn" id="showProjectsBtn">
+      <i class="fas fa-chevron-down"></i> Show More Projects
+    </button>
+  </section>
+
+  <!-- ================= COURSES ================= -->
+  <section id="courses" class="fade-in">
+    <h2>Courses</h2>
+    <div class="cards-container" id="coursesGrid">
+      <!-- سيتم ملؤه من data.json -->
+    </div>
+    <button class="show-more-btn" id="showCoursesBtn">
+      <i class="fas fa-chevron-down"></i> Show More Courses
+    </button>
+  </section>
+
+  <!-- ================= CERTIFICATES ================= -->
+  <section id="certificates" class="fade-in">
+    <h2>Certificates</h2>
+    <div class="cards-container" id="certificatesGrid">
+      <!-- سيتم ملؤه من data.json -->
+    </div>
+    <button class="show-more-btn" id="showCertificatesBtn">
+      <i class="fas fa-chevron-down"></i> Show More Certificates
+    </button>
+  </section>
+
+  <!-- ================= CONTACT SECTION ================= -->
+  <section id="contact" class="fade-in">
+    <h2>Contact Me</h2>
+
+    <div class="contact-container">
+      <!-- Contact Info Cards -->
+      <div class="contact-info">
+        <div class="cards-container" id="contactCardsContainer">
+          <!-- سيتم ملؤه من JavaScript مع الألوان الصحيحة -->
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form">
+        <h3>Send Me a Message</h3>
+        <p>Feel free to get in touch with me for any inquiries or collaboration opportunities</p>
+
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="name"><i class="fas fa-user"></i> Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email"><i class="fas fa-envelope"></i> Your Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+          </div>
+
+          <!-- <div class="form-group">
+            <label for="subject"><i class="fas fa-tag"></i> Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="What is this regarding?" required>
+          </div> -->
+
+          <div class="form-group">
+            <label for="message"><i class="fas fa-comment"></i> Your Message</label>
+            <textarea id="message" name="message" placeholder="Type your message here..." required></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+
+          <div id="formMessage" class="form-message"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <div class="footer">
+    <p>© 2025 Nader Adel. All rights reserved.</p>
+
+    <div class="footer-social">
+      <a href="https://wa.me/01556223003" target="_blank" title="WhatsApp" class="whatsapp">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/nader-adel" target="_blank" title="LinkedIn" class="linkedin">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/nade-r" target="_blank" title="GitHub" class="github">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:naderadel102@gmail.com" target="_blank" title="Email" class="email">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- زر الرجوع للأعلى -->
+  <button class="back-to-top" id="back-to-top">⬆️</button>
+  <script src="script.js"></script>
+</body>
+
+</html>
