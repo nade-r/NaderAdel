@@ -1,3 +1,4 @@
+
     /* ========== RESET & BASE ========== */
     * {
       margin: 0;
@@ -2076,3 +2077,8 @@
     .project-overlay {
       pointer-events: none;
     }
+
+    .certificate-overlay {
+      pointer-events: none;
+    }
+  
