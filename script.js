@@ -468,7 +468,7 @@
                 title: "LinkedIn",
                 value: "Professional Profile",
                 icon: "fab fa-linkedin",
-                link: "https://www.linkedin.com/in/nader-adel",
+                link: "https://www.linkedin.com/in/nader-adel-abdrabbo",
                 buttonIcon: "fab fa-linkedin",
                 buttonText: "Connect"
               }
@@ -612,7 +612,7 @@
                 </div>
                 <h3>LinkedIn</h3>
                 <p>Professional Profile</p>
-                <a href="https://www.linkedin.com/in/nader-adel" target="_blank" class="contact-link">
+                <a href="https://www.linkedin.com/in/nader-adel-abdrabbo" target="_blank" class="contact-link">
                   <i class="fab fa-linkedin"></i> Connect
                 </a>
               </div>
@@ -816,8 +816,7 @@
         (currentIndex - 1 + currentImages.length) % currentImages.length;
       modalImg.src = currentImages[currentIndex].src;
     };
- 
-const contactForm = document.getElementById('contactForm');
+ const contactForm = document.getElementById('contactForm');
 const formMessage = document.getElementById('formMessage');
 
 if (contactForm) {
@@ -838,13 +837,11 @@ if (contactForm) {
       message: document.getElementById("message").value
     };
 
-    fetch("https://script.google.com/macros/s/AKfycbxRfnT2dbpzLZw_qIW9_OGPejNhTgCYMLrmxmJoCszfyrEFGhkBuOXbh_IrAa7t_QZV8w/exec", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
+   fetch("https://script.google.com/macros/s/AKfycbwnG4y7jbKqktUG2TppGul-H4Ne8J8U0ZZ1ue_Ta7UL12GkesaGytRXeL4UYOdE5TNr4A/exec", {
+  method: "POST",
+  body: JSON.stringify(data)
+})
+
     .then(res => res.json())
     .then(result => {
       if (result.status === "success") {
@@ -869,4 +866,3 @@ if (contactForm) {
     });
   });
 }
-
