@@ -494,42 +494,7 @@
             });
           }
 
-          /* ========== CONTACT FORM SUBMISSION ========== */
-          const contactForm = document.getElementById('contactForm');
-          const formMessage = document.getElementById('formMessage');
-
-          if (contactForm) {
-            contactForm.addEventListener('submit', function (e) {
-              e.preventDefault();
-
-              const submitBtn = this.querySelector('.submit-btn');
-              const originalText = submitBtn.innerHTML;
-
-              // عرض حالة التحميل
-              submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-              submitBtn.disabled = true;
-
-              // محاكاة إرسال النموذج
-              setTimeout(() => {
-                // إعادة تعيين النموذج
-                contactForm.reset();
-
-                // عرض رسالة النجاح
-                formMessage.textContent = 'Message sent successfully! I will get back to you soon.';
-                formMessage.className = 'form-message success';
-
-                // إعادة زر الإرسال إلى حالته الأصلية
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-
-                // إخفاء الرسالة بعد 5 ثوان
-                setTimeout(() => {
-                  formMessage.className = 'form-message';
-                }, 5000);
-              }, 1500);
-            });
-          }
-
+          
           /* ========== إدارة أزرار Show/Hide ========== */
           const showSkillsBtn = document.getElementById("showSkillsBtn");
           const showProjectsBtn = document.getElementById("showProjectsBtn");
@@ -852,4 +817,56 @@
       modalImg.src = currentImages[currentIndex].src;
     };
  
+const contactForm = document.getElementById('contactForm');
+const formMessage = document.getElementById('formMessage');
+
+if (contactForm) {
+  contactForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const submitBtn = this.querySelector('.submit-btn');
+    const originalText = submitBtn.innerHTML;
+
+    // تحميل
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    submitBtn.disabled = true;
+
+    const data = {
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      phone_number: document.getElementById("phone_number").value,
+      message: document.getElementById("message").value
+    };
+
+    fetch("https://script.google.com/macros/s/AKfycbxRfnT2dbpzLZw_qIW9_OGPejNhTgCYMLrmxmJoCszfyrEFGhkBuOXbh_IrAa7t_QZV8w/exec", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    .then(res => res.json())
+    .then(result => {
+      if (result.status === "success") {
+        contactForm.reset();
+        formMessage.textContent = "✅ Message sent successfully! I will get back to you soon.";
+        formMessage.className = "form-message success";
+      } else {
+        throw new Error("Send failed");
+      }
+    })
+    .catch(() => {
+      formMessage.textContent = "❌ Failed to send message. Please try again.";
+      formMessage.className = "form-message error";
+    })
+    .finally(() => {
+      submitBtn.innerHTML = originalText;
+      submitBtn.disabled = false;
+
+      setTimeout(() => {
+        formMessage.className = "form-message";
+      }, 5000);
+    });
+  });
+}
 
