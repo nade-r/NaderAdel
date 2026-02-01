@@ -84,7 +84,7 @@
     }
   ],
   "projects": [
-     {
+    {
       "title": "Personal Portfolio Website",
       "description": "Responsive personal portfolio using HTML, CSS, and JavaScript.",
       "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
@@ -103,7 +103,7 @@
       "link": "#",
       "technologies": [
         "Networking",
-        "VLAN", 
+        "VLAN",
         "Routing"
       ]
     },
@@ -153,22 +153,20 @@
         "Deployment"
       ]
     },
-     {
-  "title": "Fortinet Firewall Configuration",
-  "description": "Enterprise network security implementation using FortiGate firewall, including firewall policies, NAT, VPN, and advanced threat protection.",
-  "image": "project/Project Fortinet/project_fortinet.png",
-  "link": "#",
-  "technologies": [
-    "FortiGate",
-    "Firewall Policies",
-    "NAT",
-    "VPN",
-    "IPS",
-    "Web Filtering"
-   
-  ]
-}
-
+    {
+      "title": "Fortinet Firewall Configuration",
+      "description": "Enterprise network security implementation using FortiGate firewall, including firewall policies, NAT, VPN, and advanced threat protection.",
+      "image": "project/Project Fortinet/project_fortinet.png",
+      "link": "#",
+      "technologies": [
+        "FortiGate",
+        "Firewall Policies",
+        "NAT",
+        "VPN",
+        "IPS",
+        "Web Filtering"
+      ]
+    }
   ],
   "courses": [
     {
@@ -176,10 +174,13 @@
       "title": "Huawei Cloud Tech Essentials",
       "platform": "Huawei Learning Platform",
       "status": "Completed",
-      "image": "Certificates/HWENDCTEDA629033.png",
+      "image": [
+        "Certificates/HWENDCTEDA629033.png",
+        "Certificates/Adobe Scan Oct 02, 2025 (1)_1.jpg"
+      ],
       "link": "Certificates/HWENDCTEDA629033.png",
       "topics": [
-         "Cloud Fundamentals",
+        "Cloud Fundamentals",
         "Huawei Cloud Services",
         "Cloud Architecture",
         "Security Basics",
@@ -393,7 +394,7 @@
         "Firewall Management"
       ]
     },
-     {
+    {
       "id": "AWS",
       "title": "AWS Certified Solutions Architect",
       "platform": "AWS Training Platform",
