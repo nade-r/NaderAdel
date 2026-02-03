@@ -197,7 +197,7 @@ data.projects.forEach((project, index) => {
           <a 
             href="${project.link}" 
             target="_blank" 
-            class="view-project-btn">
+            class="view-project-btn center-btn">
             <i class="fas fa-external-link-alt"></i>
             View Project
           </a>
