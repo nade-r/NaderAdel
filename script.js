@@ -58,17 +58,17 @@ if (canvas) {
             card.className = `uniform-card ${colorClass}`;
 
             card.innerHTML = `
-              <div class="card-icon">
-                <i class="fas ${aboutCard.icon || 'fa-info-circle'}"></i>
-              </div>
-              <h3>${aboutCard.title || 'Title'}</h3>
-              <p>${truncateText(aboutCard.description || 'Description here', 100)}</p>
-              ${aboutCard.link ? `
-                <a href="${aboutCard.link}" target="_blank" class="contact-link" style="margin-top: 10px;">
-                  Learn More <i class="fas fa-external-link-alt"></i>
-                </a>
-              ` : ''}
-            `;
+                  <div class="card-icon">
+                    <i class="fas ${aboutCard.icon || 'fa-info-circle'}"></i>
+                  </div>
+                  <h3>${aboutCard.title || 'Title'}</h3>
+                  <p>${truncateText(aboutCard.description || 'Description here', 100)}</p>
+                  ${aboutCard.link ? `
+                    <a href="${aboutCard.link}" target="_blank" class="contact-link" style="margin-top: 10px;">
+                      Learn More <i class="fas fa-external-link-alt"></i>
+                    </a>
+                  ` : ''}
+                `;
 
             aboutContainer.appendChild(card);
           });
@@ -88,128 +88,124 @@ if (canvas) {
         card.className = `uniform-card ${colorClass} ${index < visibleItems.skills ? 'visible' : 'hidden'}`;
 
         card.innerHTML = `
-          <div class="card-icon">
-            <i class="fas ${skill.icon || 'fa-code'}"></i>
-          </div>
-          <h3>${skill.title}</h3>
-          <ul>
-            ${skill.items.map(item => `<li>${item}</li>`).join("")}
-          </ul>
-        `;
+              <div class="card-icon">
+                <i class="fas ${skill.icon || 'fa-code'}"></i>
+              </div>
+              <h3>${skill.title}</h3>
+              <ul>
+                ${skill.items.map(item => `<li>${item}</li>`).join("")}
+              </ul>
+            `;
         skillsGrid.appendChild(card);
         allSkillsCards.push(card);
       });
 
       /* ========== PROJECTS ========== */
-/* ========== PROJECTS ========== */
-const projectsGrid = document.getElementById("projectsGrid");
-const allProjectsCards = [];
-const projectColors = ['color-1', 'color-2', 'color-3', 'color-4', 'color-5', 'color-6'];
+      const projectsGrid = document.getElementById("projectsGrid");
+      const allProjectsCards = [];
+      const projectColors = ['color-1', 'color-2', 'color-3', 'color-4', 'color-5', 'color-6'];
 
-data.projects.forEach((project, index) => {
-  const card = document.createElement("div");
-  const colorClass = projectColors[index % projectColors.length] || 'color-1';
+      data.projects.forEach((project, index) => {
+        const card = document.createElement("div");
+        const colorClass = projectColors[index % projectColors.length] || 'color-1';
 
-  const isInProgress =
-    project.status === "In Progress" || project.progress < 100;
-  const progress = project.progress || 50;
+        const isInProgress =
+          project.status === "In Progress" || project.progress < 100;
+        const progress = project.progress || 50;
 
-  card.className = `
-    uniform-card project-card ${colorClass}
-    ${isInProgress ? 'loading-shimmer' : ''}
-    ${index < visibleItems.projects ? 'visible' : 'hidden'}
-  `;
+        card.className = `
+              uniform-card project-card ${colorClass}
+              ${isInProgress ? 'loading-shimmer' : ''}
+              ${index < visibleItems.projects ? 'visible' : 'hidden'}
+            `;
 
-  const shortDescription = truncateText(project.description, 70);
+        const shortDescription = truncateText(project.description, 70);
 
-  /* ===== تجهيز الصور ===== */
-  let images = [];
-  if (Array.isArray(project.image)) {
-    images = project.image;
-  } else if (typeof project.image === "string" && project.image !== "") {
-    images = [project.image];
-  }
+        /* ===== تجهيز الصور ===== */
+        let images = [];
+        if (Array.isArray(project.image)) {
+          images = project.image;
+        } else if (typeof project.image === "string" && project.image !== "") {
+          images = [project.image];
+        }
 
-  /* ===== محتوى الصورة ===== */
-  let imageContent = '';
-  if (isInProgress) {
-    imageContent = `
-      <div class="project-icon">
-        <i class="fas fa-tools"></i>
-      </div>
-    `;
-  } else if (images.length > 0) {
-    imageContent = `
-      <div class="slides">
-        ${images
-          .map(
-            (img, i) => `
-          <img 
-            src="${img}"
-            alt="${project.title}"
-            class="project-image clickable-image ${
-              i === 0 ? 'active' : ''
-            }">
-        `
-          )
-          .join("")}
-      </div>
-    `;
-  }
+        /* ===== محتوى الصورة ===== */
+        let imageContent = '';
+        if (isInProgress) {
+          imageContent = `
+                <div class="project-icon">
+                  <i class="fas fa-tools"></i>
+                </div>
+              `;
+        } else if (images.length > 0) {
+          imageContent = `
+                <div class="slides">
+                  ${images
+              .map(
+                (img, i) => `
+                    <img 
+                      src="${img}"
+                      alt="${project.title}"
+                      class="project-image clickable-image ${i === 0 ? 'active' : ''}">
+                  `
+              )
+              .join("")}
+                </div>
+              `;
+        }
 
-  card.innerHTML = `
-    ${isInProgress ? `
-      <div class="loading-badge project">
-        <i class="fas fa-sync-alt"></i>
-        In Progress
-      </div>
-    ` : ''}
+        card.innerHTML = `
+              ${isInProgress ? `
+                <div class="loading-badge project">
+                  <i class="fas fa-sync-alt"></i>
+                  In Progress
+                </div>
+              ` : ''}
 
-    <div class="project-image-container">
-      ${imageContent}
-      <div class="project-overlay">
-        <span>${isInProgress ? 'Under Development' : 'View Images'}</span>
-      </div>
-    </div>
+              <div class="project-image-container">
+                ${imageContent}
+                <div class="project-overlay">
+                  <span>${isInProgress ? 'Under Development' : 'View Images'}</span>
+                </div>
+              </div>
 
-    <div class="project-content">
-      <h3>${project.title}</h3>
+              <div class="project-content">
+                <h3>${project.title}</h3>
 
-      <div class="project-details">
-        <p>${shortDescription}</p>
+                <div class="project-details">
+                  <p>${shortDescription}</p>
 
-        <div class="project-tech">
-          ${project.technologies
+                  <div class="project-tech">
+                    ${project.technologies
             .map(tech => `<span class="tech-tag">${tech}</span>`)
             .join("")}
-        </div>
-      </div>
+                  </div>
+                </div>
 
-      ${isInProgress ? `
-        <div style="margin-top:10px;">
-          <span>Progress: ${progress}%</span>
-          <div class="progress-bar-small">
-            <div class="progress-fill-small" style="width:${progress}%"></div>
-          </div>
-        </div>
-      ` : `
-        ${project.link ? `
-          <a 
-            href="${project.link}" 
-            target="_blank" 
-            class="view-project-btn center-btn">
-            <i class="fas fa-external-link-alt"></i>
-            View Project
-          </a>
-        ` : ''}
-      `}
-    </div>
-  `;
+                ${isInProgress ? `
+                  <div style="margin-top:10px;">
+                    <span>Progress: ${progress}%</span>
+                    <div class="progress-bar-small">
+                      <div class="progress-fill-small" style="width:${progress}%"></div>
+                    </div>
+                  </div>
+                ` : `
+                  ${project.link ? `
+                    <a 
+                      href="${project.link}" 
+                      target="_blank" 
+                      class="view-project-btn center-btn">
+                      <i class="fas fa-external-link-alt"></i>
+                      View Project
+                    </a>
+                  ` : ''}
+                `}
+              </div>
+            `;
 
-  projectsGrid.appendChild(card);
-  allProjectsCards.push(card);
-});
-
+        projectsGrid.appendChild(card);
+        allProjectsCards.push(card);
+      });
 
       /* ========== COURSES ========== */
       const coursesGrid = document.getElementById("coursesGrid");
@@ -225,12 +221,12 @@ data.projects.forEach((project, index) => {
         const expectedDate = course.expectedDate || "Under Development";
 
         card.className = `
-    uniform-card 
-    course-card 
-    ${colorClass}
-    ${isInProgress ? 'loading-shimmer' : ''}
-    ${index < visibleItems.courses ? 'visible' : 'hidden'}
-  `;
+              uniform-card 
+              course-card 
+              ${colorClass}
+              ${isInProgress ? 'loading-shimmer' : ''}
+              ${index < visibleItems.courses ? 'visible' : 'hidden'}
+            `;
 
         /* تجهيز الصور */
         let images = [];
@@ -245,79 +241,79 @@ data.projects.forEach((project, index) => {
         if (isInProgress) {
           // كورس غير مكتمل → أيقونة
           imageContent = `
-      <div class="course-icon-container">
-        <div class="course-icon">
-          <i class="fas fa-book-open"></i>
-        </div>
-      </div>
-    `;
+                <div class="course-icon-container">
+                  <div class="course-icon">
+                    <i class="fas fa-book-open"></i>
+                  </div>
+                </div>
+              `;
         } else if (images.length > 0) {
           // كورس مكتمل → صور قابلة للتكبير
           const slidesHTML = images.map((img, i) => `
-      <img 
-        src="${img}" 
-        alt="${course.title}"
-        class="course-image clickable-image ${i === 0 ? 'active' : ''}">
-    `).join("");
+                <img 
+                  src="${img}" 
+                  alt="${course.title}"
+                  class="course-image clickable-image ${i === 0 ? 'active' : ''}">
+              `).join("");
 
           imageContent = `
-      <div class="slides">
-        ${slidesHTML}
-      </div>
-    `;
+                <div class="slides">
+                  ${slidesHTML}
+                </div>
+              `;
         } else {
           imageContent = `
-      <div class="course-icon-container">
-        <div class="course-icon" style="color:#00ff66;">
-          <i class="fas fa-graduation-cap"></i>
-        </div>
-      </div>
-    `;
+                <div class="course-icon-container">
+                  <div class="course-icon" style="color:#00ff66;">
+                    <i class="fas fa-graduation-cap"></i>
+                  </div>
+                </div>
+              `;
         }
 
         card.innerHTML = `
-    <span class="certificate-status ${isInProgress ? 'status-inprogress' : 'status-completed'}">
-      ${isInProgress ? 'In Progress' : 'Completed'}
-    </span>
+              <span class="certificate-status ${isInProgress ? 'status-inprogress' : 'status-completed'}">
+                ${isInProgress ? 'In Progress' : 'Completed'}
+              </span>
 
-    ${isInProgress ? `
-      <div class="loading-badge course">
-        <i class="fas fa-book-open"></i>
-        Currently Learning
-      </div>
-    ` : ''}
+              ${isInProgress ? `
+                <div class="loading-badge course">
+                  <i class="fas fa-book-open"></i>
+                  Currently Learning
+                </div>
+              ` : ''}
 
-    <div class="course-image-container slider">
-      ${imageContent}
-      <div class="course-overlay">
-        <span>${isInProgress ? 'In Progress' : 'View Image'}</span>
-      </div>
-    </div>
+              <div class="course-image-container slider">
+                ${imageContent}
+                <div class="course-overlay">
+                  <span>${isInProgress ? 'In Progress' : 'View Image'}</span>
+                </div>
+              </div>
 
-    <div style="flex:1; display:flex; flex-direction:column; overflow:hidden;">
-      <h3 style="font-size:1.1rem;">${course.title}</h3>
-      <p style="font-size:0.85rem;">
-        <strong>Platform:</strong> ${course.platform}
-      </p>
+              <div style="flex:1; display:flex; flex-direction:column; overflow:hidden;">
+                <h3 style="font-size:1.1rem;">${course.title}</h3>
+                <p style="font-size:0.85rem;">
+                  <strong>Platform:</strong> ${course.platform}
+                </p>
 
-      <ul style="font-size:0.85rem;">
-        ${course.topics.slice(0, 6).map(t => `<li>${t}</li>`).join("")}
-        ${course.topics.length > 6
+                <ul style="font-size:0.85rem;">
+                  ${course.topics.slice(0, 6).map(t => `<li>${t}</li>`).join("")}
+                  ${course.topics.length > 6
             ? `<li style="font-style:italic;">... and ${course.topics.length - 6} more</li>`
             : ''}
-      </ul>
+                </ul>
 
-      ${isInProgress ? `
-        <div style="margin-top:10px;">
-          <span>Progress: ${progress}%</span>
-          <div class="progress-bar-small">
-            <div class="progress-fill-small" style="width:${progress}%"></div>
-          </div>
-          <span>Expected: ${expectedDate}</span>
-        </div>
-      ` : ''}
-    </div>
-  `;
+                ${isInProgress ? `
+                  <div style="margin-top:10px;">
+                    <span>Progress: ${progress}%</span>
+                    <div class="progress-bar-small">
+                      <div class="progress-fill-small" style="width:${progress}%"></div>
+                    </div>
+                    <span>Expected: ${expectedDate}</span>
+                  </div>
+                ` : ''}
+              </div>
+            `;
 
         // تفعيل السلايدر
         if (!isInProgress && images.length > 1) {
@@ -327,6 +323,7 @@ data.projects.forEach((project, index) => {
         coursesGrid.appendChild(card);
         allCoursesCards.push(card);
       });
+
       /* ========== CERTIFICATES ========== */
       const certGrid = document.getElementById("certificatesGrid");
       const allCertificatesCards = [];
@@ -341,175 +338,144 @@ data.projects.forEach((project, index) => {
         const expectedDate = cert.expectedDate || "Under Development";
 
         card.className = `
-    uniform-card 
-    certificate-card 
-    ${colorClass} 
-    ${isInProgress ? 'loading-shimmer' : ''} 
-    ${index < visibleItems.certificates ? 'visible' : 'hidden'}
-  `;
+              uniform-card 
+              certificate-card 
+              ${colorClass} 
+              ${isInProgress ? 'loading-shimmer' : ''} 
+              ${index < visibleItems.certificates ? 'visible' : 'hidden'}
+            `;
 
         // ===== محتوى الصورة =====
         let imageContent = '';
 
         if (isInProgress) {
           imageContent = `
-      <div class="certificate-icon">
-        <i class="fas fa-certificate"></i>
-      </div>
-    `;
+                <div class="certificate-icon">
+                  <i class="fas fa-certificate"></i>
+                </div>
+              `;
         } else if (cert.image) {
           imageContent = `
-      <img 
-        src="${cert.image}" 
-        alt="${cert.title}" 
-        class="certificate-main-image clickable-image">
-    `;
+                <img 
+                  src="${cert.image}" 
+                  alt="${cert.title}" 
+                  class="certificate-main-image clickable-image">
+              `;
         } else {
           imageContent = `
-      <div class="certificate-icon" style="color:#0ff;">
-        <i class="fas fa-award"></i>
-      </div>
-    `;
+                <div class="certificate-icon" style="color:#0ff;">
+                  <i class="fas fa-award"></i>
+                </div>
+              `;
         }
 
         card.innerHTML = `
-    ${isInProgress ? `
-      <div class="loading-badge course">
-        <i class="fas fa-sync-alt"></i>
-        In Progress
-      </div>
-    ` : ''}
+              ${isInProgress ? `
+                <div class="loading-badge course">
+                  <i class="fas fa-sync-alt"></i>
+                  In Progress
+                </div>
+              ` : ''}
 
-    <div class="certificate-image-container">
-      ${imageContent}
+              <div class="certificate-image-container">
+                ${imageContent}
 
-      <div class="certificate-overlay">
-        ${isInProgress ? `
-          <span class="progress-badge">
-            <i class="fas fa-sync-alt fa-spin"></i>
-            Progress: ${progress}%
-          </span>
-        ` : `
-          <span><i class="fas fa-search-plus"></i> View Certificate</span>
-        `}
-      </div>
+                <div class="certificate-overlay">
+                  ${isInProgress ? `
+                    <span class="progress-badge">
+                      <i class="fas fa-sync-alt fa-spin"></i>
+                      Progress: ${progress}%
+                    </span>
+                  ` : `
+                    <span><i class="fas fa-search-plus"></i> View Certificate</span>
+                  `}
+                </div>
 
-      <div class="certificate-status-badge ${isInProgress ? 'in-progress' : 'completed'}">
-        <i class="fas ${isInProgress ? 'fa-clock' : 'fa-check-circle'}"></i>
-        ${isInProgress ? 'In Progress' : 'Completed'}
-      </div>
-    </div>
+                <div class="certificate-status-badge ${isInProgress ? 'in-progress' : 'completed'}">
+                  <i class="fas ${isInProgress ? 'fa-clock' : 'fa-check-circle'}"></i>
+                  ${isInProgress ? 'In Progress' : 'Completed'}
+                </div>
+              </div>
 
-    <div class="certificate-content">
-      <h3 style="font-size:1.1rem;margin-bottom:8px;">${cert.title}</h3>
+              <div class="certificate-content">
+                <h3 style="font-size:1.1rem;margin-bottom:8px;">${cert.title}</h3>
 
-      <p style="font-size:0.85rem;">
-        <i class="fas fa-building"></i> ${cert.provider}
-      </p>
+                <p style="font-size:0.85rem;">
+                  <i class="fas fa-building"></i> ${cert.provider}
+                </p>
 
-      <p style="font-size:0.85rem;">
-        <i class="fas fa-calendar-alt"></i> ${cert.year}
-      </p>
+                <p style="font-size:0.85rem;">
+                  <i class="fas fa-calendar-alt"></i> ${cert.year}
+                </p>
 
-      ${cert.credentialId ? `
-        <p style="font-size:0.85rem;">
-          <i class="fas fa-id-card"></i> ID: ${cert.credentialId}
-        </p>
-      ` : ''}
+                ${cert.credentialId ? `
+                  <p style="font-size:0.85rem;">
+                    <i class="fas fa-id-card"></i> ID: ${cert.credentialId}
+                  </p>
+                ` : ''}
 
-      <div class="certificate-details">
-        ${isInProgress ? `
-          <div class="progress-details">
-            <div class="progress-bar-small">
-              <div class="progress-fill-small" style="width:${progress}%"></div>
-            </div>
-            <span style="font-size:0.8rem;">
-              Expected: ${expectedDate}
-            </span>
-          </div>
-        ` : `
-          <div class="certificate-tags">
-            <span class="cert-tag">
-              <i class="fas fa-award"></i> Certified
-            </span>
-            <span class="cert-tag">
-              <i class="fas fa-check"></i> ${cert.year}
-            </span>
-          </div>
-        `}
-      </div>
-    </div>
-  `;
+                <div class="certificate-details">
+                  ${isInProgress ? `
+                    <div class="progress-details">
+                      <div class="progress-bar-small">
+                        <div class="progress-fill-small" style="width:${progress}%"></div>
+                      </div>
+                      <span style="font-size:0.8rem;">
+                        Expected: ${expectedDate}
+                      </span>
+                    </div>
+                  ` : `
+                    <div class="certificate-tags">
+                      <span class="cert-tag">
+                        <i class="fas fa-award"></i> Certified
+                      </span>
+                      <span class="cert-tag">
+                        <i class="fas fa-check"></i> ${cert.year}
+                      </span>
+                    </div>
+                  `}
+                </div>
+              </div>
+            `;
 
         certGrid.appendChild(card);
         allCertificatesCards.push(card);
       });
 
-      /* ========== إضافة بطاقات الاتصال مع الألوان الصحيحة ========== */
+      /* ========== إضافة بطاقات الاتصال من data.json ========== */
       const contactContainer = document.getElementById("contactCardsContainer");
-      if (contactContainer) {
+      if (contactContainer && data.contactCards && Array.isArray(data.contactCards)) {
         contactContainer.innerHTML = '';
 
-        // بطاقات الاتصال مع الألوان الصحيحة حسب النوع
-        const contactCards = [
-          {
-            type: "email",
-            title: "Email",
-            value: "naderadel102@gmail.com",
-            icon: "fas fa-envelope",
-            link: "mailto:naderadel102@gmail.com",
-            buttonIcon: "fas fa-paper-plane",
-            buttonText: "Send Email"
-          },
-          {
-            type: "whatsapp",
-            title: "WhatsApp",
-            value: "+20 155 622 3003",
-            icon: "fab fa-whatsapp",
-            link: "https://wa.me/201556223003",
-            buttonIcon: "fab fa-whatsapp",
-            buttonText: "Connect"
-          },
-          {
-            type: "github",
-            title: "GitHub",
-            value: "Code Repository",
-            icon: "fab fa-github",
-            link: "https://github.com/nade-r",
-            buttonIcon: "fab fa-github",
-            buttonText: "View Projects"
-          },
-          {
-            type: "linkedin",
-            title: "LinkedIn",
-            value: "Professional Profile",
-            icon: "fab fa-linkedin",
-            link: "https://www.linkedin.com/in/nader-adel-abdrabbo",
-            buttonIcon: "fab fa-linkedin",
-            buttonText: "Connect"
-          }
-        ];
+        data.contactCards.forEach((contactCard) => {
+          if (!contactCard.type || !contactCard.title) return;
 
-        contactCards.forEach((contactCard, index) => {
           const card = document.createElement("div");
           card.className = "contact-card";
           card.setAttribute('data-type', contactCard.type);
 
           card.innerHTML = `
-                <div class="contact-icon">
-                  <i class="${contactCard.icon}"></i>
-                </div>
-                <h3>${contactCard.title}</h3>
-                <p>${contactCard.value}</p>
-                <a href="${contactCard.link}" ${contactCard.type !== 'email' ? 'target="_blank"' : ''} class="contact-link">
-                  <i class="${contactCard.buttonIcon}"></i> ${contactCard.buttonText}
-                </a>
-              `;
+                    <div class="contact-icon">
+                      <i class="${contactCard.icon || 'fas fa-link'}"></i>
+                    </div>
+                    <h3>${contactCard.title}</h3>
+                    <p>${contactCard.value || ''}</p>
+                    <a href="${contactCard.link || '#'}" ${contactCard.type !== 'email' ? 'target="_blank"' : ''} class="contact-link">
+                      <i class="${contactCard.buttonIcon || 'fas fa-external-link-alt'}"></i> ${contactCard.buttonText || 'Visit'}
+                    </a>
+                  `;
 
           contactContainer.appendChild(card);
         });
+      } else if (contactContainer) {
+        // Fallback في حال عدم وجود بيانات
+        contactContainer.innerHTML = `
+              <div class="error-message">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p>Unable to load contact information. Please check data.json file.</p>
+              </div>
+            `;
       }
-
 
       /* ========== إدارة أزرار Show/Hide ========== */
       const showSkillsBtn = document.getElementById("showSkillsBtn");
@@ -585,52 +551,13 @@ data.projects.forEach((project, index) => {
       console.error('Error loading data:', error);
       document.getElementById("skillsGrid").innerHTML = "<p>Error loading data. Please check the data.json file.</p>";
 
-      // إضافة بطاقات الاتصال حتى لو فشل تحميل data.json
+      // إظهار رسالة خطأ في قسم الاتصال
       const contactContainer = document.getElementById("contactCardsContainer");
       if (contactContainer) {
         contactContainer.innerHTML = `
-              <div class="contact-card" data-type="email">
-                <div class="contact-icon">
-                  <i class="fas fa-envelope"></i>
-                </div>
-                <h3>Email</h3>
-                <p>naderadel102@gmail.com</p>
-                <a href="mailto:naderadel102@gmail.com" class="contact-link">
-                  <i class="fas fa-paper-plane"></i> Send Email
-                </a>
-              </div>
-              
-              <div class="contact-card" data-type="whatsapp">
-                <div class="contact-icon">
-                  <i class="fab fa-whatsapp"></i>
-                </div>
-                <h3>WhatsApp</h3>
-                <p>+20 155 622 3003</p>
-                <a href="https://wa.me/201556223003" target="_blank" class="contact-link">
-                  <i class="fab fa-whatsapp"></i> Connect
-                </a>
-              </div>
-              
-              <div class="contact-card" data-type="github">
-                <div class="contact-icon">
-                  <i class="fab fa-github"></i>
-                </div>
-                <h3>GitHub</h3>
-                <p>Code Repository</p>
-                <a href="https://github.com/nade-r" target="_blank" class="contact-link">
-                  <i class="fab fa-github"></i> View Projects
-                </a>
-              </div>
-              
-              <div class="contact-card" data-type="linkedin">
-                <div class="contact-icon">
-                  <i class="fab fa-linkedin"></i>
-                </div>
-                <h3>LinkedIn</h3>
-                <p>Professional Profile</p>
-                <a href="https://www.linkedin.com/in/nader-adel-abdrabbo" target="_blank" class="contact-link">
-                  <i class="fab fa-linkedin"></i> Connect
-                </a>
+              <div class="error-message">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p>Unable to load contact information. Please refresh the page or check the data.json file.</p>
               </div>
             `;
       }
@@ -717,13 +644,25 @@ const appearOnScroll = new IntersectionObserver(function (entries, observer) {
 faders.forEach(fader => { appearOnScroll.observe(fader); });
 
 // زر الرجوع للأعلى
-const backToTop = document.getElementById('back-to-top');
+const backToTop = document.querySelector('.back-to-top');
 if (backToTop) {
   window.addEventListener('scroll', () => {
-    backToTop.style.display = window.scrollY > 300 ? 'flex' : 'none';
+    if (window.scrollY > 400) {
+      backToTop.style.display = "flex";
+      backToTop.style.opacity = "1";
+    } else {
+      backToTop.style.opacity = "0";
+      setTimeout(() => {
+        backToTop.style.display = "none";
+      }, 300);
+    }
   });
+
   backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
   });
 }
 
@@ -832,6 +771,7 @@ prevBtn.onclick = (e) => {
     (currentIndex - 1 + currentImages.length) % currentImages.length;
   modalImg.src = currentImages[currentIndex].src;
 };
+
 const contactForm = document.getElementById('contactForm');
 const formMessage = document.getElementById('formMessage');
 
@@ -857,7 +797,6 @@ if (contactForm) {
       method: "POST",
       body: JSON.stringify(data)
     })
-
       .then(res => res.json())
       .then(result => {
         if (result.status === "success") {
@@ -882,3 +821,271 @@ if (contactForm) {
       });
   });
 }
+
+// دالة لجلب الخدمات من ملف data.json
+async function loadServicesFromJSON() {
+  const servicesContainer = document.getElementById('servicesContainer');
+
+  try {
+    // جلب ملف data.json
+    const response = await fetch('data.json');
+
+    if (!response.ok) {
+      throw new Error('فشل في تحميل ملف data.json');
+    }
+
+    const data = await response.json();
+
+    // التحقق من وجود بيانات الخدمات
+    if (!data.footer || !data.footer.services || !Array.isArray(data.footer.services)) {
+      throw new Error('بيانات الخدمات غير موجودة أو غير صحيحة');
+    }
+
+    const services = data.footer.services;
+
+    // إنشاء قائمة HTML للخدمات
+    let servicesHTML = '<ul class="services-list">';
+
+    services.forEach(service => {
+      servicesHTML += `
+                        <li>
+                            <i class="${service.icon || 'fas fa-cog'}"></i>
+                            <span>${service.name}</span>
+                        </li>
+                    `;
+    });
+
+    servicesHTML += '</ul>';
+
+    // إضافة الخدمات إلى الصفحة
+    servicesContainer.innerHTML = servicesHTML;
+
+    // إضافة تأثيرات تفاعلية للخدمات بعد تحميلها
+    addServicesInteractions();
+
+  } catch (error) {
+    console.error('خطأ في تحميل الخدمات:', error);
+    servicesContainer.innerHTML = `
+                    <div class="error-message">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>عذراً، حدث خطأ في تحميل الخدمات. يرجى المحاولة لاحقاً.</p>
+                    </div>
+                `;
+  }
+}
+
+// دالة لإضافة تأثيرات تفاعلية للخدمات
+function addServicesInteractions() {
+  const serviceItems = document.querySelectorAll('.services-list li');
+
+  serviceItems.forEach(item => {
+    item.addEventListener('mouseenter', function () {
+      this.style.transform = 'translateX(15px)';
+      const icon = this.querySelector('i');
+      if (icon) {
+        icon.style.transform = 'scale(1.2) rotate(10deg)';
+        icon.style.color = '#00ffaa';
+      }
+    });
+
+    item.addEventListener('mouseleave', function () {
+      this.style.transform = 'translateX(0)';
+      const icon = this.querySelector('i');
+      if (icon) {
+        icon.style.transform = '';
+        icon.style.color = '';
+      }
+    });
+
+    // إضافة تأثير النقر
+    item.addEventListener('click', function () {
+      const serviceName = this.querySelector('span').textContent;
+      alert(`تم اختيار خدمة: ${serviceName}\nسيتم التواصل معك قريباً للمزيد من التفاصيل.`);
+    });
+  });
+}
+
+// دالة لجلب معلومات الملف الشخصي من JSON
+async function loadProfileInfoFromJSON() {
+  try {
+    const response = await fetch('data.json');
+    const data = await response.json();
+
+    // تحديث المعلومات الشخصية إذا كانت موجودة
+    if (data.personalInfo) {
+      const personalInfo = data.personalInfo;
+
+      // تحديث الاسم إذا كان موجوداً
+      if (personalInfo.name) {
+        const nameElement = document.querySelector('.logo-text h3');
+        if (nameElement) {
+          nameElement.textContent = personalInfo.name;
+        }
+      }
+
+      // تحديث الوظيفة إذا كانت موجودة
+      if (personalInfo.jobTitle) {
+        const jobElement = document.querySelector('.job-title');
+        if (jobElement) {
+          jobElement.textContent = personalInfo.jobTitle;
+        }
+      }
+
+      // تحديث الوصف إذا كان موجوداً
+      if (personalInfo.description) {
+        const descElement = document.querySelector('.footer-description');
+        if (descElement) {
+          descElement.textContent = personalInfo.description;
+        }
+      }
+
+      // تحديث الصورة إذا كانت موجودة
+      if (personalInfo.profileImage) {
+        const imgElement = document.querySelector('.profile-img');
+        if (imgElement) {
+          imgElement.src = personalInfo.profileImage;
+        }
+      }
+
+      // تحديث رابط السيرة الذاتية
+      if (personalInfo.cvLink) {
+        const cvLink = document.querySelector('.download-btn');
+        if (cvLink) {
+          cvLink.href = personalInfo.cvLink;
+        }
+      }
+    }
+
+  } catch (error) {
+    console.error('خطأ في تحميل معلومات الملف الشخصي:', error);
+  }
+}
+
+// دالة لجلب معلومات التواصل من JSON
+async function loadContactInfoFromJSON() {
+  try {
+    const response = await fetch('data.json');
+    const data = await response.json();
+
+    if (data.contactInfo) {
+      const contactInfo = data.contactInfo;
+
+      // تحديث البريد الإلكتروني
+      if (contactInfo.email) {
+        const emailLink = document.querySelector('a[href^="mailto:"]');
+        if (emailLink) {
+          emailLink.href = `mailto:${contactInfo.email}`;
+          emailLink.textContent = contactInfo.email;
+        }
+      }
+
+      // تحديث رقم الهاتف
+      if (contactInfo.phone) {
+        const phoneLink = document.querySelector('a[href^="tel:"]');
+        if (phoneLink) {
+          phoneLink.href = `tel:${contactInfo.phone}`;
+          phoneLink.textContent = contactInfo.phone;
+        }
+      }
+
+      // تحديث الموقع
+      if (contactInfo.location) {
+        const locationText = document.querySelector('.contact-item:nth-child(3) .contact-text');
+        if (locationText) {
+          locationText.textContent = contactInfo.location;
+        }
+      }
+
+      // تحديث أوقات العمل
+      if (contactInfo.workingHours) {
+        const hoursText = document.querySelector('.contact-item:nth-child(4) .contact-text');
+        if (hoursText) {
+          hoursText.textContent = contactInfo.workingHours;
+        }
+      }
+
+      // تحديث روابط التواصل الاجتماعي
+      if (contactInfo.socialLinks) {
+        const social = contactInfo.socialLinks;
+
+        // واتساب
+        if (social.whatsapp) {
+          const whatsappLink = document.querySelector('.social-icon.whatsapp');
+          if (whatsappLink) {
+            whatsappLink.href = social.whatsapp;
+          }
+        }
+
+        // لينكد إن
+        if (social.linkedin) {
+          const linkedinLink = document.querySelector('.social-icon.linkedin');
+          if (linkedinLink) {
+            linkedinLink.href = social.linkedin;
+          }
+        }
+
+        // جيت هاب
+        if (social.github) {
+          const githubLink = document.querySelector('.social-icon.github');
+          if (githubLink) {
+            githubLink.href = social.github;
+          }
+        }
+
+        // تويتر
+        if (social.twitter) {
+          const twitterLink = document.querySelector('.social-icon.twitter');
+          if (twitterLink) {
+            twitterLink.href = social.twitter;
+          }
+        }
+      }
+    }
+
+  } catch (error) {
+    console.error('خطأ في تحميل معلومات التواصل:', error);
+  }
+}
+
+// دالة لتحديث السنة تلقائياً
+function updateCurrentYear() {
+  const yearElement = document.getElementById('currentYear');
+  if (yearElement) {
+    const currentYear = new Date().getFullYear();
+    yearElement.textContent = currentYear;
+  }
+}
+
+// تأثيرات تفاعلية عند التحميل
+document.addEventListener('DOMContentLoaded', function () {
+  // تحميل جميع البيانات من JSON
+  loadServicesFromJSON();
+  loadProfileInfoFromJSON();
+  loadContactInfoFromJSON();
+  updateCurrentYear();
+
+  // تأثير عند تحميل الصفحة
+  const footerColumns = document.querySelectorAll('.footer-column');
+  footerColumns.forEach((column, index) => {
+    column.style.opacity = '0';
+    column.style.transform = 'translateY(30px)';
+
+    setTimeout(() => {
+      column.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      column.style.opacity = '1';
+      column.style.transform = 'translateY(0)';
+    }, index * 200);
+  });
+
+  // تأثير زر تحميل السيرة الذاتية
+  const downloadBtn = document.querySelector('.download-btn');
+  if (downloadBtn) {
+    downloadBtn.addEventListener('mouseenter', function () {
+      this.style.boxShadow = '0 15px 30px rgba(0, 255, 255, 0.6)';
+    });
+
+    downloadBtn.addEventListener('mouseleave', function () {
+      this.style.boxShadow = '0 5px 15px rgba(0, 255, 255, 0.3)';
+    });
+  }
+});

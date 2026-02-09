@@ -15,14 +15,14 @@
 </head>
 
 <body>
-
   <!-- خلفية الشبكة -->
   <canvas id="network-bg"></canvas>
 
   <!-- ================= HEADER ================= -->
   <header>
-    <h1 id="logo">
-      <span class="animated-box"></span> Nader Adel AbdRabbo
+    <h1 id="logo" class="logo-with-img">
+      <img src="CV/nader.jpg" alt="Profile">
+      Nader Adel AbdRabbo
     </h1>
 
     <button class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-nav">
@@ -42,32 +42,53 @@
     </nav>
   </header>
 
-
   <!-- ================= HOME ================= -->
   <section id="home" class="fade-in">
     <div class="hero-content">
-      <img src="CV/nader.jpg" alt="Profile" class="profile-pic" />
+      <div class="hero-text">
+        <h2 id="home-title">Nader Adel AbdRabbo</h2>
+        <p id="home-subtitle" class="typing-effect">Network & Security Specialist</p>
+        <p>Designing secure and efficient network infrastructures</p>
 
-      <h2 id="home-title">Nader Adel AbdRabbo</h2>
-      <p id="home-subtitle" class="typing-effect">Network & Security Specialist</p>
-      <p>Designing secure and efficient network infrastructures</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="hero-btn primary-btn">
+            <i class="fas fa-paper-plane"></i> Hire Me
+          </a>
+          <a href="#projects" class="hero-btn secondary-btn">
+            <i class="fas fa-briefcase"></i> View Projects
+          </a>
+          <a href="https://drive.google.com/file/d/1gCbOH5QbX0VK8dL4gDoGIInt2zVAJqYf/view?usp=sharing" target="_blank"
+            class="hero-btn secondary-btn">
+            <i class="fas fa-file-pdf"></i> View CV
+          </a>
+          <a href="CV/Nader_Adel_CV.pdf" target="_blank" class="hero-btn primary-btn">
+            <i class="fas fa-download"></i> Download CV
+          </a>
+        </div>
+      </div>
 
-      <div class="hero-buttons">
-        <a href="#contact" class="hero-btn primary-btn">
-          <i class="fas fa-paper-plane"></i> Hire Me
-        </a>
-
-        <a href="#projects" class="hero-btn secondary-btn">
-          <i class="fas fa-briefcase"></i> View Projects
-        </a>
-
-        <a href="CV/cv.pdf" target="_blank" class="hero-btn secondary-btn">
-          <i class="fas fa-file-pdf"></i> View CV
-        </a>
-
-        <a href="CV/cv.pdf" target="_blank" class="hero-btn primary-btn">
-          <i class="fas fa-download"></i> Download CV
-        </a>
+      <div class="profile-image-container">
+        <div class="ring inner"></div>
+        <div class="ring outer"></div>
+        <img src="CV/nader.jpg" alt="Profile" class="profile-pic" />
+        <div class="floating-icon" style="--angle: 0deg;" data-title="Security">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <div class="floating-icon" style="--angle: 60deg;" data-title="Cloud">
+          <i class="fas fa-cloud"></i>
+        </div>
+        <div class="floating-icon" style="--angle: 120deg;" data-title="Encryption">
+          <i class="fas fa-lock"></i>
+        </div>
+        <div class="floating-icon" style="--angle: 180deg;" data-title="Firewall">
+          <i class="fas fa-fire"></i>
+        </div>
+        <div class="floating-icon" style="--angle: 240deg;" data-title="Coding">
+          <i class="fas fa-code"></i>
+        </div>
+        <div class="floating-icon" style="--angle: 300deg;" data-title="Database">
+          <i class="fas fa-database"></i>
+        </div>
       </div>
     </div>
   </section>
@@ -75,22 +96,14 @@
   <!-- ================= ABOUT ================= -->
   <section id="about" class="fade-in">
     <h2>About Me</h2>
-    <p style="max-width: 800px; margin: 0 auto 40px; line-height: 1.6;" id="aboutDescription">
-      <!-- سيتم ملؤه من data.json -->
-    </p>
-
-    <!-- الكروت الأربعة -->
-    <div class="cards-container" id="aboutCardsContainer">
-      <!-- سيتم ملؤه من data.json -->
-    </div>
+    <p style="max-width: 800px; margin: 0 auto 40px; line-height: 1.6;" id="aboutDescription"></p>
+    <div class="cards-container" id="aboutCardsContainer"></div>
   </section>
 
   <!-- ================= SKILLS ================= -->
   <section id="skills" class="fade-in">
     <h2>Skills</h2>
-    <div class="cards-container" id="skillsGrid">
-      <!-- سيتم ملؤه من data.json -->
-    </div>
+    <div class="cards-container" id="skillsGrid"></div>
     <button class="show-more-btn" id="showSkillsBtn">
       <i class="fas fa-chevron-down"></i> Show More Skills
     </button>
@@ -99,9 +112,7 @@
   <!-- ================= PROJECTS ================= -->
   <section id="projects" class="fade-in">
     <h2>Projects</h2>
-    <div class="cards-container" id="projectsGrid">
-      <!-- سيتم ملؤه من data.json -->
-    </div>
+    <div class="cards-container" id="projectsGrid"></div>
     <button class="show-more-btn" id="showProjectsBtn">
       <i class="fas fa-chevron-down"></i> Show More Projects
     </button>
@@ -110,9 +121,7 @@
   <!-- ================= COURSES ================= -->
   <section id="courses" class="fade-in">
     <h2>Courses</h2>
-    <div class="cards-container" id="coursesGrid">
-      <!-- سيتم ملؤه من data.json -->
-    </div>
+    <div class="cards-container" id="coursesGrid"></div>
     <button class="show-more-btn" id="showCoursesBtn">
       <i class="fas fa-chevron-down"></i> Show More Courses
     </button>
@@ -121,9 +130,7 @@
   <!-- ================= CERTIFICATES ================= -->
   <section id="certificates" class="fade-in">
     <h2>Certificates</h2>
-    <div class="cards-container" id="certificatesGrid">
-      <!-- سيتم ملؤه من data.json -->
-    </div>
+    <div class="cards-container" id="certificatesGrid"></div>
     <button class="show-more-btn" id="showCertificatesBtn">
       <i class="fas fa-chevron-down"></i> Show More Certificates
     </button>
@@ -132,46 +139,33 @@
   <!-- ================= CONTACT SECTION ================= -->
   <section id="contact" class="fade-in">
     <h2>Contact Me</h2>
-
     <div class="contact-container">
-      <!-- Contact Info Cards -->
       <div class="contact-info">
-        <div class="cards-container" id="contactCardsContainer">
-          <!-- سيتم ملؤه من JavaScript مع الألوان الصحيحة -->
-        </div>
+        <div class="cards-container" id="contactCardsContainer"></div>
       </div>
-
-
-      <!-- Contact Form -->
       <div class="contact-form">
         <h3>Send Me a Message</h3>
         <p>Feel free to get in touch with me for any inquiries or collaboration opportunities</p>
-
         <form id="contactForm">
           <div class="form-group">
             <label for="name"><i class="fas fa-user"></i> Your Name</label>
             <input type="text" id="name" name="name" placeholder="Enter your name" required>
           </div>
-
           <div class="form-group">
             <label for="email"><i class="fas fa-envelope"></i> Your Email</label>
             <input type="email" id="email" name="email" placeholder="Enter your email" required>
           </div>
-
           <div class="form-group">
             <label for="phone_number"><i class="fas fa-tag"></i> phone number</label>
             <input type="tel" id="phone_number" name="phone_number" placeholder="Enter your phone number" required>
           </div>
-
           <div class="form-group">
             <label for="message"><i class="fas fa-comment"></i> Your Message</label>
             <textarea id="message" name="message" placeholder="Type your message here..." required></textarea>
           </div>
-
           <button type="submit" class="submit-btn">
             <i class="fas fa-paper-plane"></i> Send Message
           </button>
-
           <div id="formMessage" class="form-message"></div>
         </form>
       </div>
@@ -181,7 +175,6 @@
   <!-- Image Modal -->
   <div id="imageModal" class="image-modal">
     <span class="close-modal">&times;</span>
-
     <span class="modal-nav prev">&#10094;</span>
     <img class="modal-content" id="modalImage">
     <span class="modal-nav next">&#10095;</span>
@@ -189,26 +182,121 @@
 
   <!-- ================= FOOTER ================= -->
   <div class="footer">
-    <p>© 2025 Nader Adel. All rights reserved.</p>
+    <div class="footer-container">
+      <div class="footer-column">
+        <div class="footer-logo">
+          <img src="CV/nader.jpg" alt="Profile" class="profile-img">
+          <div class="logo-text">
+            <h3>Nader Adel AbdRabbo</h3>
+            <p class="job-title">Network & Security Specialist</p>
+          </div>
+        </div>
+        <p class="footer-description">Specialized in designing and implementing secure and efficient network
+          infrastructures, with experience in protecting systems from cyber threats and analyzing security
+          vulnerabilities. I develop innovative security solutions to ensure data and information protection.</p>
+        <div class="cv-download">
+          <a href="CV/Nader_Adel_CV.pdf" class="download-btn">
+            <i class="fas fa-download"></i> Download CV (PDF)
+          </a>
+        </div>
+      </div>
 
-    <div class="footer-social">
-      <a href="https://wa.me/01556223003" target="_blank" title="WhatsApp" class="whatsapp">
-        <i class="fab fa-whatsapp"></i>
-      </a>
-      <a href="https://www.linkedin.com/in/nader-adel" target="_blank" title="LinkedIn" class="linkedin">
-        <i class="fab fa-linkedin"></i>
-      </a>
-      <a href="https://github.com/nade-r" target="_blank" title="GitHub" class="github">
-        <i class="fab fa-github"></i>
-      </a>
-      <a href="mailto:naderadel102@gmail.com" target="_blank" title="Email" class="email">
-        <i class="fas fa-envelope"></i>
-      </a>
+      <div class="footer-column">
+        <h4 class="footer-title"><i class="fas fa-concierge-bell"></i> Services Provided</h4>
+        <div id="servicesContainer">
+          <div class="loading-services">
+            <div class="spinner"></div>
+            <p class="loading-text">Loading services...</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h4 class="footer-title"><i class="fas fa-address-book"></i> Communication methods</h4>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-details">
+              <p class="contact-label">Email</p>
+              <a href="mailto:naderadel102@gmail.com" class="contact-link">naderadel102@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="contact-details">
+              <p class="contact-label">رقم الهاتف / واتساب</p>
+              <a href="tel:+201090479676" class="contact-link">+20 109 047 9676</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="contact-details">
+              <p class="contact-label">Geographic Location</p>
+              <p class="contact-text">Cairo, Egypt</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="contact-details">
+              <p class="contact-label">Working Hours</p>
+              <p class="contact-text">Sunday - Thursday: 9 AM - 5 PM</p>
+            </div>
+          </div>
+        </div>
+        <div class="social-section">
+          <h5 class="social-title"><i class="fas fa-share-alt"></i> وسائل التواصل الاجتماعي</h5>
+          <div class="social-icons">
+            <a href="https://wa.me/201090479676" target="_blank" class="social-icon whatsapp" title="WhatsApp">
+              <i class="fab fa-whatsapp"></i><span>WhatsApp</span>
+            </a>
+            <a href="https://www.linkedin.com/in/nader-adel1" target="_blank" class="social-icon linkedin"
+              title="LinkedIn">
+              <i class="fab fa-linkedin"></i><span>LinkedIn</span>
+            </a>
+            <a href="https://github.com/nade-r" target="_blank" class="social-icon github" title="GitHub">
+              <i class="fab fa-github"></i><span>GitHub</span>
+            </a>
+            <a href="https://x.com/NaderAdel578" target="_blank" class="social-icon twitter" title="Twitter">
+              <i class="fab fa-twitter"></i><span>Twitter</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="copyright-section">
+      <div class="copyright-container">
+        <p class="copyright-text">
+          <i class="far fa-copyright"></i> <span id="currentYear">2026</span> All rights reserved |
+          <span class="highlight">Nader Adel AbdRabbo</span>
+        </p>
+        <div class="footer-links">
+          <a href="#privacy">Privacy Policy</a>
+          <span class="divider">|</span>
+          <a href="#terms">Terms & Conditions</a>
+          <span class="divider">|</span>
+          <a href="#sitemap">Sitemap</a>
+        </div>
+        <p class="designer-credit">
+          <i class="fas fa-code"></i> Designed and programmed by
+          <span class="highlight">Nader Adel</span>
+        </p>
+      </div>
     </div>
   </div>
 
   <!-- زر الرجوع للأعلى -->
-  <button class="back-to-top" id="back-to-top">⬆️</button>
+  <div class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </div>
   <script src="script.js"></script>
 </body>
 

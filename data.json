@@ -155,9 +155,12 @@
     },
     {
       "title": "Fortinet Firewall Configuration",
-      "description": "Enterprise network security implementation using FortiGate firewall, including firewall policies, NAT, VPN, and advanced threat protection.",
-      "image": "project/Project Fortinet/project_fortinet.png",
-      "link": "https://drive.google.com/drive/folders/1_ACUYTOjBsDYWnICLAhvO4YfhZO68S6R?usp=sharing",
+      "description": "Enterprise network security implementation using FortiGate firewall.",
+      "image": [
+        "project/Project Fortinet/project_fortinet.png",
+        "CV/Nader.jpg"
+      ],
+      "link": "#",
       "technologies": [
         "FortiGate",
         "Firewall Policies",
@@ -175,7 +178,8 @@
       "platform": "Huawei Learning Platform",
       "status": "Completed",
       "image": [
-        "Certificates/HWENDCTEDA629033.png"
+        "Certificates/HWENDCTEDA629033.png",
+        "Certificates/Adobe Scan Oct 02, 2025 (1)_1.jpg"
       ],
       "link": "Certificates/HWENDCTEDA629033.png",
       "topics": [
@@ -213,10 +217,7 @@
       "topics": [
         "IoT Fundamentals",
         "Smart Devices",
-        "Digital Solutions",
-        "Industry Applications",
-        "Data Analytics",
-        "Security Considerations"
+        "Digital Solutions"
       ]
     },
     {
@@ -229,10 +230,7 @@
       "topics": [
         "Firewall Configuration",
         "VPN Setup",
-        "Security Policies",
-        "Intrusion Detection",
-        "Network Security",
-        "Threat Management"
+        "Security Policies"
       ]
     },
     {
@@ -245,10 +243,7 @@
       "topics": [
         "Linux Commands",
         "System Administration",
-        "Server Management",
-        "User Management",
-        "File Systems",
-        "Networking"
+        "Server Management"
       ]
     },
     {
@@ -261,10 +256,7 @@
       "topics": [
         "OCI Basics",
         "Cloud Services",
-        "Infrastructure Setup",
-        "Security Fundamentals",
-        "Resource Management",
-        "Cost Optimization"
+        "Infrastructure Setup"
       ]
     },
     {
@@ -277,10 +269,7 @@
       "topics": [
         "Cloud Architecture",
         "Design Patterns",
-        "Best Practices",
-        "Scalability",
-        "Security Design",
-        "Disaster Recovery"
+        "Best Practices"
       ]
     },
     {
@@ -488,10 +477,105 @@
       "category": "Security"
     }
   ],
-  "contact": {
-    "email": "naderadel102@gmail.com",
-    "phone": "+20 155 622 3003",
-    "linkedin": "www.linkedin.com/in/nader-adel-316599396",
-    "github": "https://github.com/nade-r"
+  "contactCards": [
+    {
+      "type": "email",
+      "title": "Email",
+      "value": "naderadel102@gmail.com",
+      "icon": "fas fa-envelope",
+      "link": "mailto:naderadel102@gmail.com",
+      "buttonIcon": "fas fa-paper-plane",
+      "buttonText": "Send Email"
+    },
+    {
+      "type": "whatsapp",
+      "title": "WhatsApp",
+      "value": "+20 109 047 9676",
+      "icon": "fab fa-whatsapp",
+      "link": "https://wa.me/201090479676",
+      "buttonIcon": "fab fa-whatsapp",
+      "buttonText": "Connect"
+    },
+    {
+      "type": "github",
+      "title": "GitHub",
+      "value": "Code Repository",
+      "icon": "fab fa-github",
+      "link": "https://github.com/nade-r",
+      "buttonIcon": "fab fa-github",
+      "buttonText": "View Projects"
+    },
+    {
+      "type": "linkedin",
+      "title": "LinkedIn",
+      "value": "Professional Profile",
+      "icon": "fab fa-linkedin",
+      "link": "https://www.linkedin.com/in/nader-adel1",
+      "buttonIcon": "fab fa-linkedin",
+      "buttonText": "Connect"
+    }
+  ],
+  "personalInfo": {
+    "name": "Nader Adel AbdRabbo",
+    "jobTitle": "Network & Security Specialist",
+    "description": "Specialized in designing and implementing secure and efficient network infrastructures, with experience in protecting systems from cyber threats and analyzing security vulnerabilities. I work on developing innovative security solutions to ensure the protection of data and information.",
+    "profileImage": "CV/nader.jpg",
+    "cvLink": "https://drive.google.com/file/d/1gCbOH5QbX0VK8dL4gDoGIInt2zVAJqYf/view?usp=sharing"
+  },
+  "footer": {
+    "services": [
+      {
+        "name": "Network Security and Intrusion Protection",
+        "icon": "fas fa-shield-alt",
+        "description": "Protecting networks from cyberattacks and security threats"
+      },
+      {
+        "name": "Network Infrastructure Design and Implementation",
+        "icon": "fas fa-network-wired",
+        "description": "Designing efficient and reliable networks that meet business needs"
+      },
+      {
+        "name": "Secure Cloud Solutions",
+        "icon": "fas fa-cloud",
+        "description": "Developing and implementing secure and scalable cloud solutions"
+      },
+      {
+        "name": "Firewall Configuration and Management",
+        "icon": "fa-solid fa-shield-halved",
+        "description": "Setting up and maintaining firewalls to protect networks"
+      },
+      {
+        "name": "Developing Custom Security Solutions",
+        "icon": "fas fa-code",
+        "description": "Programming security solutions tailored to each client"
+      },
+      {
+        "name": "Network performance monitoring and analysis",
+        "icon": "fas fa-chart-line",
+        "description": "Continuous monitoring of network performance and data analysis"
+      },
+      {
+        "name": "Penetration testing and vulnerability scanning",
+        "icon": "fas fa-user-secret",
+        "description": "Network security testing to detect security vulnerabilities"
+      },
+      {
+        "name": "Database and information protection",
+        "icon": "fas fa-database",
+        "description": "Securing databases and sensitive information"
+      }
+    ]
+  },
+  "contactInfo": {
+    "email": "mailto:naderadel102@gmail.com",
+    "phone": "+201090479676",
+    "location": "Cairo, Egypt",
+    "workingHours": "Sunday - Thursday: 9 AM - 5 PM",
+    "socialLinks": {
+      "whatsapp": "https://wa.me/201090479676",
+      "linkedin": "https://www.linkedin.com/in/nader-adel1",
+      "github": "https://github.com/nade-r",
+      "twitter": "https://x.com/NaderAdel578"
+    }
   }
 }
